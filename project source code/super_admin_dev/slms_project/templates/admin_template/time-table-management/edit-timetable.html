@@ -1,0 +1,286 @@
+{% include 'admin_template/header-1.html' %}
+{% load static %}
+    <div class="app-content content position-relative  ">
+      <div class="content-wrapper">
+        <div class="content-body "> 
+          <div class="top-options">
+            <div class="row">
+                <div class="col-lg-6  ico pl-2">
+                   <h3 class="main-title">Edit Timetable </h3>
+                </div>
+                <div class="col-md-6 text-right pr-2  ">
+                    <a class="btn btn-default  float-right btn-sm"  href="{% url 'view_time_table' %}" ><i class="fa fa-arrow-left"></i> Back to list</a>
+                </div>
+             </div>
+           </div>
+           <div class="">
+              <div class="card  pt-0 pl-0 pr-0 form">
+                  <div class="card-content">
+                        <div class="card-body pt-0   pl-0 pr-0"  >
+                           <div class="tops_add_ques"  >
+                             <div class="row">
+                                 <div class="col-lg-12 mx-auto form-group no-ico  ">
+                                     <div class="row">
+                                       <div class="col-lg-3 form-group no-ico  ">
+                                          <label>Session</label>
+                                           <div class="row">
+                                              <div class="col-md-6">
+                                                  <select class="form-control select2-placeholder9" >
+                                                    <option> </option>
+                                                    <option value="1">2023</option>
+                                                    <option value="2" selected="">2022 </option>
+                                                    <option value="3">2021</option>
+                                                  </select>
+                                              </div>
+                                              <div class="col-md-6 pl-0">
+                                                  <select class="form-control select2-placeholder9" >
+                                                    <option> </option>
+                                                    <option value="1" selected="">2023</option>
+                                                    <option value="2" >2022 </option>
+                                                    <option value="3">2011</option>
+                                                 </select>
+                                              </div>
+                                           </div>
+                                       </div>
+                                        <div class="col-lg-3  mb-1 form-group no-ico  ">
+                                           <label>Effective From</label>
+                                           <select class="select2 form-control select2-placeholder25" >
+                                               <option> </option>
+                                               <option value="1">January</option>
+                                               <option value="2">February</option>
+                                               <option value="3" selected="">March</option>
+                                           </select>
+                                        </div>
+                                         <div class="col-lg-3  mb-1 form-group no-ico  ">
+                                           <label>Class</label>
+                                            <select class="form-control select2-placeholder10"  >
+                                              <option> </option>
+                                              <option value="1">Class 9</option>
+                                              <option value="2">Class 8 </option>
+                                              <option value="3" selected="">Class 7</option>
+                                           </select>
+                                        </div>
+                                         <div class="col-lg-3  mb-1 form-group no-ico  ">
+                                             <label>Section</label>
+                                            <select class="  form-control select2-placeholder18" >
+                                              <option> </option>
+                                              <option value="1" selected="">Section A</option>
+                                              <option value="2">Section B </option>
+                                              <option value="3">Section C</option>
+                                           </select>
+                                        </div>
+                                         
+
+                                      </div>
+
+                                       <table  class="table  t-table"  >
+                                              <thead>
+                                                <tr>
+                                                  <th width="120"  > Time <i class="fa fa-arrow-down  "></i>  </th>
+                                                  <th>Monday</th>
+                                                  <th>Tuesday </th>
+                                                  <th>Wednesday </th>
+                                                  <th>Thursday</th>
+                                                  <th>Friday</th>
+                                                  <th>Saterday</th>
+                                                </tr>
+                                              </thead>
+                                              <tbody>
+                                                <tr>
+                                                  <td> 
+                                                    <input type="text" placeholder="Select time" class="timepicker1 form-control" value="09:00 AM" name="" placeholder="From">
+                                                    <input type="text" placeholder="Select time" class="timepicker1 form-control  "  value="10:00 AM" name="" placeholder="From">
+                                                  </td>
+                                                  <td> 
+                                                    <select class="select2 form-control select2-placeholder8" ><option></option>  <option value="1" selected="">Hindi</option> <option value="2">English</option> <option value="3">Maths</option> </select>
+                                                    <span class="d-block sep"></span>
+                                                     <select class="select2  form-control select2-placeholder26" ><option></option> <option value="1" selected="">Ram Singh</option> <option value="2">Amit Kumar</option> <option value="3">Renu Sharma</option> </select>
+                                                  </td>
+                                                   <td> 
+                                                    <select class="select2 form-control select2-placeholder8" ><option></option>  <option value="1">Hindi</option> <option selected="" value="2">English</option> <option value="3">Maths</option> </select>
+                                                    <span class="d-block sep"></span>
+                                                     <select class="select2  form-control select2-placeholder26" ><option></option> <option value="1">Ram Singh</option> <option value="2" selected="">Amit Kumar</option> <option value="3">Renu Sharma</option> </select>
+                                                   
+                                                  </td>
+                                                  <td> 
+                                                    <select class="select2 form-control select2-placeholder8" ><option></option>  <option value="1">Hindi</option> <option value="2">English</option> <option value="3" selected="">Maths</option> </select>
+                                                    <span class="d-block sep"></span>
+                                                     <select class="select2  form-control select2-placeholder26" ><option></option> <option value="1">Ram Singh</option> <option value="2">Amit Kumar</option> <option selected="" value="3">Renu Sharma</option> </select>
+                                                   
+                                                  </td>
+                                                  <td> 
+                                                    <select class="select2 form-control select2-placeholder8" ><option></option>  <option value="1">Hindi</option> <option value="2">English</option> <option value="3" selected="">Maths</option> </select>
+                                                    <span class="d-block sep"></span>
+                                                     <select class="select2  form-control select2-placeholder26" ><option></option> <option value="1">Ram Singh</option> <option value="2" selected="">Amit Kumar</option> <option value="3">Renu Sharma</option> </select>
+                                                   
+                                                  </td>
+                                                  <td> 
+                                                    <select class="select2 form-control select2-placeholder8" ><option></option>  <option value="1">Hindi</option> <option value="2" selected="">English</option> <option value="3">Maths</option> </select>
+                                                    <span class="d-block sep"></span>
+                                                     <select class="select2  form-control select2-placeholder26" ><option></option> <option value="1">Ram Singh</option> <option value="2">Amit Kumar</option> <option selected="" value="3">Renu Sharma</option> </select>
+                                                   
+                                                  </td>
+                                                  <td> 
+                                                    <select class="select2 form-control select2-placeholder8" ><option></option>  <option value="1">Hindi</option> <option value="2">English</option> <option selected="" value="3">Maths</option> </select>
+                                                    <span class="d-block sep"></span>
+                                                     <select class="select2  form-control select2-placeholder26" ><option></option> <option value="1">Ram Singh</option> <option value="2">Amit Kumar</option> <option selected="" value="3">Renu Sharma</option> </select>
+                                                   
+                                                  </td>
+
+                                                </tr>
+
+                                                   <tr>
+                                                  <td> 
+                                                    <input type="text" placeholder="Select time" class="timepicker1 form-control" value="10:00 AM" name="" placeholder="From">
+                                                    <input type="text" placeholder="Select time" class="timepicker1 form-control  "  value="11:00 PM" name="" placeholder="From">
+                                                  </td>
+                                                  <td> 
+                                                    <select class="select2 form-control select2-placeholder8" ><option></option>  <option value="1" selected="">Hindi</option> <option value="2">English</option> <option value="3">Maths</option> </select>
+                                                    <span class="d-block sep"></span>
+                                                     <select class="select2  form-control select2-placeholder26" ><option></option> <option value="1" selected="">Ram Singh</option> <option value="2">Amit Kumar</option> <option value="3">Renu Sharma</option> </select>
+                                                  </td>
+                                                   <td> 
+                                                    <select class="select2 form-control select2-placeholder8" ><option></option>  <option value="1">Hindi</option> <option selected="" value="2">English</option> <option value="3">Maths</option> </select>
+                                                    <span class="d-block sep"></span>
+                                                     <select class="select2  form-control select2-placeholder26" ><option></option> <option value="1">Ram Singh</option> <option value="2" selected="">Amit Kumar</option> <option value="3">Renu Sharma</option> </select>
+                                                   
+                                                  </td>
+                                                  <td> 
+                                                    <select class="select2 form-control select2-placeholder8" ><option></option>  <option value="1">Hindi</option> <option value="2">English</option> <option value="3" selected="">Maths</option> </select>
+                                                    <span class="d-block sep"></span>
+                                                     <select class="select2  form-control select2-placeholder26" ><option></option> <option value="1">Ram Singh</option> <option value="2">Amit Kumar</option> <option selected="" value="3">Renu Sharma</option> </select>
+                                                   
+                                                  </td>
+                                                  <td> 
+                                                    <select class="select2 form-control select2-placeholder8" ><option></option>  <option value="1">Hindi</option> <option value="2">English</option> <option value="3" selected="">Maths</option> </select>
+                                                    <span class="d-block sep"></span>
+                                                     <select class="select2  form-control select2-placeholder26" ><option></option> <option value="1">Ram Singh</option> <option value="2" selected="">Amit Kumar</option> <option value="3">Renu Sharma</option> </select>
+                                                   
+                                                  </td>
+                                                  <td> 
+                                                    <select class="select2 form-control select2-placeholder8" ><option></option>  <option value="1">Hindi</option> <option value="2" selected="">English</option> <option value="3">Maths</option> </select>
+                                                    <span class="d-block sep"></span>
+                                                     <select class="select2  form-control select2-placeholder26" ><option></option> <option value="1">Ram Singh</option> <option value="2">Amit Kumar</option> <option selected="" value="3">Renu Sharma</option> </select>
+                                                   
+                                                  </td>
+                                                  <td> 
+                                                    <select class="select2 form-control select2-placeholder8" ><option></option>  <option value="1">Hindi</option> <option value="2">English</option> <option selected="" value="3">Maths</option> </select>
+                                                    <span class="d-block sep"></span>
+                                                     <select class="select2  form-control select2-placeholder26" ><option></option> <option value="1">Ram Singh</option> <option value="2">Amit Kumar</option> <option selected="" value="3">Renu Sharma</option> </select>
+                                                   
+                                                  </td>
+
+                                                </tr>
+                                                 <tr>
+                                                  <td> 
+                                                    <input type="text" placeholder="Select time" class="timepicker1 form-control" value="11:00 AM" name="" placeholder="From">
+                                                    <input type="text" placeholder="Select time" class="timepicker1 form-control  "  value="12:00 PM" name="" placeholder="From">
+                                                  </td>
+                                                  <td> 
+                                                    <select class="select2 form-control select2-placeholder8" ><option></option>  <option value="1" selected="">Hindi</option> <option value="2">English</option> <option value="3">Maths</option> </select>
+                                                    <span class="d-block sep"></span>
+                                                     <select class="select2  form-control select2-placeholder26" ><option></option> <option value="1" selected="">Ram Singh</option> <option value="2">Amit Kumar</option> <option value="3">Renu Sharma</option> </select>
+                                                  </td>
+                                                   <td> 
+                                                    <select class="select2 form-control select2-placeholder8" ><option></option>  <option value="1">Hindi</option> <option selected="" value="2">English</option> <option value="3">Maths</option> </select>
+                                                    <span class="d-block sep"></span>
+                                                     <select class="select2  form-control select2-placeholder26" ><option></option> <option value="1">Ram Singh</option> <option value="2" selected="">Amit Kumar</option> <option value="3">Renu Sharma</option> </select>
+                                                   
+                                                  </td>
+                                                  <td> 
+                                                    <select class="select2 form-control select2-placeholder8" ><option></option>  <option value="1">Hindi</option> <option value="2">English</option> <option value="3" selected="">Maths</option> </select>
+                                                    <span class="d-block sep"></span>
+                                                     <select class="select2  form-control select2-placeholder26" ><option></option> <option value="1">Ram Singh</option> <option value="2">Amit Kumar</option> <option selected="" value="3">Renu Sharma</option> </select>
+                                                   
+                                                  </td>
+                                                  <td> 
+                                                    <select class="select2 form-control select2-placeholder8" ><option></option>  <option value="1">Hindi</option> <option value="2">English</option> <option value="3" selected="">Maths</option> </select>
+                                                    <span class="d-block sep"></span>
+                                                     <select class="select2  form-control select2-placeholder26" ><option></option> <option value="1">Ram Singh</option> <option value="2" selected="">Amit Kumar</option> <option value="3">Renu Sharma</option> </select>
+                                                   
+                                                  </td>
+                                                  <td> 
+                                                    <select class="select2 form-control select2-placeholder8" ><option></option>  <option value="1">Hindi</option> <option value="2" selected="">English</option> <option value="3">Maths</option> </select>
+                                                    <span class="d-block sep"></span>
+                                                     <select class="select2  form-control select2-placeholder26" ><option></option> <option value="1">Ram Singh</option> <option value="2">Amit Kumar</option> <option selected="" value="3">Renu Sharma</option> </select>
+                                                   
+                                                  </td>
+                                                  <td> 
+                                                    <select class="select2 form-control select2-placeholder8" ><option></option>  <option value="1">Hindi</option> <option value="2">English</option> <option selected="" value="3">Maths</option> </select>
+                                                    <span class="d-block sep"></span>
+                                                     <select class="select2  form-control select2-placeholder26" ><option></option> <option value="1">Ram Singh</option> <option value="2">Amit Kumar</option> <option selected="" value="3">Renu Sharma</option> </select>
+                                                   
+                                                  </td>
+
+                                                </tr>
+
+                                                <tr class="new-tr">
+                                                  <td> 
+                                                    <input type="text" placeholder="Select time" class="timepicker1 form-control" value="11:00 AM" name="" placeholder="From">
+                                                    <input type="text" placeholder="Select time" class="timepicker1 form-control  "  value="12:00 PM" name="" placeholder="From">
+                                                  </td>
+                                                  <td> 
+                                                    <select class="select2 form-control select2-placeholder8" ><option></option>  <option value="1" selected="">Hindi</option> <option value="2">English</option> <option value="3">Maths</option> </select>
+                                                    <span class="d-block sep"></span>
+                                                     <select class="select2  form-control select2-placeholder26" ><option></option> <option value="1" selected="">Ram Singh</option> <option value="2">Amit Kumar</option> <option value="3">Renu Sharma</option> </select>
+                                                  </td>
+                                                   <td> 
+                                                    <select class="select2 form-control select2-placeholder8" ><option></option>  <option value="1">Hindi</option> <option selected="" value="2">English</option> <option value="3">Maths</option> </select>
+                                                    <span class="d-block sep"></span>
+                                                     <select class="select2  form-control select2-placeholder26" ><option></option> <option value="1">Ram Singh</option> <option value="2" selected="">Amit Kumar</option> <option value="3">Renu Sharma</option> </select>
+                                                   
+                                                  </td>
+                                                  <td> 
+                                                    <select class="select2 form-control select2-placeholder8" ><option></option>  <option value="1">Hindi</option> <option value="2">English</option> <option value="3" selected="">Maths</option> </select>
+                                                    <span class="d-block sep"></span>
+                                                     <select class="select2  form-control select2-placeholder26" ><option></option> <option value="1">Ram Singh</option> <option value="2">Amit Kumar</option> <option selected="" value="3">Renu Sharma</option> </select>
+                                                   
+                                                  </td>
+                                                  <td> 
+                                                    <select class="select2 form-control select2-placeholder8" ><option></option>  <option value="1">Hindi</option> <option value="2">English</option> <option value="3" selected="">Maths</option> </select>
+                                                    <span class="d-block sep"></span>
+                                                     <select class="select2  form-control select2-placeholder26" ><option></option> <option value="1">Ram Singh</option> <option value="2" selected="">Amit Kumar</option> <option value="3">Renu Sharma</option> </select>
+                                                   
+                                                  </td>
+                                                  <td> 
+                                                    <select class="select2 form-control select2-placeholder8" ><option></option>  <option value="1">Hindi</option> <option value="2" selected="">English</option> <option value="3">Maths</option> </select>
+                                                    <span class="d-block sep"></span>
+                                                     <select class="select2  form-control select2-placeholder26" ><option></option> <option value="1">Ram Singh</option> <option value="2">Amit Kumar</option> <option selected="" value="3">Renu Sharma</option> </select>
+                                                   
+                                                  </td>
+                                                  <td> 
+                                                    <select class="select2 form-control select2-placeholder8" ><option></option>  <option value="1">Hindi</option> <option value="2">English</option> <option selected="" value="3">Maths</option> </select>
+                                                    <span class="d-block sep"></span>
+                                                     <select class="select2  form-control select2-placeholder26" ><option></option> <option value="1">Ram Singh</option> <option value="2">Amit Kumar</option> <option selected="" value="3">Renu Sharma</option> </select>
+                                                   
+                                                  </td>
+
+                                                </tr>
+
+                                                 
+                                               
+                                              </tbody>
+                                                 
+                                            </table>
+
+                                        <div class="col-lg-12 pr-0 mb-1 mt-1 form-group text-right  ">
+                                          <a href="javascript:;" class="btn btn-sm btn-danger remove-days"  >- Remove</a>  <a href="javascript:;" class="btn btn-sm btn-info add-more-days">+ Add more</a>
+                                        </div>
+                                        
+                                   </div>
+                            </div>
+                          </div>
+                        </div>
+                             
+                    </div>
+                </div>
+            </div>
+             <div class="text-right col-lg-12  pr-0">
+                    <a  class="btn btn-primary  btn-md  " href="javascript:;" data-toggle="modal" data-target="#success" >Update Timetable </a>
+             </div>
+           </div>
+      </div>
+     </div>
+   </div>
+
+   {% include 'admin_template/footer-1.html' %}

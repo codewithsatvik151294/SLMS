@@ -1,0 +1,97 @@
+{% comment %} <?php $txt="Student Management" ;  $subP="student-list"; include('../header-1.php')  ?> {% endcomment %}
+{% include 'admin_template/header-1.html' %}
+{% load static %}
+    <div class="app-content content position-relative  ">
+      <div class="content-wrapper  ">
+        <div class="content-body "><!-- Revenue, Hit Rate & Deals -->
+            <div class="top-options pl-1  ">
+            <div class="row">
+                 <div class="col-md-3   "><h3 >Profile Details</h3></div>
+                     
+                    <div class="col-md-9 text-right pr-2  ">
+                        <a class="btn btn-secondary btn-min-width btn-sm "  href="#"><i class="fa fa-edit"></i> Update Password </a>
+                        <a class="btn btn-primary btn-min-width btn-sm "  href="#"><i class="fa fa-edit"></i> Update Profile</a>
+                    </div>
+               </div>
+           </div>
+             
+             <div class="detail_block">
+                 <div class="card form">
+                  <div class="card-content ">
+                      <div class="card-body"  >
+                          <div class="row  ">
+                             <div class="col-lg-12  pt-1 "><h4 class="title-1">Personal Details</h4></div>
+                              <div class="col-lg-2  mt-1  ">
+                                {% if request.session.image == '' or request.session.image == None %}
+                                  <img src="{% static 'app-assets/images/avatar.jpg' %}">
+                                {% else %}
+                                  <img src="/media/{{request.session.image}}">
+                                {% endif %}
+                             </div>
+                            <div class="col-md-8  offset-md-1">
+                                <div class="row">
+                                      <div class="col-lg-5  pt-2 ">
+                                       <label>First Name</label>
+                                         <p class="value">
+                                            {% if request.user.first_name == '' %}
+                                                -
+                                            {% else %}
+                                                {{request.user.first_name}}</p>
+                                            {% endif %}
+                                     </div>
+                                     <div class="col-lg-5  pt-2 ">
+                                        <label>Last Name</label>
+                                        <p class="value">
+                                        {% if request.user.last_name == '' %}
+                                            -
+                                        {% else %}
+                                            {{request.user.last_name}}</p>
+                                        {% endif %}
+                                    </p>
+                                      </div>
+                                      <div class="col-lg-5  pt-2 ">
+                                        <label>Username</label>
+                                          <p class="value">{{request.user.username}}</p>
+                                      </div>
+                                      <div class="col-lg-5  pt-2 ">
+                                       <label>Gender  </label>
+                                       {% if request.session.gender == '1' %}
+                                       <p class="value">Male</p>
+                                       {% elif request.session.gender == '2' %}
+                                       <p class="value">Female</p>
+                                       {% else %}
+                                       <p class="value">Other</p>
+                                       {% endif %}
+                                   </div>
+                                 </div>
+                             </div>
+                           
+                              
+                            
+
+                            <div class="col-lg-12  pt-3 "><h4 class="title-1">Contact Details</h4></div>
+                           <div class="col-lg-3  pt-1 ">
+                              <label>Email ID</label>
+                              <p class="value">{{request.user.email}}</p>
+                             </div>
+                              <div class="col-lg-3  pt-1 ">
+                               <label>Mobile No.</label>
+                                 <p class="value">{{request.session.contact}}</p>
+                             </div>
+                         </div>
+                         <div class="col-md-12 text-right pr-2  ">
+                            <a class="btn btn-danger btn-min-width btn-sm d-none"  href="#"><i class="fa fa-times"></i> Cancel</a>
+                            <a class="btn btn-success btn-min-width btn-sm d-none"  href="#"><i class="fa fa-check"></i> Save</a>
+                        </div>
+                       </div>
+                     </div>
+                   </div>
+
+
+             </div>
+      </div>
+     </div>
+   </div>
+ 
+{% comment %} <?php include('../footer-1.php')  ?> {% endcomment %}
+{% include 'admin_template/footer-1.html' %}

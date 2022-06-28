@@ -1,0 +1,83 @@
+{% comment %} <?php $txt="Manage Type" ; $subP="branch";  include('../header-1.php')  ?> {% endcomment %}
+{% include 'admin_template/header-1.html' %}
+{% load static %}
+    <div class="app-content content position-relative  ">
+      <div class="content-wrapper  ">
+        
+        <div class="content-body "><!-- Revenue, Hit Rate & Deals -->
+           <div class="top-options mb-0">
+            <div class="row">
+              <div class="col-md-3   "><h3 >Branch List</h3></div>
+                 <div class="col-md-9 text-right ">
+                    <a href="{% url 'add_new_branch' %}" class="btn  btn-primary  btn-sm">+ Add Branch</a>
+                    <a href="{% static 'app-assets/Sample.xlsx' %}" download class="btn  btn-secondary  btn-sm"><i class="fa fa-download"></i> Download Sample Branch List</a>
+                    <a href="{% url 'upload_branch_list' %}" class="btn  btn-secondary  btn-sm"><i class="fa fa-upload"></i> Upload Branch List</a>
+                 </div>
+           </div>
+           </div>
+            <div class="row">
+              <div class="col-md-12">
+                 <div class="table-responsive mt-0">
+                    <table id="example"  class="display table data-table">
+                        <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th>Branch Code</th>
+                                <th>Branch Name</th>
+                                <th>Branch Contact</th>
+                                <th>Branch Email</th>
+                                <th class="action">Action </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           {% for i in branchObj %}
+                              <tr>
+                                 <td>{{ forloop.counter }}</td>
+                                 <td>{{i.branch_code}}</td>
+                                 <td>{{i.branch_name}}</td>
+                                 <td> {{i.branch_contact}} </td>
+                                 <td> {{i.branch_email}} </td>
+                                 <td class="details-control">
+                                    <a href="{% url 'branch_detail' i.id %}" class="view  "><i class="fa fa-eye"></i></a>
+                                    <a href="{% url 'edit_branch' i.id %}" class="edit "><i class="fa fa-edit"></i></a>
+                                    <a href="{% url 'delete_branch' i.id %}" class='del' onclick="return confirm('Confirm to delete this Branch! Branch Name : {{i.branch_name}}')"><i class="fa fa-trash"></i></a>
+                                 </td>
+                              </tr>
+                           {% endfor %}
+                        </tbody>
+                    </table>
+                 
+                </div>
+              </div>
+            </div>
+            
+      </div>
+     </div>
+   </div>
+ 
+
+
+
+   <div class="modal fade small" id="branch-delete-alert" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body text-center">
+            <p>Are you sure want  remove this role.  </p>
+             
+            <a href="" class="btn btn-dark btn-sm mr-1" data-dismiss="modal">No</a>
+            <a href="" class="btn btn-primary btn-sm" data-dismiss="modal" data-toggle="modal" data-target="#success">Yes</a>
+             
+          </div>
+           
+        </div>
+      </div>
+    </div>
+{% comment %} <?php include('../footer-1.php')  ?> {% endcomment %}
+
+
+{% include 'admin_template/footer-1.html' %}

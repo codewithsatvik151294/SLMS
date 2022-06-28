@@ -1,0 +1,84 @@
+{% include 'admin_template/header-1.html' %}
+{% load static %}
+    <div class="app-content content position-relative  ">
+      <div class="content-wrapper  ">
+        <div class="content-body "><!-- Revenue, Hit Rate & Deals -->
+           <div class="top-options pl-2 mb-0">
+            <div class="row">
+                 <div class="col-lg-3  ico  pl-0">
+                   <h3 class="main-title ml-1">Study Material List</h3>
+                 </div>
+                   
+               </div>
+           </div>
+          
+
+            <div class="row">
+               <div class="table-responsive">
+                  <table id="example"  class="display  table data-table">
+                      <thead>
+                        <tr>
+                          <th width="50">S.No.</th>
+                          <th>Topic</th>
+                          <th>Class</th>
+                          <th>Subject</th>
+                          <th>Date/Time</th>
+                          
+                          <th>File Type</th>
+                          <th>Status</th>
+                          <th class="text-center">Action</th>
+                        </tr>
+                      </thead>
+                       <tbody>
+                          {% comment %} <tr> 
+                             <td>1</td>
+                             <td>English Grammer  </td>
+                             <td>10th</td>
+                             <td>English</td>
+                             <td>10/04/2022, 10:00 AM</td>
+                             
+                             <td>PDF</td>
+                             <td class="tags" >
+                                  <span class="not-approved">Not-Approved</span>
+                             </td>
+                             <td class="details-control">
+                               <a href="../study-material/material-detail.php" class="view  "><i class="fa fa-eye"></i></a>
+                               <a href="javascript:;" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Approve" class="approve"><i class="fa fa-check-circle"></i></a>
+                               <a href="javascript:;" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Reject" class="reject"><i class="fa fa-ban"></i></a>
+                            </td>
+                          </tr>
+                           <tr> 
+                             <td>2</td>
+                             <td>Demo Material</td>
+                             <td>11th</td>
+                             <td>Hindi</td>
+                             <td>10/04/2022, 10:00 AM</td>
+                             
+                             <td>Video</td>
+                              <td class="tags" >
+                                  <span class="not-approved">Not-Approved</span>
+                             </td>
+                             <td class="details-control">
+                               <a href="../study-material/material-detail.php" class="view  "><i class="fa fa-eye"></i></a>
+                               <a href="javascript:;" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Approve" class="approve"><i class="fa fa-check-circle"></i></a>
+                                <a href="javascript:;" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Reject" class="reject"><i class="fa fa-ban"></i></a>
+                            </td>
+                          </tr> {% endcomment %}
+                           
+                           
+                           
+                       </tbody>
+                    
+                  </table>
+                   
+               
+              </div>
+            </div>
+         
+            <!-- <div class="text-center"><a href="" class="btn btn-dark btn-sm mt-2">Load More</a> </div> -->
+      </div>
+     </div>
+   </div>
+
+
+   {% include 'admin_template/footer-1.html' %}

@@ -1,0 +1,67 @@
+{% include 'admin_template/header-1.html' %}
+{% load static %}
+    <div class="app-content content position-relative  ">
+      <div class="content-wrapper  ">
+        <div class="content-body "><!-- Revenue, Hit Rate & Deals -->
+           <div class="top-options pl-1 mb-0">
+               <div class="row">
+                  <div class="col-lg-3  ico  pl-0">
+                    <h3 class="main-title ml-1">Paper List</h3>
+                  </div>
+                   <div class="col-md-9 text-right ">
+                        <a class="btn btn-primary btn-min-width"  href="{% url 'add_paper' %}">Create Exam Paper </a>
+                    </div>
+               </div>
+           </div>
+           {% comment %} <div class="row">
+              <div class="col-lg-5 mx-auto mt-2  mb-0 form-group ico ">
+                  <i class="fa fa-search"></i>
+                  <select class="select2 form-control select2-placeholder4" id="default-select">
+                     <option> </option>
+                      <option value="1">Class 10th-Maths-paper-1</option>
+                      <option value="2">Class 10th-Science-paper-1</option>
+                      <option value="3">Class 11th-Hindi-paper-1</option>
+                      <option value="4">Class 10th-English-paper-1</option>
+                      
+                </select>
+               </div>
+           </div> {% endcomment %}
+             <div class="row">
+               <div class="table-responsive">
+                  <table id="example"  class="display table data-table">
+                      <thead>
+                          <tr>
+                              <th>Paper ID</th>
+                              <th>Paper Name</th>
+                              <th>Total Marks</th>
+                              <th>Passing Marks</th>
+                              <th>No. of Sections</th>
+                               <th>Action</th>
+                               
+                          </tr>
+                      </thead>
+                      <tbody>
+                          {% for i in paperObj %}
+                          <tr>
+                              <td><a href="view-paper-detail.php" class="link">{{i.paper_ID}} <i class="fa fa-caret-right"></i></a></td>
+                              <td>{{i.paper_name|title}}</td>
+                              <td>{{i.total_marks}}</td>
+                              <td>{{i.passing_marks}}</td>
+                              <td>{{i.section_count}}</td>
+                              <td class="details-control">
+                                  <a href="view-paper-detail.php" class="view" ><i class="fa fa-eye"></i></a>
+                                  <a href="edit-paper.php" class="edit"><i class="fa fa-edit"></i></a>
+                                  <a href="{% url 'delete_paper' i.id %}" class='del' onclick="return confirm('Confirm to delete this paper! Paper Name : {{i.paper_name|title}}')" ><i class="fa fa-trash"></i></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                      </tbody>
+                  </table>
+              </div>
+            </div>
+             
+      </div>
+     </div>
+   </div>
+ 
+   {% include 'admin_template/footer-1.html' %}

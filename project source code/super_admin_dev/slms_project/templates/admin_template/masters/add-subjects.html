@@ -1,0 +1,81 @@
+{% include 'admin_template/header-1.html' %}
+{% load static %}
+    <div class="app-content content position-relative  ">
+         
+      <div class="content-wrapper">
+        <div class="content-body "> 
+           <div class="top-options pl-1 mb-0">
+            <div class="row">
+                 <div class="col-md-3   "><h3 >Add Subject</h3></div>
+                    <div class="col-md-9 text-right pr-2  ">
+                        <a class="btn btn-default   float-right btn-sm  ml-1" href="{% url 'subject_list' %}" ><i class="fa fa-arrow-left"></i> Back to list</a>
+                    </div>
+               </div>
+           </div>
+           
+                <div class="card mt-2 form">
+                  <div class="card-content ">
+                      <div class="card-body"  >
+                             <div class="row ">
+                                  <div class="col-lg-3 offset-md-1 mt-1  form-group">
+                                      <label>Subject ID </label>
+                                      <input type="text" class="form-control" placeholder="Enter subject id" value="SUB{{counter}}" readonly/>
+                                   </div>
+                                    
+                                   <div class="col-lg-5 mt-1   form-group">
+                                      <label>Subject Name<span class="text-danger"><small><strong> *</strong></small></span></label><span id="subject-name-error" class="text-danger d-none"><small><strong> Class sub-type name is required</strong></small></span>
+                                      <input type="text" class="form-control" id='subject-name' onkeypress="return /[a-zA-Z0-9-.+ ]/i.test(event.key)" placeholder="Enter subject name" value="" />
+                                   </div>
+
+                                   <div class="text-right col-lg-2 mt-2 pt-2">
+                                        <a  class="btn btn-primary" href="javascript:;" id='submitBtn' onclick="add_new_subject()">Submit</a>
+                                       
+                                     </div>
+
+                                       
+
+                                    </div> 
+                                    
+          
+                                      
+                              </div>
+                      </div>
+                  </div>
+              </div>
+
+               
+             
+      </div>
+     </div>
+   </div>
+  {% include 'admin_template/footer-1.html' %}
+  <script src="{% static 'static/app-assets/js/web_app_JS/admin_JS/master_JS/add-subject.js' %}" type="text/javascript"></script>
+  <script>
+    var i = 0;
+    $("#subject-name").on('keypress', function (e) {
+        if ($(this).val().length < 1) {
+            if (e.which == 32) {
+                return false;
+            }
+        }
+        else {
+            if (e.which == 32) {
+                if (i != 0) {
+                    return false;
+                }
+                i++;
+            }
+            else {
+                i = 0;
+            }
+        }
+        var regex = /^[a-zA-Z0-9-.+ ]*$/;
+        var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        if (regex.test(str)) {
+            return true;
+        }
+  
+        e.preventDefault();
+        return false;
+    });
+  </script>

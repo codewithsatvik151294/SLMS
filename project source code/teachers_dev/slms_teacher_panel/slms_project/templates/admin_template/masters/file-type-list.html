@@ -1,0 +1,45 @@
+{% include 'admin_template/header-1.html' %}
+{% load static %}
+    <div class="app-content content position-relative  ">
+      <div class="content-wrapper  ">
+        <div class="content-body "><!-- Revenue, Hit Rate & Deals -->
+           <div class="top-options  ">
+            <div class="row">
+                  <div class="col-lg-6  ico pl-2">
+                     <h3 class="main-title">File Type List</h3>
+                  </div>
+                  <div class="col-md-6 text-right pr-2  ">
+                      <a href="{% url 'add_file_type' %}" class="btn btn-primary"  >Add File Type </a>
+                  </div>
+               </div>
+           </div>
+             <div class="table-responsive  ">
+                <table id="example"  class="display table data-table">
+                    <thead>
+                        <tr>
+                            <th>File Type ID</th>
+                             
+                            <th>File Type</th>
+                            <th class="text-center">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in file_typeObj %}
+                        <tr>
+                            <td>{{i.file_typeID}}</td>
+                            <td>{{i.file_type_name|title}}</td>
+                            <td class="details-control">
+                                <a href="{% url 'delete_file_type' i.id %}" class='del' onclick="return confirm('Confirm to delete this file type! File type name : {{i.file_type_name|title}}')"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+             
+            </div>
+            
+      </div>
+     </div>
+   </div>
+ 
+   {% include 'admin_template/footer-1.html' %}

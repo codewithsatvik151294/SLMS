@@ -1,0 +1,67 @@
+{% include 'admin_template/header-1.html' %}
+{% load static %}
+    <div class="app-content content position-relative  ">
+      <div class="content-wrapper  ">
+        <div class="content-body "><!-- Revenue, Hit Rate & Deals -->
+           <div class="top-options pl-1 mb-0">
+             <div class="row">
+              <div class="col-md-3 "><h3>  Student List</h3></div>
+                 <div class="col-md-9 text-right ">
+                    <a href="{% url 'add_new_student' %}" class="btn  btn-primary  btn-sm">+ Add   Student</a>
+                    {% comment %} <a href="{% static 'static/app-assets/Sample.xlsx' %}" download class="btn  btn-secondary  btn-sm"><i class="fa fa-download"></i> Download Sample Class Student List</a>
+                    <a href="{% url 'upload_student_list' %}" class="btn  btn-secondary  btn-sm"><i class="fa fa-upload"></i> Upload  Student List</a> {% endcomment %}
+                 </div>
+           </div>
+           </div>
+           <div class="row">
+             <div class="table-responsive  ">
+                <table id="example"  class="display table data-table">
+                    <thead>
+                        <tr>
+                            <th>Student Reg. No.</th>
+                            <th>Branch</th>
+                            <th>Student Name</th>
+                             <th>Class-Section</th>
+                            <th>Contact Details</th>
+                            <th>Status (Active/<br>Inactive)</th>
+                            <th class="text-center">Action</th>
+                             
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in student_profile_obj %}
+                        <tr>
+                            <td> <a href="{% url 'student_detail' i.id %}" class="link">{{i.student_FK.student_registration_number}} <i class="fa fa-caret-right"></i></a></td>
+                            <td>{{i.branch_FK.branch_name}}</td>
+                            <td>{{i.student_FK.student_first_name|title}} {{i.student_FK.student_last_name|title}}</td>
+                            <td>{{i.class_fk.class_name}}-{{i.section_fk.section_name}}</td>
+                            <td>Email: {{i.student_FK.student_email}}<br>Mob: {{i.student_FK.student_contact}}</td>
+                            <td>
+                                <label class="switch">
+                                    {% if i.student_FK.active_status == '1' %}
+                                      <input type="checkbox" studentId="{{i.id}}" onclick='changeStatus(this)' checked="">
+                                    {% else %}
+                                      <input type="checkbox" studentId="{{i.id}}" onclick='changeStatus(this)'  >
+                                    {% endif %}
+                                      <span class="slider"></span>
+                                    </label> 
+                            </td>
+                            <td class="details-control">
+                                <a href="{% url 'student_detail' i.id %}" class="view" ><i class="fa fa-eye"></i></a>
+                                <a href="{% url 'edit_student' i.id %}" class="edit"><i class="fa fa-edit"></i></a>
+                                <a href="{% url 'delete_student' i.id %}" class='del' onclick="return confirm('Confirm to delete this student! Student Name : {{i.student_FK.student_first_name|title}} {{i.student_FK.student_last_name|title}}')" ><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+             
+                </div>
+            </div>
+             
+      </div>
+     </div>
+   </div>
+ 
+   {% include 'admin_template/footer-1.html' %}
+  <script src="{% static 'static/app-assets/js/web_app_JS/admin_JS/managestudentJS/edit-student.js' %}" type="text/javascript"></script>

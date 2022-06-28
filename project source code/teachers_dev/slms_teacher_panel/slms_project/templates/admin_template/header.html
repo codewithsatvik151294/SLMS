@@ -1,0 +1,281 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+  <!-- BEGIN: Head-->
+ 
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <title>Dashboard  - SLMS </title>
+    <!-- <link rel="apple-touch-icon" href="static/app-assets/images/ico/apple-icon-120.png"> -->
+    <link rel="shortcut icon" type="image/x-icon" href="https://themeselection.com/demo/chameleon-admin-template/app-assets/images/ico/favicon.ico">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'static/app-assets/vendors/css/vendors.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'static/app-assets/vendors/css/forms/toggle/switchery.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'static/app-assets/css/plugins/forms/switch.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'static/app-assets/css/core/colors/palette-switch.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'static/app-assets/vendors/css/charts/chartist.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'static/app-assets/vendors/css/charts/chartist-plugin-tooltip.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'static/app-assets/vendors/css/tables/datatable/datatables.min.css' %}">
+    <!-- END: Vendor CSS-->
+
+    <!-- BEGIN: Theme CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'static/app-assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'static/app-assets/css/bootstrap-extended.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'static/app-assets/css/colors.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'static/app-assets/css/components.min.css' %}">
+    <!-- END: Theme CSS-->
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'static/app-assets/css/core/menu/menu-types/vertical-menu.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'static/app-assets/css/core/colors/palette-gradient.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'static/app-assets/css/pages/chat-application.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'static/app-assets/css/pages/dashboard-analytics.min.css' %}">
+    <!-- END: Page CSS-->
+
+    <!-- BEGIN: Custom CSS-->
+      <link rel="stylesheet" type="text/css" href="{% static 'static/app-assets/css/custom.css' %}">
+    <!-- END: Custom CSS-->
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  </head>
+  <!-- END: Head-->
+
+  <!-- BEGIN: Body-->
+  <body class="vertical-layout vertical-menu 2-columns   fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-purple-blue" data-col="2-columns">
+   
+    <!-- BEGIN: Header-->
+    <nav class="header-navbar navbar-expand-md navbar navbar-with-menu navbar-without-dd-arrow fixed-top navbar-semi-light "> 
+      <div class="navbar-wrapper">
+        <div class="navbar-container content">
+          <div class="collapse navbar-collapse show" id="navbar-mobile">
+            <ul class="nav navbar-nav mr-auto float-left">
+              <li class="nav-item mobile-menu d-md-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ft-menu font-large-1"></i></a></li>
+              <li class="nav-item d-none d-md-block"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ft-menu"></i></a></li>
+            </ul>
+            <ul class="nav navbar-nav float-right">         
+              <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="ficon ft-bell bell-shake" id="notification-navbar-link"></i><span class="badge badge-pill badge-sm badge-danger badge-up badge-glow">5</span></a>
+                <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
+                  <div class="arrow_box_right">
+                    <li class="dropdown-menu-header">
+                      <h6 class="dropdown-header m-0"><span class="grey darken-2">Notifications</span></h6>
+                    </li>
+                    <li class="scrollable-container media-list w-100"><a href="javascript:void(0)">
+                        <div class="media">
+                          <div class="media-left align-self-center"><i class="ft-share info font-medium-4 mt-2"></i></div>
+                          <div class="media-body">
+                            <h6 class="media-heading info">New exam added</h6>
+                            <p class="notification-text font-small-3 text-muted text-bold-600">Lorem ipsum dolor sit amet!</p><small>
+                              <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">3:30 PM</time></small>
+                          </div>
+                        </div></a><a href="javascript:void(0)">
+                        <div class="media">
+                          <div class="media-left align-self-center"><i class="ft-user font-medium-4 mt-2 warning"></i></div>
+                          <div class="media-body">
+                            <h6 class="media-heading warning">New User Registered</h6>
+                            <p class="notification-text font-small-3 text-muted text-bold-600">Aliquam tincidunt mauris eu risus.</p><small>
+                              <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">10:05 AM</time></small>
+                          </div>
+                        </div></a><a href="javascript:void(0)">
+                        <div class="media">
+                          <div class="media-left align-self-center"><i class="ft-repeat font-medium-4 mt-2 danger"></i></div>
+                          <div class="media-body">
+                            <h6 class="media-heading danger">Exam Conducted</h6>
+                            <p class="notification-text font-small-3 text-muted text-bold-600">Lorem ipsum dolor sit ametest?</p><small>
+                              <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">Yesterday</time></small>
+                          </div>
+                        </div></a><a href="javascript:void(0)">
+                        <div class="media">
+                          <div class="media-left align-self-center"><i class="ft-list font-medium-4 mt-2 primary"></i></div>
+                          <div class="media-body">
+                            <h6 class="media-heading primary">Exam Paper generated</h6><small>
+                              <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">Last week</time></small>
+                          </div>
+                        </div></a><a href="javascript:void(0)">
+                       </a></li>
+                    <li class="dropdown-menu-footer"><a class="dropdown-item info text-right pr-1" href="javascript:void(0)">Read all</a></li>
+                  </div>
+                </ul>
+              </li>
+              <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown"> <span class="avatar avatar-online">
+                {% if request.session.image == '' or request.session.image == None %}
+                      <img src="{% static 'static/app-assets/images/dashboard/profile.png' %}">
+                    {% else %}
+                      <img src="/media/{{request.session.image}}">
+                    {% endif %}
+              </span></a>
+                <div class="dropdown-menu dropdown-menu-right">
+                  <div class="arrow_box_right"><a class="dropdown-item" href="#"><span class="avatar avatar-online">{% if request.session.image == '' or request.session.image == None %}
+                    <img src="{% static 'static/app-assets/images/dashboard/profile.png' %}">
+                  {% else %}
+                    <img src="/media/{{request.session.image}}">
+                  {% endif %}
+                  <span class="user-name text-bold-700 ml-1">
+                    {% if request.session.userType == 'super_admin_login' %}
+                    <small>{{ request.user.username }}</small>
+                    {% else %}
+                    <small>{{request.session.user_name}}</small>
+                    {% endif %}
+                  </span></span></a>
+                    <div class="dropdown-divider"></div>
+                      {% if request.session.userType == 'super_admin_login' %}
+                        <a class="dropdown-item" href="{% url 'admin_profile' %}"><i class="ft-user"></i> Edit Profile</a> 
+                      {% else %}
+                        <a class="dropdown-item" href="#"><i class="ft-user"></i> Edit Profile</a> 
+                      {% endif %}
+                    <div class="dropdown-divider"></div><a class="dropdown-item" href="{% url 'logout' %}"><i class="ft-power"></i> Logout</a>
+                    {% comment %} {% for i in user_auth_dict %}
+                      <p>{{i.auth_name}}</p>
+                    {% endfor %} {% endcomment %}
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- END: Header-->
+        {% comment %} <div class="content-wrapper-before">
+          <img src="{% static 'static/app-assets/images/dashboard/university.png' %}">
+        </div> {% endcomment %}
+
+    <!-- BEGIN: Main Menu-->
+    <div class="main-menu menu-fixed menu-dark menu-accordion    menu-shadow " data-scroll-to-active="true" >
+      <div class="navbar-header">
+        <ul class="nav navbar-nav flex-row">
+          <li class="nav-item mr-auto"><a class="navbar-brand" href="{% url 'dashboard' %}"><img class="brand-logo" alt="Chameleon admin logo" src="{% static 'static/app-assets/images/white_logo.png' %}"/>
+              <h3 class="brand-text">  </h3></a></li>
+          <li class="nav-item d-md-none"><a class="nav-link close-navbar"><i class="ft-x"></i></a></li>
+        </ul>
+      </div>
+       <div class="main-menu-content">
+        <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+          <li class=" nav-item active"><a href="{% url 'dashboard' %}"><img width="30" src="{% static 'static/app-assets/images/dashboard/sidebar/dashboard.png' %}"><span class="menu-title" data-i18n="">Dashboard</span> </a>
+          </li>
+          {% if auth_dict.Manage_Type == True %}
+          <li class="nav-item"><a href=""><img width="30" src="{% static 'static/app-assets/images/dashboard/sidebar/manage.png' %}"><span class="menu-title" >Manage Type</span> </a>
+            <ul class="menu-content">
+              {% if sub_auth_dict.Teacher_List == True %}
+              <li ><a class="menu-item" href="{% url 'Teacher_list' %}">Teacher</a>
+              </li>
+              {% endif %}
+              {% if sub_auth_dict.Student_List == True %}
+              <li ><a class="menu-item" href="{% url 'student_list' %}">Student</a>
+              </li>
+              {% endif %}
+            </ul>
+          </li>
+          {% endif %}
+          {% if auth_dict.Question_Bank_Management == True %}
+          <li class="nav-item"><a href="#"><img width="30" height="32" src="https://slms-dev-bucket.s3.ap-south-1.amazonaws.com/static/app-assets/images/dashboard/sidebar/icons/question_bank.png"><span class="menu-title">Question Bank Management</span></a>
+            <ul class="menu-content">
+              {% if sub_auth_dict.Question_List == True  %}
+              <li>
+                <a class="menu-item" href="{% url 'question_list' %}">Question List</a>
+              </li>
+              {% endif %}
+              {% if sub_auth_dict.Add_Question == True  %}
+              <li class="">
+                <a class="menu-item" href="{% url 'add_question' %}">Add Questions</a>
+              </li>
+              {% endif %}
+            </ul>
+          </li>
+          {% endif %}
+          {% if auth_dict.Exam_Paper_Management == True %}
+          <li class="nav-item"><a href="#"><img width="30" height="32" src="{% static 'static/app-assets/images/dashboard/sidebar/icons/exam_paper.png' %}"><span class="menu-title">Exam Paper  Management</span></a>
+            <ul class="menu-content">
+              {% if sub_auth_dict.Paper_List == True %}
+              <li>
+                <a class="menu-item" href="{% url 'paper_list' %}">Paper List</a>
+              </li>
+              {% endif %}
+            {% if sub_auth_dict.Add_Paper == True %}
+            <li>
+              <a class="menu-item" href="{% url 'add_paper' %}">Add Paper</a>
+            </li>
+            {% endif %}
+          </ul>
+        </li>
+        {% endif %}
+    {% if auth_dict.Assignment_Management == True %}
+    <li class="nav-item "><a href="#"><img width="30" height="32" src="{% static 'static/app-assets/images/dashboard/sidebar/icons/assignment.png' %}"><span class="menu-title">Assignment Management</span></a>
+      <ul class="menu-content">
+        {% if sub_auth_dict.Assignment_List == True %}
+        {% url  'assignment_list' as assignment_list  %}
+        <li class="{% if request.path == assignment_list %}active{% endif %}">
+          <a class="menu-item" href="{% url 'assignment_list' %}">Assignment List</a>
+        </li>
+        {% endif %}
+       {% if sub_auth_dict.Add_Assignment == True %}
+       {% url  'add_assignment' as add_assignment  %}
+       <li class="{% if request.path == add_assignment %}active{% endif %}">
+         <a class="menu-item" href="{% url 'add_assignment' %}">Add Assignment </a>
+        </li>
+        {% endif %}
+      </ul>
+    </li>
+    {% endif %}
+       {% if auth_dict.Study_Material_Management == True %}
+       <li class="nav-item"><a href="#"><img width="30" height="32" src="{% static 'static/app-assets/images/dashboard/sidebar/question-bank.png' %}"><span class="menu-title">Study Material  Management</span></a>
+        <ul class="menu-content">
+          {% if sub_auth_dict.Study_Material_List == True %}
+          <li class="">
+            <a class="menu-item" href="{% url 'study_material_list' %}">Study Material List</a>
+          </li>
+          {% endif %}
+          {% if sub_auth_dict.Add_Study_Material == True %}
+          <li class="">
+            <a class="menu-item" href="{% url 'add_study_material' %}">Add Study Material</a>
+          </li>
+          {% endif %}
+        </ul>
+      </li>
+      {% endif %}
+      {% if auth_dict.Approval_Management == True %}
+      <li  ><a href="#"><img width="30" height="32" src="{% static 'static/app-assets/images/dashboard/sidebar/icons/authority.png' %}"><span class="menu-title">Approval Management</span></a>
+        <ul class="menu-content">
+         {% if sub_auth_dict.Assignment_Approval == True %}
+         <li class="">
+           <a class="menu-item" href="">Assignment</a>
+          </li>
+          {% endif %}
+         {% if sub_auth_dict.Paper_Approval == True %}
+         <li class="">
+           <a class="menu-item" href="">Paper</a>
+          </li>
+          {% endif %}
+          {% if sub_auth_dict.Exam_Approval == True %}
+         <li class="">
+           <a class="menu-item" href="">Exam</a>
+          </li>
+          {% endif %}
+         {% if sub_auth_dict.Study_Material_Approval == True %}
+         <li class="">
+           <a class="menu-item" href="">Study Material</a>
+          </li>
+          {% endif %}
+        </ul>
+     </li>
+     {% endif %}
+      {% if auth_dict.Badges_Management == True %}
+      {% url  'badge_list' as badge_list  %}
+      <li class="nav-item {% if request.path == badge_list %}active{% endif %}" >
+        <a href="{% url 'badge_list' %}"><img width="30" height="32" src="{% static 'static/app-assets/images/dashboard/sidebar/icons/badges.png' %}"><span class="menu-title">Badges Management</span></a> 
+      </li>
+      {% endif %}
+          <li class=" nav-item"><a href="#"><img width="30" height="32" src="{% static 'static/app-assets/images/dashboard/sidebar/notification.png' %}"><span class="menu-title" data-i18n="">Notifications</span></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- END: Main Menu-->

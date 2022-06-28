@@ -1,0 +1,158 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+ 
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="ThemeSelect">
+    <title>  Admins Login - SLMS</title>
+    <link rel="apple-touch-icon" href="{% static 'static/app-assets/images/ico/apple-icon-120.png' %}">
+    <link rel="shortcut icon" type="image/x-icon" href="https://themeselection.com/demo/chameleon-admin-template/app-assets/images/ico/favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700" rel="stylesheet">
+
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="static/app-assets/vendors/css/vendors.min.css">
+    <!-- END: Vendor CSS-->
+
+    <!-- BEGIN: Theme CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'static/app-assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'static/app-assets/css/bootstrap-extended.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'static/app-assets/css/colors.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'static/app-assets/css/components.min.css' %}">
+    <!-- END: Theme CSS-->
+
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'static/app-assets/css/pages/login-register.min.css' %}">
+    <!-- END: Page CSS-->
+
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}">
+    <!-- END: Custom CSS-->
+    <style type="text/css">
+     .super-admin {background: #fff}
+     .super-admin .bg{background: #5B59D0 ;position: absolute; left: 0; height: 95%;z-index: 99; top: 0; width:40%; border-radius: 0  0 20px 0; padding: 50px }
+    
+     .super-admin .bg h1{margin-top: 35%; font-weight: 500; font-size: 50px; color: #fff}
+     .super-admin .bg h1 span{ font-weight: 700 }
+     
+     .super-admin .form-group .view {position: absolute; right: 10px;  top: 11px }
+     .super-admin .form-group .view img{max-width: 25px}
+     .super-admin .form-group .form-control {height: 50px; border:0; background: #f0f0f8;transition: all ease .3s;border-left: 5px solid transparent;}
+     .form-control-position {line-height: 3.6}
+      .super-admin .form-group .form-control:focus{-webkit-box-shadow: 1px 1px 17px 0px rgba(194,194,209,0.7);-moz-box-shadow: 1px 1px 17px 0px rgba(194,194,209,0.7);box-shadow: 1px 1px 17px 0px rgba(194,194,209,0.7); background: #fff; border-left: 5px solid #8482f4;}
+      .super-admin .form-group .form-control::placeholder {color: #999!important}
+      .super-admin form .form-group {
+            margin-bottom: 1rem;
+        }
+       .super-admin .font-large-1 {font-weight: 600}
+       /*admins*/
+        .super-admin.admins .bg {left: auto; right: 0; background:#eee; text-align: center; display: flex; align-items: center; justify-content: center; height: 100%; border-radius: 0 }
+        .super-admin.admins .bg img {max-width: 80%}
+        .super-admin.admins  .font-large-2 {}  
+        .super-admin.admins  .font-large-2 span {color:#5B59D0; font-weight: 600; }
+        .super-admin.admins  .radios {font-weight: 600}
+        .super-admin.admins  .radios  label {margin-right: 15px}
+         .super-admin.admins .logo {position: absolute; top: 30px; left: 11%}
+     
+
+         @media (min-width: 1600px){.super-admin.admins .logo{ left: 10%}}
+    </style>
+
+  </head>
+  <!-- END: Head-->
+  
+  <!-- BEGIN: Body-->
+  <body class="vertical-layout vertical-menu 1-column  bg-full-screen-image blank-page blank-page" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-purple-blue" data-col="1-column">
+    <!-- BEGIN: Content-->
+    <div class="app-content content super-admin admins">
+        <div class="bg">
+            <img src="{% static 'static/app-assets/images/login/director.png' %}">
+        </div>
+      <div class="content-wrapper">
+        <div class="content-body">
+            <img src="{% static 'static/app-assets/images/logo.png' %}" class="logo">
+            <section class="flexbox-container">
+             <div class="col-12  align-items-center  ">
+
+                <div class="col-lg-4 col-md-6 offset-md-1 col-10   p-0">
+                     
+                    <div class="px-1 py-2 m-0">
+                    <form class="form-horizontal" action="" method="POST">
+                        {% csrf_token %}
+                        <div class="card-header border-0 pb-0 mt-5">
+                            <div class="font-large-2 ">                       
+                                Welcome to <span>SLMS</span>
+                            </div>
+                            <p>Welcome back, please login to your account</p>
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <p class="text-center text-danger" ><strong>{{message}}</strong></p>
+                                {% endfor %}
+                            {% endif %}
+                            <div class="radios mt-2">
+                                <label><input type="radio" name="user-type" value="1"  checked=""> <span>Director</span></label>
+                                <label><input type="radio" name="user-type" value="2"> <span>School Admin</span></label>
+                                <label><input type="radio" name="user-type" value="3"> <span>Principal</span></label>
+                            </div>
+                        </div>
+                        <div class="card-content  ">
+                            <div class="card-body">
+                                    <fieldset class="form-group position-relative has-icon-left">
+                                        <input type="text" class="form-control " name='username' id="user-name" placeholder="Email" required>
+                                        <div class="form-control-position">
+                                            <i class="ft-user"></i>
+                                        </div>
+                                    </fieldset>
+                                    <fieldset class="form-group position-relative has-icon-left">
+                                        <a href="javascript:;" class="view" onclick="togglePassword()"><img class="img" src="{% static 'static/app-assets/images/login/view.png' %}"></a>
+                                        <input type="password" class="form-control  " name='password' id="user-password" placeholder="Password" required>
+                                        <div class="form-control-position">
+                                            <i class="ft-lock"></i>
+                                        </div>
+                                    
+                                    </fieldset>
+                                    <div class="text-right">
+                                        <a href="{% url 'login' %}"><small><strong>Super admin login</strong></small></a>
+                                    </div>
+                                                              
+                                    <div class="form-group text-right ml-auto pr-0 mt-4 col-md-5">
+                                        <button type="submit"   class="btn round btn-block btn-glow text-white pt-1  pb-1 bg-primary col-12 mr-1 mb-1">Login</button>    
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        </div>
+      </div>
+    </div>
+    <!-- END: Content-->
+
+
+    <!-- BEGIN: Vendor JS-->
+    <script src="{% static 'static/app-assets/vendors/js/vendors.min.js' %}" type="text/javascript"></script>
+    <script type="text/javascript">
+        function togglePassword(){
+            if($('#user-password').attr('type') ==='password'){
+                $('#user-password').attr('type','text');
+                $('.img').attr('src',"{% static 'static/app-assets/images/login/not_view.png' %}");
+            }
+            else{
+                $('#user-password').attr('type','password');
+                $('.img').attr('src',"{% static 'static/app-assets/images/login/view.png' %}");
+            }
+        }      
+    </script>
+
+  </body>
+  <!-- END: Body-->
+ 
+</html>

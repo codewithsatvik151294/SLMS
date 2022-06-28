@@ -1,0 +1,121 @@
+{% include 'admin_template/header-1.html' %}
+{% load static %}
+    <div class="app-content content position-relative  ">
+      <div class="content-wrapper  ">
+        <div class="content-body "><!-- Revenue, Hit Rate & Deals -->
+           <div class="top-options mb-0">
+            <div class="row">
+              <div class="col-md-3 "><h3>  Teacher List</h3></div>
+                 <div class="col-md-9 text-right ">
+                    <a href="{% url 'add_new_Teacher' %}" class="btn  btn-primary  btn-sm">+ Add   Teacher</a>
+                    {% comment %} <a href="{% static 'static/app-assets/Sample.xlsx' %}" download class="btn  btn-secondary  btn-sm"><i class="fa fa-download"></i> Download Sample Class Teacher List</a>
+                    <a href="{% url 'upload_Teacher_list' %}" class="btn  btn-secondary  btn-sm"><i class="fa fa-upload"></i> Upload   Class Teacher List</a> {% endcomment %}
+                 </div>
+           </div>
+           </div>
+            <div class="row pt-1">
+              {% if request.session.userType == 'super_admin_login' %}
+              <div class="col-md-3 form-group ico pt-1">
+                <i class="fa fa-search"></i>
+                  <select class="select2 form-control select2-placeholder"   id="default-select">
+                    <option value='' class='d-none'>Select  Branch</option>
+                    {% for i in branchObj %}
+                    <option value="{{i.id}}">{{i.branch_name}}</option>
+                    {% endfor %}
+                  </select>
+              </div>
+              {% endif %}
+                <div class="col-md-3   form-group ico pt-1">
+                 <i class="fa fa-search"></i>
+                    <select class="select2 form-control select2-placeholder10">
+                        <option value='' class='d-none'>Select  Class</option>
+                         {% for i in classObj %}
+                         <option value="{{i.id}}">{{i.class_name}}</option>
+                         {% endfor %}
+                  </select>
+              </div>
+               <div class="col-md-3 form-group ico pt-1">
+                 <i class="fa fa-search"></i>
+                    <select class="select2 form-control select2-placeholder5">
+                        <option value='' class='d-none'>Select  Section</option>
+                         {% for i in sectionObj %}
+                         <option value="{{i.id}}">{{i.section_name}}</option>
+                         {% endfor %}
+                  </select>
+              </div>
+               <div class="col-md-3 pt-1">
+                  <button class="btn  btn-primary  btn-sm"><i class="fa fa-filter"></i> Filter </button>
+              </div>
+              
+              <div class="col-md-12 p-0">
+                 <div class="table-responsive mt-0">
+                    <table id="example"  class="display table data-table">
+                        <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th>Name</th>
+                                <th>Branch</th>
+                                <th>Class Teacher</th>
+                                <th>Contact Details</th>
+                               
+                                <th>Status <br> (Active/<br>Deactive)</th>
+                                <th class="action">Action </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in Teacher_profile_obj %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{i.teacher_FK.teacher_name|title}} 
+                                    {% if i.teacher_FK.class_teacher_status == '2' %}
+                                        <br><span class="badge bg-primary">Class teacher</span>
+                                    {% endif %}
+                                </td>
+                                <td>{{i.branch_FK.branch_name}}</td>
+                                <td>{% if i.teacher_FK.class_teacher_status == '2' %}
+                                        {{i.teacher_FK.class_master_fk.class_name}} - {{i.teacher_FK.section_master_fk.section_name}}
+                                    {% else %}
+                                    -
+                                    {% endif %}
+                                </td>                                
+                                <td>Phone:{{i.teacher_FK.teacher_contact}}  <br> Email:{{i.teacher_FK.teacher_email}} </td>
+                                
+                                <td>
+                                    <label class="switch">
+                                        {% if i.teacher_FK.active_status == '1' %}
+                                          <input type="checkbox" teacherId="{{i.id}}" onclick='changeStatus(this)' checked="">
+                                        {% else %}
+                                          <input type="checkbox" teacherId="{{i.id}}" onclick='changeStatus(this)'  >
+                                        {% endif %}
+                                          <span class="slider"></span>
+                                        </label> 
+                                </td>
+                                <td class="details-control">
+                                    <a href="{% url 'Teacher_detail' i.id %}" class="view  "><i class="fa fa-eye"></i></a>
+                                    {% comment %} <a href="{% url 'edit_Teacher' i.id %}" class="edit "><i class="fa fa-edit"></i></a> {% endcomment %}
+                                    <a href="{% url 'delete_Teacher' i.id %}" class='del' onclick="return confirm('Confirm to delete this teacher! Teacher Name : {{i.teacher_FK.teacher_name}}')"><i class="fa fa-trash"></i></a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                 
+                </div>
+              </div>
+            </div>
+            
+      </div>
+     </div>
+   </div>
+ 
+   {% include 'admin_template/footer-1.html' %}
+  <script src="{% static 'static/app-assets/js/web_app_JS/admin_JS/manage_teacherJS/checkTeacherFields.js' %}" type="text/javascript"></script>
+
+<script type="text/javascript">
+    $(function() {
+    $('#toggle-two').bootstrapToggle({
+      on: 'Enabled',
+      off: 'Disabled'
+    });
+  })
+</script>

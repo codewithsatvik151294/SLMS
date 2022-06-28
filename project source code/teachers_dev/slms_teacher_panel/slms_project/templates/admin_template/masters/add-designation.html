@@ -1,0 +1,72 @@
+{% include 'admin_template/header-1.html' %}
+{% load static %}
+    <div class="app-content content position-relative  ">
+         
+      <div class="content-wrapper">
+        <div class="content-body "><!-- Revenue, Hit Rate & Deals -->
+           <div class="col-lg-12 col-md-12 col-sm-12  ">
+             <h4 class="head mb-2  ">Add Designation <a   class="btn btn-default   float-right btn-sm  mt--1 " href="{% url 'designation_list' %}" >Back to list</a></h4>
+                <div class="card  form">
+                  <div class="card-content ">
+                      <div class="card-body"  >
+                             <div class="row  ">
+                               <div class="col-lg-5 mx-auto   ">
+                               <div class="row  ">
+                                  <div class="col-lg-12  mt-1  form-group">
+                                      <label>Designation ID </label>
+                                      <input type="text" class="form-control" placeholder="Enter designation id" value="DG{{counter}}" readonly="" />
+                                   </div>
+                                 
+                                   <div class="col-lg-12 mt-1   form-group">
+                                      <label>Designation  Name<span class="text-danger"><small><strong> *</strong></small></span></label><span id="designation-name-error" class="text-danger d-none"><small><strong>Designation name is required</strong></small></span>
+                                      <input type="text" class="form-control" onkeypress="return /[a-zA-Z0-9-.+ ]/i.test(event.key)" placeholder="Enter designation name" id="designation-name" value="" />
+                                   </div>
+                                    
+                                   <div class="text-right col-lg-12 pt-2">
+                                        <a  class="btn btn-primary   " href="javascript:;" id='submitBtn' onclick="add_designation()">Submit</a>
+                                       
+                                     </div>
+                                  </div>
+                                </div>
+                                      
+                              </div>
+                      </div>
+                  </div>
+              </div>
+
+               
+            </div>
+      </div>
+     </div>
+   </div>
+  {% include 'admin_template/footer-1.html' %}
+  <script src="{% static 'static/app-assets/js/web_app_JS/admin_JS/master_JS/add-designation.js' %}" type="text/javascript"></script>
+  <script>
+    var i = 0;
+    $("#designation-name").on('keypress', function (e) {
+        if ($(this).val().length < 1) {
+            if (e.which == 32) {
+                return false;
+            }
+        }
+        else {
+            if (e.which == 32) {
+                if (i != 0) {
+                    return false;
+                }
+                i++;
+            }
+            else {
+                i = 0;
+            }
+        }
+        var regex = /^[a-zA-Z0-9-.+ ]*$/;
+        var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        if (regex.test(str)) {
+            return true;
+        }
+  
+        e.preventDefault();
+        return false;
+    });
+  </script>

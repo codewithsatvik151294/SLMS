@@ -1,0 +1,90 @@
+{% include 'admin_template/header-1.html' %}
+{% load static %}
+    <div class="app-content content position-relative  ">
+      <div class="content-wrapper  ">
+        <div class="content-body "><!-- Revenue, Hit Rate & Deals -->
+           <div class="top-options  ">
+            <div class="row">
+                  <div class="col-lg-6  ico pl-2">
+                     <h3 class="main-title">Classs   List</h3>
+                  </div>
+                  <div class="col-md-6 text-right pr-2  ">
+                      <a href="{% url 'add_class' %}" class="btn btn-primary"  >Add Class</a>
+                  </div>
+               </div>
+           </div>
+           <div class="row">
+               <div class="col-md-4 form-group ico pt-1">
+                   <i class="fa fa-search"></i>
+                      <select class="select2 form-control select2-placeholder"   id="default-select">
+                        <option vlaue='' class='d-none'> </option>
+                        {% for i in branchObj %}
+                            <option value="{{i.id}}">{{i.branch_name}}</option>
+                        {% endfor %}
+                    </select>
+
+                </div>
+                <div class="col-md-3   form-group ico pt-1">
+                 <i class="fa fa-search"></i>
+                    <select class="select2 form-control select2-placeholder10">
+                        <option vlaue='' class='d-none'> </option>
+                        {% for i in classObj %}
+                            <option value="{{i.id}}">{{i.class_name}}</option>
+                        {% endfor %}
+                  </select>
+              </div>
+               {% comment %} <div class="col-md-3 form-group ico pt-1">
+                 <i class="fa fa-search"></i>
+                    <select class="select2 form-control select2-placeholder5">
+                        <option vlaue='' class='d-none'> </option>
+                        {% for i in sectionObj %}
+                            <option value="{{i.id}}">{{i.section_name}}</option>
+                        {% endfor %}
+                  </select>
+              </div> {% endcomment %}
+              
+               <div class="col-md-5   text-right pt-1">
+                  <button class="btn  btn-primary  btn-sm"><i class="fa fa-filter"></i> Filter </button>
+              </div>
+            </div>
+             <div class="table-responsive  ">
+                <table id="example"  class="display table data-table">
+                    <thead>
+                        <tr>
+                            <th>Class ID</th>
+                            <th style="width: 200px">Branch</th>
+                            <th>Class</th>
+                            <th style="width: 100px">No. of Sections</th>
+                            <th>Subjects</th>
+                            <th class="text-center">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in classObj %}
+                        <tr>
+                            <td>{{i.classID}}</td>
+                            <td>{{i.branch_FK.branch_name}}</td>
+                            <td>{{i.class_name}}</td>
+                            <td class=""><span>{{i.sectionCount}}</span></td>
+                            <td class="tags">
+                                {% for j in i.subjectArray  %}
+                                    <span>{{j}}</span>
+                                {% endfor %}
+                            </td>
+                            <td class="details-control">
+                                <a href="{% url 'view_class_details' i.id %}" class="view"><i class="fa fa-eye"></i></a>  
+                                {% comment %} <a href="{% url 'edit_class_details' %}" class="edit"><i class="fa fa-edit"></i></a>   {% endcomment %}
+                                <a href="{% url 'delete_class' i.id %}" class='del' onclick="return confirm('Confirm to delete this class! Class name : {{i.class_name|title}}')"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+             
+            </div>
+ 
+      </div>
+     </div>
+   </div>
+ 
+   {% include 'admin_template/footer-1.html' %}

@@ -1,0 +1,107 @@
+{% comment %} <?php $txt="Student Management" ;  $subP="student-list"; include('../header-1.php')  ?> {% endcomment %}
+{% include 'admin_template/header-1.html' %}
+{% load static %}
+    <div class="app-content content position-relative  ">
+      <div class="content-wrapper  ">
+        <div class="content-body "><!-- Revenue, Hit Rate & Deals -->
+            <div class="top-options pl-1  ">
+            <div class="row">
+                 <div class="col-md-3   "><h3 >Profile Details</h3></div>
+                     
+                 <div class="col-md-9 text-right pr-2  ">
+                    <a class="btn btn-secondary btn-min-width btn-sm "  href="#"><i class="fa fa-edit"></i> Update Password </a>
+                    <a class="btn btn-primary btn-min-width btn-sm "  href="#"><i class="fa fa-edit"></i> Update Profile</a>
+                </div>
+               </div>
+           </div>
+             
+             <div class="detail_block">
+                 <div class="card form">
+                  <div class="card-content ">
+                      <div class="card-body"  >
+                          <div class="row  ">
+                             <div class="col-lg-12  pt-1 "><h4 class="title-1">Personal Details</h4></div>
+                              <div class="col-lg-2  mt-1  ">
+                                {% if director_profile_obj.director_FK.profile_image == '' or director_profile_obj.director_FK.profile_image == None %}
+                                  <img src="{% static 'static/app-assets/images/avatar.jpg' %}">
+                                {% else %}
+                                  <img src="/media/{{director_profile_obj.director_FK.profile_image}}">
+                                {% endif %}
+                             </div>
+                            <div class="col-md-8  offset-md-1">
+                                <div class="row">
+                                      <div class="col-lg-5  pt-2 ">
+                                       <label>Name</label>
+                                         <p class="value">{{director_profile_obj.director_FK.director_name}}</p>
+                                     </div>
+                                      <div class="col-lg-5  pt-2 ">
+                                       <label>Gender  </label>
+                                       {% if director_profile_obj.director_gender == '1' %}
+                                       <p class="value">Male</p>
+                                       {% elif director_profile_obj.director_gender == '2' %}
+                                       <p class="value">Female</p>
+                                       {% else %}
+                                       <p class="value">Other</p>
+                                       {% endif %}
+                                   </div>
+                                   <div class="col-lg-5  pt-1 ">
+                                       <label>Date of birth  </label>
+                                      <p class="value">{{director_profile_obj.director_DOB}}</p>
+                                   </div>
+                                    <div class="col-lg-3  pt-1 ">
+                                     <label>Parent Name</label>
+                                         <p class="value">{{director_profile_obj.director_fathers_name}}</p>
+                                     </div>
+                                 </div>
+                             </div>
+                           
+                              
+                            
+
+                            <div class="col-lg-12  pt-3 "><h4 class="title-1">Contact Details</h4></div>
+                           <div class="col-lg-3  pt-1 ">
+                              <label>Email ID</label>
+                              <p class="value">{{director_profile_obj.director_FK.director_email}}</p>
+                             </div>
+                              <div class="col-lg-3  pt-1 ">
+                               <label>Mobile No.</label>
+                                 <p class="value">{{director_profile_obj.director_FK.director_contact}}</p>
+                             </div>
+                              
+                           <div class="col-lg-3  pt-1 ">
+                               <label>Address</label>
+                              <p class="value">{{director_profile_obj.director_address}}</p>
+                           </div>
+                            <div class="col-lg-3  pt-1 ">
+                             <label>City</label>
+                                 <p class="value">{{director_profile_obj.director_city}}</p>
+                             </div>
+                              <div class="col-lg-3  pt-1 ">
+                               <label>State </label>
+                              <p class="value">{{director_profile_obj.director_state}}</p>
+                           </div>
+                           <div class="col-lg-3  pt-1 ">
+                               <label>Pin code  </label>
+                              <p class="value">{{director_profile_obj.director_pinCode}}</p>
+                           </div>
+
+                           <div class="col-lg-12  pt-2 "><h4 class="title-1">Branch</h4></div>
+                           <div class="col-lg-3  pt-1 ">
+                              <label>Branch Name</label>
+                              <p class="value">{{director_profile_obj.branch_FK.branch_name}}</p>
+                             </div>
+                              
+                               
+                         </div>
+                       </div>
+                     </div>
+                   </div>
+
+
+             </div>
+      </div>
+     </div>
+   </div>
+ 
+{% comment %} <?php include('../footer-1.php')  ?> {% endcomment %}
+{% include 'admin_template/footer-1.html' %}

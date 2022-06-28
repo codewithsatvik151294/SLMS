@@ -1,0 +1,161 @@
+<?php $txt="Exam Management" ;  include('../header-1.php')  ?>
+    <div class="app-content content position-relative  ">
+         
+      <div class="content-wrapper">
+        <div class="content-body "><!-- Revenue, Hit Rate & Deals -->
+          <div class="progress-wrap  mt-1">
+              <div class="line-progress-bar">
+                <div class="line line1"></div>
+                  <ul class="checkout-bar">
+                    <li class="progressbar-dots completed"><span>Create Exam Paper</span></li>
+                    <li class="progressbar-dots active"><span>Create Exam Process</span></li>
+                    <li class="progressbar-dots"><span>Select Batches & Paper</span></li>
+                    <li class="progressbar-dots"><span>Select Slot</span></li>
+                    <li class="progressbar-dots"><span>Assign Resources & Resposibility</span></li>
+                    <li class="progressbar-dots"><span>Exam Roadmap</span></li>
+                  </ul>
+                </div>
+             </div>  
+
+           <div class="col-lg-12 col-md-12 col-sm-12 mt-3">
+             <h4 class="head mb-2 mt-5  ">Select Exam Type</h4>
+                <div class="row">
+                  <div class="col-md-3">
+                     <label class="label">
+                       <input type="radio" name="sync">
+                      <div class="card select">
+                            <img src="../app-assets/images/syncronous.svg">
+                            <span>Synchronous</span>
+                      </div>
+                     </label>
+                  </div>
+                   <div class="col-md-3">
+                    <label class="label">
+                       <input type="radio" name="sync">
+                      <div class="card select">
+                        
+                            <img src="../app-assets/images/unsyncronous.svg">
+                            <span>Unsynchronous</span>
+                         
+                      </div>
+                     </label>
+                  </div>
+                </div>
+
+                 <h4 class="head mb-2 mt-1  ">Select Exam Process</h4>
+                <div class="card  form">
+                  <div class="card-content ">
+                      <div class="card-body"  >
+                         <div class="row ">
+                             <div class="col-lg-4 mt-1 mb-2 form-group">
+                                 <label>Select Exam Process</label>
+                                 <select class="form-control" id="process">
+                                    <option class="d-none"> </option>
+                                    <option>Process 1</option>
+                                    <option>Process 2</option>
+                                 </select>
+                               </div>
+                               <div class="col-lg-4 mt-1 mb-2 form-group">
+                                 <label>Process ID</label>
+                                 <select disabled="" class="form-control other">
+                                    <option class="d-none"></option>
+                                    <option value="1">Process ID 1</option>
+                                    <option>Process ID 2</option>
+                                 </select>
+                               </div>
+                               <div class="col-lg-4 mt-1 mb-2 form-group">
+                                 <label> Process Name</label>
+                                 <select disabled=""  class="form-control other">
+                                  <option class="d-none"> </option>
+                                    <option value="1">Process Name 1</option>
+                                    <option>Process Name 2</option>
+                                 </select>
+                               </div>
+                               <div class="col-lg-12 form-group mb-0">
+                                 <label>Select Exam Process Month Range</label>
+                               </div>
+
+                               <div class="col-lg-2 mb-2 pr-0 form-group">
+                                 <label>From</label>
+                                 <select class="form-control">
+                                    <option>Jan</option>
+                                    <option>Feb</option>
+                                 </select>
+                               </div>
+                                <div class="col-lg-2  mb-2 form-group">
+                                 <label>&nbsp;</label>
+                                 <select class="form-control">
+                                    <option>2021</option>
+                                    <option>2022</option>
+                                 </select>
+                               </div>
+                                <div class="col-lg-2 mb-2 pr-0 form-group">
+                                 <label>To</label>
+                                 <select class="form-control">
+                                    <option>Jan</option>
+                                    <option>Feb</option>
+                                 </select>
+                               </div>
+                                <div class="col-lg-2  mb-2 form-group">
+                                 <label>&nbsp;</label>
+                                 <select class="form-control">
+                                    <option>2021</option>
+                                    <option>2022</option>
+                                 </select>
+                               </div>
+                               
+      
+                           </div>
+                             
+                      </div>
+                  </div>
+              </div>
+
+               <div class="text-right    pt-1">
+                   <a   class="btn btn-default pl-5 pr-5 mr-1  " href="create-exam.php" >Back</a>
+                  <a   class="btn btn-primary pl-5 pr-5  " href="create-exam-step-3.php" >Next</a>
+                   
+                 </div>
+
+                  
+                  <div class="card info mt-4" style="display: none;">
+                    <div class="card-content exam-process">
+                        <div class="card-body"  >
+                             <ul>
+                               <li class="done"><a>Exam Created</a></li>
+                                <li class="sep done"> <em> </em> </li>
+                               <li class="done"><a>Resource Assigned</a></li>
+                               <li class="sep done"><em> </em> </li>
+                               <li class="done"><a class="multiline"  >Set Creation<div class="break"></div> <span>(Manual/Automatic)</span></a></li>
+                               <li class="sep done"><em> </em> </li>
+                               <li class="done"><a>Test Paper Audit  </a></li>
+                               <li class="sep"> <em> </em></li>
+                               <li><a  class="multiline" >Student Entry at Exam Center </a></li>
+                             </ul>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+      </div>
+     </div>
+   </div>
+
+   <!-- Modal -->
+  <div class="modal fade small" id="alert" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+           <p>Setting Exam Processs is mandatory. If the exam process is not as per desired, kindly create a new exam process from exam process menu.</p>
+        </div>
+         
+      </div>
+    </div>
+  </div>
+ 
+<?php include('../footer-1.php')  ?>

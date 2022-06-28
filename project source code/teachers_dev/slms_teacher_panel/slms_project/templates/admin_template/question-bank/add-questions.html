@@ -1,0 +1,167 @@
+{% include 'admin_template/header-1.html' %}
+{% load static %}
+
+{% comment %} <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" /> {% endcomment %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<link href="{% static 'static/app-assets/editor/editor.css' %}" type="text/css" rel="stylesheet" />
+    <div class="app-content content position-relative  ">
+      <div class="content-wrapper">
+        <div class="content-body "> 
+          <div class="top-options">
+            <div class="row">
+                  <div class="col-lg-6  ico pl-2">
+                     <h3 class="main-title">Add Question </h3>
+                  </div>
+                  <div class="col-md-6 text-right pr-2  ">
+                      <a class="btn btn-default  float-right btn-sm"  href="{% url 'question_list' %}" ><i class="fa fa-arrow-left"></i> Back to list</a>
+                  </div>
+               </div>
+           </div>
+           <div class=" ">
+                <div class="card  pt-0 pl-0 pr-0 form">
+                  <div class="card-content">
+                      <div class="card-body pt-0   pl-0 pr-0"  >
+                         <div class="tops_add_ques"  >
+                             <div class="row">
+                              {% comment %} <div class="col-lg-4   mb-1 form-group ico pl-2">
+                                <label>Branch<span class="text-danger"><small><strong> *</strong></small></span></label><span id="branch-error" class="text-danger d-none"><small><strong> Branch is required</strong></small></span>
+                                   <select class="select2 form-control select2-placeholder select" onchange="get_class(this)" id='branch-id'>
+                                    <option value="" class="d-none">Select Branch</option>
+                                    {% for i in branchObj %}
+                                    <option value="{{i.id}}">{{i.branch_name|title}}</option>
+                                    {% endfor %}
+                                 </select>
+                              </div> {% endcomment %}
+                              <div class="col-lg-4 mb-1 form-group no-ico pl-2">
+                                <label><strong>Branch</strong><span class="text-danger"><small><strong> *</strong></small></span></label><span id="branch-error" class="text-danger d-none"><small><strong>&nbsp;&nbsp;&nbsp;Class is required</strong></small></span>
+                                  <select class="select2 form-control select2-placeholder" id='branch-id' onchange="get_class(this)">
+                                    <option value="" class="d-none">Select Branch</option>
+                                    {% for i in branchObj %}
+                                    <option value="{{i.id}}">{{i.branch_name|title}}</option>
+                                    {% endfor %}
+                                   </select>
+                              </div>
+
+                                <div class="col-lg-4 mb-1 form-group no-ico pl-2">
+                                  <label><strong>Class</strong><span class="text-danger"><small><strong> *</strong></small></span></label><span id="class-error" class="text-danger d-none"><small><strong>&nbsp;&nbsp;&nbsp;Class is required</strong></small></span>
+                                    <select class="select2 form-control select2-placeholder10" id='class-id' onchange="get_subject(this)">
+                                        <option value='' class='d-none'>Select Class</option>
+                                     </select>
+                                </div>
+
+                                 <div class="col-lg-4  mb-1 form-group no-ico pl-2">
+                                   <label><strong>Subject</strong><span class="text-danger"><small><strong> *</strong></small></span></label><span id="subject-error" class="text-danger d-none"><small><strong>&nbsp;&nbsp;&nbsp;Subject is required</strong></small></span>
+                                    <select class="select2 form-control select2-placeholder8" id='question_subject' onchange="get_topic(this)">
+                                      <option value='' class='d-none'>Select Subject</option>
+                                  </select>
+                                </div>
+
+                                
+                              </div>
+                            </div>
+                            <div class="cont pl-1 pr-1"  >
+                              <div class="row">
+                                <div class="col-lg-4 mb-1 form-group no-ico  pl-2">
+                                  <label><strong>Topic</strong><span class="text-danger"><small><strong> *</strong></small></span></label><span id="topic-error" class="text-danger d-none"><small><strong>&nbsp;&nbsp;&nbsp;Topic is required</strong></small></span>
+                                    <select class="select2 form-control select2-placeholder12" id='question_topic' >
+                                      <option value='' class='d-none'>Select Topic</option>
+                                  </select>
+                                </div>
+                                 <div class="col-lg-4 mb-1 form-group no-ico  ">
+                                   <label><strong>Question Type</strong><span class="text-danger"><small><strong> *</strong></small></span></label><span id="question-type-error" class="text-danger d-none"><small><strong>&nbsp;&nbsp;&nbsp;Question Type is required</strong></small></span>
+                                    <select class="select2 form-control select2-placeholder14" onchange="question_type(this)" id='question-type'>
+                                        <option value='' class='d-none'>Select Question Type</option>
+                                        {% for i in questionTypeObj %}
+                                          <option value="{{i.id}}">{{i.questionType_name|title}}</option>
+                                        {% endfor %}
+                                  </select>
+                                </div>
+                                <div class="col-lg-4 mb-1 form-group no-ico  pl-2">
+                                  <label><strong>Question Sub Type</strong><span class="text-danger"><small><strong> *</strong></small></span></label><span id="question-sub-type-error" class="text-danger d-none"><small><strong>&nbsp;&nbsp;&nbsp;Question Sub Type is required</strong></small></span>
+                                    <select class="select2 form-control select2-placeholder15" id='question-sub-type' >
+                                        <option value='' class='d-none'>Select Question Sub Type</option>
+                                        <option value="fill-in-the-blank">Fill in the blanks</option>
+                                        <option value="true-false">True/False </option>
+                                         <option value="match-the-following">Match the  following</option>
+                                  </select>
+                                </div>
+                                <div class="col-lg-4 mb-1 form-group no-ico  pl-2">
+                                  <label><strong>Year</strong><span class="text-danger"><small><strong> *</strong></small></span></label><span id="year-error" class="text-danger d-none"><small><strong>&nbsp;&nbsp;&nbsp;Year is required</strong></small></span>
+                                    <select class="select2 form-control select2-placeholder9" id='question-year'>
+                                        <option value='' class='d-none'>Select Year</option>
+                                        {% for i in yearObj %}
+                                          <option value="{{i.id}}">{{i.year_name|title}}</option>
+                                        {% endfor %}
+                                  </select>
+                                </div>
+                                
+                                  <div class="col-lg-12   mt-0  form-group">
+                                      <label class='ml-1'><strong>Question</strong><span class="text-danger"><small><strong> *</strong></small></span></label><span id="question-error" class="text-danger d-none"><small><strong>&nbsp;&nbsp;&nbsp;Question is required</strong></small></span>
+                                      {% comment %} <textarea class="form-control" style="height: 200px" placeholder="Type Questio here.."></textarea> {% endcomment %}
+                                      <div class="col-lg-12   mt-0  form-group" id="renderEditor">
+                                      <textarea class="form-control" id="txtEditor_1" style="height: 200px" placeholder="Type Question here.."></textarea>
+                                      </div>
+                                   </div>
+                                    <div class="col-lg-4 mt-1 no-ico  form-group d-none" id="option_count_div">
+                                      <label><strong>No. of Options</strong><span class="text-danger"><small><strong> *</strong></small></span></label><span id="no-of-options-error" class="text-danger d-none"><small><strong>&nbsp;&nbsp;&nbsp;No. of Options is required</strong></small></span>
+                                      <select class=" form-control" id="option-1" onchange="option_count(this)">
+                                        <option value="" class='d-none'>Select No. of Options </option>
+                                        <option value="2">2 </option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                       </select>
+                                   </div>
+                                    <div class="col-lg-8 mt-1 no-ico  form-group">&nbsp;</div>
+                                    </div>
+
+                                    <div id="options-1" class='d-none'>
+                                   </div>
+
+                                   <div class="row">
+                                     <div class="col-lg-4 mt-2 no-ico  form-group">
+                                       <label><strong>Difficulty</strong><span class="text-danger"><small><strong> *</strong></small></span></label><span id="difficulty-error" class="text-danger d-none"><small><strong>&nbsp;&nbsp;&nbsp;Difficulty is required</strong></small></span>
+                                          <select class="select2 form-control select2-placeholder16" id='question-difficulty' >
+                                            <option value='' class='d-none'>Select Difficulty</option>
+                                            <option value="1">Easy</option>
+                                            <option value="2">Moderate </option>
+                                            <option value="3">Hard</option>
+                                         </select>
+                                     </div>
+                                     <div class="col-lg-4 mt-2   form-group">
+                                       <label><strong>Correct Marks</strong><span class="text-danger"><small><strong> *</strong></small></span></label><span id="correct-marks-error" class="text-danger d-none"><small><strong>&nbsp;&nbsp;&nbsp;Correct Marks is required</strong></small></span>
+                                        <input type="text" class="form-control" onkeypress="return /[0-9]/i.test(event.key)" maxlength="2" id='correct-mark' placeholder="Correct Marks" value="" />
+                                     </div>
+                                     <div class="col-lg-4 mt-2   form-group">
+                                       <label><strong>Negative Marks</strong><span class="text-danger"><small><strong> *</strong></small></span></label><span id="negaative-marks-error" class="text-danger d-none"><small><strong>&nbsp;&nbsp;&nbsp;Negative Marks is required</strong></small></span>
+                                        <input type="text" class="form-control" onkeypress="return /[0-9.]/i.test(event.key)" maxlength="5" id='negative-mark' placeholder=" Negative Marks" value="" />
+                                     </div>
+                                   </div>
+                                 </div>
+
+                                    <div class="row">
+                                      <div class="text-center col-lg-12 mt-2 pt-2 pr-3">
+                                          <a  class="btn btn-danger btn-md mr-2 " href="{% url 'add_question' %}"><i class='fa fa-times'></i> Discard</a>
+                                          <a  class="btn btn-primary  btn-md mr-2" href="javascript:;" data-toggle="modal" data-target="#success" onclick='save_more_question()' style="pointer-events:none;opacity:0.3;"><i class='fa fa-plus'></i> Save & Add More</a>
+                                          <a  class="btn btn-success  btn-md  text-white" id="submit_btn" onclick='add_new_question()'><i class='fa fa-check'></i> Save</a>
+                                         
+                                       </div>
+                                   </div>
+
+
+ 
+                      </div>
+                  </div>
+              </div>
+
+               
+            </div>
+      </div>
+     </div>
+   </div>
+{% include 'admin_template/footer-1.html' %}
+<script src="{% static 'static/app-assets/editor/editor.js' %}"></script>
+<script src="{% static 'static/app-assets/js/web_app_JS/admin_JS/question_bankJS/add-question.js' %}"></script>
+<script>
+  $("#txtEditor_1").Editor();
+</script>

@@ -1,0 +1,224 @@
+{% load static %}
+    <div class="app-content content position-relative  ">
+      <div class="content-wrapper  ">
+        <div class="content-body "> 
+              <div class="top-options pl-1 mb-0">
+                <div class="row">
+                   <div class="col-lg-5  ">
+                    <h3 >Preview Paper Details </h3>
+                   </div>
+                   <div class="col-lg-7 ">
+                      <a   class="btn btn-default   float-right btn-sm   " href="{% url 'paper_list' %}" ><i class="fa fa-arrow-left"></i>  Back to list</a>
+                   </div>
+                 </div>
+              </div>
+             <div class="col-lg-12 col-md-12 col-sm-12 p-0 pt-1  ">
+              
+                <div class="card form paper_det">
+                    <div class="card-content ">
+                      <div class="card-body"  >
+                         <div class="row ">
+                           <div class="col-lg-12 mt-1  ">
+                             <h4 class="title-1">Basic Details 
+                               {% comment %} <a href="create-paper.php"><i class="fa fa-edit   float-right"></i></a> {% endcomment %}
+                              </h4>
+                           </div>
+
+                               <div class="col-lg-3 mt-1  form-group">
+                                      <label>Unique Paper ID  </label>
+                                       <p class="value" id='unique_paper_id'>PAPER-{{counter}}</p>
+                                   </div>
+                                  <div class="col-lg-3 mt-1  form-group">
+                                      <label>Unique Paper Name </label>
+                                       <p class="value" id='unique_paper_name'>Class 10th-Maths-paper-1</p>
+                                   </div>
+                                   <div class="col-lg-3 mt-1   form-group">
+                                      <label>Class</label>
+                                       <p class="value" id='class_name'>10</p>
+                                   </div>
+                                   <div class="col-lg-3 mt-1   form-group">
+                                      <label>Subject</label>
+                                       <p class="value" id='subject_name'>Maths</p>
+                                   </div>
+                                   <div class="col-lg-3 mt-1   form-group">
+                                      <label>Year</label>
+                                       <p class="value" id='year_name'>2022</p>
+                                   </div>
+                                   <div class="col-lg-3 mt-1   form-group">
+                                      <label>Total Marks</label>
+                                      <p class="value" id='totalMarks'>100</p>
+                                   </div>
+                                   <div class="col-lg-3 mt-1   form-group">
+                                      <label>Passing Marks</label>
+                                       <p class="value" id='passingMarks'>40</p>
+                                   </div>
+                                   
+                                    <div class="col-lg-12 mt-1   form-group">
+                                      <label>Guidelines</label>
+                                       <p class="value" id='guideLines'>hello this is general instruction for online exams.</p>
+                                   </div>
+
+                                   <div class="col-lg-12 mt-1  ">
+                                   <h4 class="title-1">Paper Sections Details 
+                                     {% comment %} <a href="create-paper-2.php"><i class="fa fa-edit   float-right"></i></a> {% endcomment %}
+                                    </h4>
+                                 </div>
+                                  
+                                   <div class="col-lg-3 mt-1  form-group">
+                                      <label>Total No. of Sections </label>
+                                      <p class="value" id='totalSections'>3</p>
+                                    </div>
+
+                                    <div class="col-lg-12 mt-1  form-group">
+                                        <div class="sec_det" id='sectionRowDataAppend'>
+                                            {% comment %} <div class="row">
+                                                 <div class="col-lg-2    form-group">
+                                                  <label>Section </label>
+                                                </div>
+                                                 <div class="col-lg-2   form-group">
+                                                  <label>No. of Questions </label>
+                                                </div>
+                                                 <div class="col-lg-2  form-group">
+                                                  <label>Mandatory   Questions </label>
+                                                </div> 
+                                                <div class="col-lg-3    form-group">
+                                                  <label>Question  Type </label>
+                                                </div>
+                                                <div class="col-lg-3   form-group">
+                                                  <label>Total Marks Per Section </label>
+                                                </div> 
+                                            </div>
+                                              <div class="row">
+                                                 <div class="col-lg-2    form-group">
+                                                  <p class="value">A</p>
+                                                </div>
+                                                 <div class="col-lg-2    form-group">
+                                                  <p class="value">15</p>
+                                                </div>
+                                                 <div class="col-lg-2    form-group">
+                                                  <p class="value">10</p>
+                                                </div> 
+                                                <div class="col-lg-3    form-group">
+                                                  <p class="value">Objective</p>
+                                                </div>
+                                                <div class="col-lg-3    form-group">
+                                                  <p class="value">25</p>
+                                                </div> 
+                                            </div> {% endcomment %}
+                                        </div>
+                                    </div>
+
+                                        <div class="col-lg-12 mt-1  ">
+                                         <h4 class="title-1">Questions   Details 
+                                           {% comment %} <a href="create-paper-3.php"><i class="fa fa-edit   float-right"></i></a> {% endcomment %}
+                                        </h4>
+                                       </div>
+                                       <div id="questionSectionDataAppend">
+                                         <div class="col-lg-12 mt-1 mb-0 form-group">
+                                             <h5 class="font-weight-bold">Section A </h5>
+                                           </div>
+                                          <div class="col-lg-12 mt-0   pl-0  form-group  added-ques d-block">
+                                                <div class="ques">
+                                                   <h5><span>Q.1</span> The average of first 50 natural numbers is …………. .  </h5>
+                                                 </div>
+                                                 <div class="ques">
+                                                   <h5><span>Q.2</span> The number of 3-digit numbers divisible by 6, is.. </h5>
+ 
+                                                 </div>
+                                                 <div class="ques">
+                                                   <h5><span>Q.3</span> What is 1004 divided by 2?  </h5>
+                                                  
+                                                 </div>
+                                                   <div class="ques">
+                                                   <h5><span>Q.4</span> 106 × 106 – 94 × 94 = ?  </h5>
+                                                  
+                                                 </div>
+                                                   <div class="ques">
+                                                   <h5><span>Q.5</span>The simplest form of 1.5 : 2.5 is... </h5>
+                                                
+                                               </div>
+                                           </div>
+ 
+                                            <div class="col-lg-12 mt-1 mb-0 form-group">
+                                             <h5 class="font-weight-bold">Section B </h5>
+                                           </div>
+                                          <div class="col-lg-12 mt-0   pl-0  form-group  added-ques d-block">
+                                                  <div class="ques">
+                                                   <h5><span>Q.1</span> The average of first 50 natural numbers is …………. .  </h5>
+                                                 </div>
+                                                 <div class="ques">
+                                                   <h5><span>Q.2</span> The number of 3-digit numbers divisible by 6, is.. </h5>
+ 
+                                                 </div>
+                                                 <div class="ques">
+                                                   <h5><span>Q.3</span> What is 1004 divided by 2?  </h5>
+                                                  
+                                                 </div>
+                                                   <div class="ques">
+                                                   <h5><span>Q.4</span> 106 × 106 – 94 × 94 = ?  </h5>
+                                                  
+                                                 </div>
+                                                   <div class="ques">
+                                                   <h5><span>Q.5</span>The simplest form of 1.5 : 2.5 is...  </h5>
+                                                
+                                               </div>
+                                       </div>
+                                          </div>
+                                  </div>
+
+                         </div>
+                       </div>
+                     </div>
+             </div>
+                 
+             </div>
+            
+           <div class="text-right  pt-2 bottom-btn">
+            <a  class="btn btn-default pl-5 pr-5 mr-1 text-purple" onclick='navigate_to_page_3()'><i class="fa fa-arrow-left"></i>  PREVIOUS</a>
+                   <a  class="btn btn-primary pl-5 pr-5" data-toggle="modal" data-target="#alert" href="javascript:;"><i class='far fa-check-circle'></i> Submit</a>
+               </div>
+      </div>
+     </div>
+   </div>
+
+     <!-- Modal -->
+  <div class="modal fade small" id="alert" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body text-center">
+           <p>Are you sure want to create exam paper <br><strong id="confirm-modal-paper-name">(Class 10th-Maths-paper-1)</strong>.  </p>
+           
+            <a href="" class="btn btn-dark btn-sm mr-1" data-dismiss="modal">No</a>
+           <a class="btn btn-primary btn-sm text-white" onclick="submitPaper()" >Yes</a>
+           
+        </div>
+         
+      </div>
+    </div>
+  </div>
+
+   <div class="modal fade small with-img" id="success" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body text-center">
+           <img src="{% static 'static/app-assets/images/success-icon-10.png' %}">
+           <p> Exam paper has been created successsfully.  </p>
+           
+            
+           <a class="btn btn-primary btn-sm"   >OK</a>
+           
+        </div>
+         
+      </div>
+    </div>
+  </div>

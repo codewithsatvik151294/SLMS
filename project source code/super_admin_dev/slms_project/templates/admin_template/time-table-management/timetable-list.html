@@ -1,0 +1,131 @@
+{% include 'admin_template/header-1.html' %}
+{% load static %}
+    <div class="app-content content position-relative  ">
+      <div class="content-wrapper  ">
+        <div class="content-body "><!-- Revenue, Hit Rate & Deals -->
+           <div class="top-options pl-2 mb-0">
+               <div class="row">
+                 <div class="col-lg-3  ico  pl-0">
+                   <h3 class="main-title ml-1">Timetable</h3>
+                 </div>
+                  <div class="col-md-9 text-right pr-2">
+                     <a href="{% url 'add_time_table' %}" class="btn btn-sm btn-primary">Add Timetable </a>
+                  </div>
+               </div>
+           </div>
+             <div class="col-md-12 mt-1">
+              <div class="row">
+                <div class="col-lg-3 mb-1 form-group no-ico pl-2">
+                  <label><strong>Branch</strong><span class="text-danger"><small><strong> *</strong></small></span></label><span id="branch-error" class="text-danger d-none"><small><strong>&nbsp;&nbsp;&nbsp;Class is required</strong></small></span>
+                    <select class="select2 form-control select2-placeholder" id='branch-id' onchange="get_class(this)">
+                      <option value="" class="d-none">Select Branch</option>
+                      {% for i in branchObj %}
+                      <option value="{{i.id}}">{{i.branch_name|title}}</option>
+                      {% endfor %}
+                     </select>
+                </div>
+                <div class="col-lg-3 mb-1 form-group no-ico pl-2 " >
+                  <label><strong>Session</strong><span class="text-danger"><small><strong> *</strong></small></span></label><span id="session-error" class="text-danger d-none"><small><strong>&nbsp;&nbsp;&nbsp;Session is required</strong></small></span>
+                  <select class="form-control select2-placeholder9" id='session-id'>
+                    <option> </option>
+                    <option value="2023-24">2023-24</option>
+                    <option value="2022-23">2022-23</option>
+                    <option value="2021-22">2021-22</option>
+                    <option value="2020-21">2020-21</option>
+                  </select>
+                </div>
+                <div class="col-lg-3 mb-1 form-group no-ico pl-2 ">
+                  <label><strong>Year</strong><span class="text-danger"><small><strong> *</strong></small></span></label><span id="year-error" class="text-danger d-none"><small><strong>&nbsp;&nbsp;&nbsp;Year is required</strong></small></span>
+                  <select class="form-control select2-placeholder9" id='year-id'>
+                    <option value='' class='d-none'>Select Year</option>
+                    {% for i in yearObj %}
+                      <option value="{{i.id}}">{{i.year_name|title}}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <div class="col-lg-3  mb-1 form-group no-ico pl-2 ">
+                  <label><strong>Effective From</strong><span class="text-danger"><small><strong> *</strong></small></span></label><span id="effective-error" class="text-danger d-none"><small><strong>&nbsp;&nbsp;&nbsp;Effective month is required</strong></small></span>
+                  <select class="select2 form-control select2-placeholder25" id='effective-id'>
+                      <option value=""> </option>
+                      <option value="1">January</option>
+                      <option value="2">February</option>
+                      <option value="3">March</option>
+                      <option value="4">April</option>
+                      <option value="5">May</option>
+                      <option value="6">June</option>
+                      <option value="7">July</option>
+                      <option value="8">August</option>
+                      <option value="9">September</option>
+                      <option value="10">October</option>
+                      <option value="11">November</option>
+                      <option value="12">December</option>
+                  </select>
+               </div>
+               <div class="col-lg-3  mb-1 form-group no-ico pl-2 ">
+                <label><strong>Class</strong><span class="text-danger"><small><strong> *</strong></small></span></label><span id="class-error" class="text-danger d-none"><small><strong>&nbsp;&nbsp;&nbsp;Class is required</strong></small></span>
+                 <select class="form-control select2-placeholder10" id='class-id' onchange="get_subject_and_sections(this)" >
+                   <option value=''> </option>
+                </select>
+             </div>
+              <div class="col-lg-3  mb-1 form-group no-ico pl-2 ">
+                  <label><strong>Section</strong><span class="text-danger"><small><strong> *</strong></small></span></label><span id="section-error" class="text-danger d-none"><small><strong>&nbsp;&nbsp;&nbsp;Section is required</strong></small></span>
+                 <select class="  form-control select2-placeholder18"  id='section-id' onchange="show_slots(this)">
+                   <option value=''> </option>
+                </select>
+             </div>
+
+                <div class="col-lg-6  mt-2 text-right ">
+                  <a href="#" class="btn btn-purple btn-sm tt-btn" onclick="filter_time_table()"><i class="fa fa-search"></i> Filter</a>
+                </div>
+             </div>
+           </div>
+            <div class="row">
+                  <div class="col-md-12">
+                    <h4 class="text-muted tt-text  text-center mt-4" id='tt-param-text' style="opacity: .5">Select parameters to get the time table</h4> 
+                       <table  class="table time-table-1 tt-table"  id='tt-table' style="display: none;">
+                          <thead>
+                            <tr>
+                              <th width="100"><a href="" class="btn btn-info btn-sm mt-1"><i class="fa fa-edit"></i> </a> <a href="" class="btn btn-info btn-sm del btn-danger mt-1"><i class="fa fa-trash"></i> </a> </th>
+                              <th>Monday</th>
+                              <th>Tuesday </th>
+                              <th>Wednesday </th>
+                              <th>Thursday</th>
+                              <th>Friday</th>
+                              <th>Saterday</th>
+                            </tr>
+                          </thead>
+                          <tbody id='tt-append-list'>
+                            {% comment %} <tr>
+                              <td>09:00 am to 10:00 am</td>
+                              <td> <i class="d-block text-danger">Ram Singh</i>
+                                <span class="d-block">Mathemetics</span>
+                              </td>
+                              <td> <i class="d-block text-danger">Ram Singh</i>
+                                <span class="d-block">Mathemetics</span>
+                              </td>
+                              <td> <i class="d-block text-danger">Ram Singh</i>
+                                <span class="d-block">Mathemetics</span>
+                              </td>
+                              <td> <i class="d-block text-danger">Ram Singh</i>
+                                <span class="d-block">Mathemetics</span>
+                              </td>
+                              <td> <i class="d-block text-danger">Ram Singh</i>
+                                <span class="d-block">Mathemetics</span>
+                              </td>
+                              <td> <i class="d-block text-danger">Ram Singh</i>
+                                <span class="d-block">Mathemetics</span>
+                              </td>
+                            </tr> {% endcomment %}
+                          </tbody>
+                        </table>
+                  </div>
+              </div>
+            </div>
+            <!-- <div class="text-center"><a href="" class="btn btn-dark btn-sm mt-2">Load More</a> </div> -->
+      </div>
+     </div>
+   </div>
+ 
+   {% include 'admin_template/footer-1.html' %}
+   <script src="{% static 'static/app-assets/js/web_app_JS/admin_JS/time_table_JS/get-timetable.js' %}"></script>
+   <script src="{% static 'static/app-assets/js/web_app_JS/admin_JS/time_table_JS/filter-timetable.js' %}"></script>

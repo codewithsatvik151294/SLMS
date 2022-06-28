@@ -1,0 +1,66 @@
+{% include 'admin_template/header-1.html' %}
+{% load static %}
+    <div class="app-content content position-relative  ">
+      <div class="content-wrapper">
+        <div class="content-body "> 
+          <div class="top-options">
+            <div class="row">
+                  <div class="col-lg-6  ico pl-2">
+                     <h3 class="main-title">View Authority Detail </h3>
+                  </div>
+                  <div class="col-md-6 text-right pr-2  ">
+                      <a class="btn btn-default  float-right btn-sm"  href="{% url 'authority_list' %}" ><i class="fa fa-arrow-left"></i> Back to list</a>
+                  </div>
+               </div>
+           </div>
+           <div class=" ">
+                <div class="card  pt-0 pl-0 pr-0 form">
+                  <div class="card-content">
+                      <div class="card-body    pl-0 pr-0"  >
+                         <div class="tops_add_ques"  >
+                             <div class="row">
+                                  <div class="col-lg-12 mx-auto     form-group     ">
+                                    <h3 class="pl-1">Designation:<strong> {{assignObj.designation_fk.designation_name|title}}</strong></h3>
+                                           <div class="table-responsive">
+                                              <table id="example1"  class="display table data-table authority-table">
+                                                  <thead>
+                                                    <tr>
+                                                      <th style="width: 400px">Authorities</th>
+                                                      <th>Sub-authorities  </th>
+                                                      
+                                                    </tr>
+                                                  </thead>
+                                                  <tbody>
+                                                    {% for i in assignObj.assign_auth %}
+                                                      {% if i.auth_selected == True %}
+                                                        <tr>
+                                                          <td><strong>{{i.auth_name|title}}</strong></td>
+                                                          <td class="tags">
+                                                            {% for key, value in i.sub_auth.items  %}
+                                                              {% if value == True %}
+                                                                <span>{{key}}</span>
+                                                              {% endif %}
+                                                            {% endfor %}
+                                                          </td>
+                                                        </tr>
+                                                      {% endif %}
+                                                    {% endfor %}
+                                                </tbody>
+                                                </table>
+                                              </div>
+                                     </div>
+                            </div>
+                            
+                      </div>
+                  </div>
+              </div>
+
+               
+            </div>
+              
+      </div>
+     </div>
+   </div>
+ </div>
+
+ {% include 'admin_template/footer-1.html' %}

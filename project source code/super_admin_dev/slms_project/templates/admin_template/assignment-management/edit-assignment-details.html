@@ -1,0 +1,122 @@
+<?php   $txt="Assignment Management" ; $subP="assignment-list";  include('../header-1.php');  ?>
+    <div class="app-content content position-relative  ">
+      <div class="content-wrapper">
+        <div class="content-body "> 
+          <div class="top-options">
+            <div class="row">
+                  <div class="col-lg-6  ico pl-2">
+                     <h3 class="main-title">Edit Assignment </h3>
+                  </div>
+                  <div class="col-md-6 text-right pr-2  ">
+                      <a class="btn btn-default  float-right btn-sm"  href="assignment-list.php" ><i class="fa fa-arrow-left"></i> Back to list</a>
+                  </div>
+               </div>
+           </div>
+           <div class=" ">
+                <div class="card  pt-0 pl-0 pr-0 form">
+                  <div class="card-content">
+                      <div class="card-body pt-0   pl-0 pr-0"  >
+                         <div class="tops_add_ques"  >
+                             <div class="row">
+                               <div class="col-lg-9  form-group no-ico pl-2">
+                                  <label>Assignment Title</label>
+                                    <input type="text" class="form-control" placeholder="Enter Assignment Title" value="Assignment A" name="">
+                               </div>
+                                <div class="col-lg-3 mb-1 form-group no-ico pl-2">
+                                  <label>Class</label>
+                                    <select class="select2 form-control select2-placeholder10" >
+                                         <option> </option>
+                                         <option value="1" selected="">Class 10th</option>
+                                         <option value="2">Class 11th</option>
+                                         <option value="3">Class 12th</option>
+                                     </select>
+                                </div>
+                                  <div class="col-lg-3  mb-1 form-group no-ico pl-2">
+                                  <label>Section</label>
+                                      <select class="form-control select2-placeholder18" >
+                                        <option> </option>
+                                        <option value="1" selected="">Section A</option>
+                                        <option value="2">Section B </option>
+                                        <option value="3">Section C</option>
+                                     </select>
+                                </div>
+                                 <div class="col-lg-3  mb-1 form-group no-ico pl-2">
+                                  <label>Subject</label>
+                                    <select class="select2 form-control select2-placeholder8" >
+                                       <option> </option>
+                                        <option value="1" selected="">Maths</option>
+                                        <option value="2">Physics </option>
+                                        <option value="3">Chemistry</option>
+                                          
+                                  </select>
+                                </div>
+                                 <div class="col-lg-3  form-group no-ico pl-2">
+                                  <label>Total Marks</label>
+                                    <input type="text" class="form-control " placeholder="Enter Total Marks" name="" value="25">
+                                 </div>
+                               <div class="col-lg-3  form-group no-ico pl-2">
+                                  <label>Passing Marks</label>
+                                    <input type="text" class="form-control " placeholder="Enter Passing Marks" name="" value="10">
+                               </div>
+                                 <div class="col-lg-3  form-group no-ico pl-2">
+                                  <label>Starts At</label>
+                                    <input type="text" class="form-control datepicker" placeholder="Enter Assignment Title" name="" value="10/04/2022">
+                               </div>
+                               <div class="col-lg-3  form-group no-ico pl-2">
+                                  <label>Ends At</label>
+                                  <input type="text" class="form-control datepicker" placeholder="Enter Assignment Title" name=""  value="10/04/2022">
+                               </div>
+                                 <div class="col-lg-3 mb-1 form-group no-ico  ">
+                                    <label>Questions Type</label>
+                                    <select class="select2 form-control select2-placeholder14" >
+                                        <option> </option>
+                                        <option value="1">Objective</option>
+                                        <option value="2" selected="">Subjective </option>
+                                        <option value="3">Both </option>
+                                    </select>
+                                </div>
+
+                                  <div class="col-lg-12 mb-1 form-group no-ico  ">
+                                    <label>Assignment Guidelines</label>
+                                    <textarea class="form-control" style="height: 250px">dsd</textarea>
+                                 </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+            </div>
+              <div class="text-right col-lg-12  pr-0">
+                  <a class="btn btn-secondary btn-md mr-1"  href="edit-question-details.php"   >Edit Questions</a>
+                  <a class="btn btn-primary btn-md"  href="javascript:;" data-toggle="modal" data-target="#success" > Update Details</a>
+             </div>
+          </div>
+      </div>
+     </div>
+   </div>
+
+   <!-- Modal -->
+   <div class="modal fade small with-img" id="success" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body text-center">
+           <img src="../app-assets/images/success-icon-10.png">
+           <p> Assignment  details has been updated successsfully.    </p>
+           <a href="#" data-dismiss="modal" class="btn btn-primary btn-sm"  >OK</a>
+           
+        </div>
+         
+      </div>
+    </div>
+  </div>
+
+   
+
+ 
+ 
+<?php include('../footer-1.php')  ?>

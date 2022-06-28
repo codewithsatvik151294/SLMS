@@ -1,0 +1,193 @@
+{% include 'admin_template/header-1.html' %}
+{% load static %}
+    <div class="app-content content position-relative  ">
+      <div class="content-wrapper  ">
+        
+        <div class="content-body "><!-- Revenue, Hit Rate & Deals -->
+           <div class="top-options mb-0">
+              <div class="row">
+                  <div class="col-lg-3  ico  pl-0">
+                    <h3 class="main-title ml-1">Paper List</h3>
+                  </div> 
+                   <div class="col-md-2 ml-auto">
+                      <a href="{% url 'add_exam' %}" class="btn  btn-primary">+ Create Exam</a>
+                   </div>
+               </div>
+           </div>
+            <div class="col-md-12 mt-1">
+              <div class="row">
+                 <div class="col-lg-1 mb-1 form-group no-ico pl-0 pr-0  ">
+                      <select class="form-control select2-placeholder9" >
+                        <option> </option>
+                        <option value="1">2021</option>
+                        <option value="2">2020 </option>
+                        <option value="3">2019</option>
+                      </select>
+                  </div>
+                  <div class="col-lg-2 mb-1 pr-0 form-group no-ico  ">
+                      <select class="form-control select2-placeholder10"  >
+                        <option> </option>
+                        <option value="1">Class 9</option>
+                        <option value="2">Class 8 </option>
+                        <option value="3">Class 7</option>
+                     </select>
+                  </div>
+                  <div class="col-lg-3 pr-0 mb-1 form-group no-ico  ">
+                      <select class="  form-control select2-placeholder11" >
+                        <option> </option>
+                        <option value="1">Maths</option>
+                        <option value="2">Science </option>
+                        <option value="3">English</option>
+                     </select>
+                  </div>
+                   <div class="col-lg-5 mb-1 pr-0 form-group no-ico  ">
+                        <select class="form-control select2-placeholder12" >
+                          <option> </option>
+                          <option value="1">Algebra</option>
+                          <option value="2">Trigonometry </option>
+                          <option value="3">Probability</option>
+                       </select>
+                  </div>
+                   <div class="col-md-1 text-right ">
+                      <a href="#" class="btn btn-purple btn-sm"><i class="fa fa-search"></i></a>
+                  </div>
+             </div>
+           </div>
+             <div class="table-responsive ">
+                <table id="example"  class="display table data-table">
+                    <thead>
+                        <tr>
+                            <th>Exam Unique ID</th>
+                            <th>Exam Name</th>
+                            <th>Total Papers</th>
+                            <th>Approval Status</th>
+                            {% comment %} <th>Start Date</th>
+                            <th>End Date</th> {% endcomment %}
+                            {% comment %} <th>Status</th> {% endcomment %}
+                            <th> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      {% for i in examObj %}
+                        <tr class="in-queue">
+                          <td><a href="{% url 'view_exam' i.id %}" class="link">{{i.exam_ID}} <i class="fa fa-caret-right"></i></a></td>
+                          <td>{{i.exam_name|title}}</td>
+                          <td>{{i.total_papers}}</td>
+                          {% comment %} <td>1 June, 2021</td>
+                          {% endcomment %}
+                          <td>
+                            {% if i.approved_status == '1' %}
+                              <strong class="text-success">Approved</strong>
+                            {% elif i.approved_status == '2' %}
+                              <strong class="text-danger">Rejected</strong>
+                            {% else %}
+                              <strong class="text-warning">Approval Pending</strong>
+                            {% endif %}
+                          </td> 
+                          <td class="details-control">
+                              <a href="{% url 'view_exam' i.id %}" class="view ml-1"><i class="fa fa-eye"></i></a>
+                              <a href="{% url 'edit_exam' i.id %}" class="edit"><i class="fa fa-edit"></i></a>
+                              <a href="{% url 'delete_exam' i.id %}" class='del' onclick="return confirm('Confirm to delete this Exam! Exam Name : {{i.exam_name|title}}')"><i class="fa fa-trash"></i></a>
+                          </td>
+                        </tr>
+                      {% endfor %}
+                      {% comment %} <tr class="in-queue">
+                            <td><a href="exam-details.php" class="link">EXAM002 <i class="fa fa-caret-right"></i></a></td>
+                            <td>B.sc. 1st-year-Half yearly</td>
+                            <td>10</td>
+                            <td>120</td>
+                            <td>1 June, 2021</td>
+                            <td>5 July, 2021</td>
+                            <td><span class="status ">Upcoming</span></td>
+                            <td class="details-control">
+                                 <a href="exam-details.php" class="view ml-1"><i class="fa fa-eye"></i></a>
+                                 <a href="edit-details.php" class="edit"><i class="fa fa-edit"></i></a>
+                            </td>
+                        </tr>
+                        <tr class="in-progress">
+                            
+                            <td> <a href="exam-details.php" class="link">EXAM003<i class="fa fa-caret-right"></i></a></td>
+                            <td>B.Com. 1st-year-Half yearly</td>
+                            <td>12</td>
+                            <td>99</td>
+                             <td>1 June, 2021</td>
+                            <td>28 June, 2021</td>
+                            <td><span class="status ">Ongoing</span></td>
+                            
+                            <td class="details-control">
+                                 <a href="exam-details.php" class="view ml-1"><i class="fa fa-eye"></i></a>
+                                 <a href="edit-details.php" class="edit"><i class="fa fa-edit"></i></a>
+                            </td>
+
+                        </tr>
+                        <tr class="completed">
+                              <td> <a href="exam-details.php" class="link">EXAM003<i class="fa fa-caret-right"></i></a></td>
+                              <td>B.Com. IInd-year-Half yearly</td>
+                              <td>12</td>
+                              <td>99</td>
+                               <td>1 June, 2021</td>
+                              <td>28 June, 2021</td>
+                              <td><span class="status">Completed</span></td>
+                              <td class="details-control">
+                                     <a href="exam-details.php" class="view ml-1"><i class="fa fa-eye"></i></a>
+                              </td>
+
+                        </tr>
+                        <tr class="in-progress">
+                            <td> <a href="exam-details.php" class="link">EXAM003<i class="fa fa-caret-right"></i></a></td>
+                            <td>B.Com. IInd-year-Half yearly</td>
+                            <td>12</td>
+                            <td>99</td>
+                             <td>1 June, 2021</td>
+                            <td>28 June, 2021</td>
+                            <td><span class="status">Ongoing</span></td>
+                            
+                            <td class="details-control">
+                                  <a href="exam-details.php" class="view ml-1"><i class="fa fa-eye"></i></a>
+                                 <a href="edit-details.php" class="edit"><i class="fa fa-edit"></i></a>
+                               
+
+                            </td>
+
+                        </tr>
+                        <tr class="in-progress">
+                            
+                            <td> <a href="exam-details.php" class="link">EXAM001 <i class="fa fa-caret-right"></i></a></td>
+                            <td>Mid-term 2020</td>
+                            <td>25</td>
+                            <td>99</td>
+                             <td>June, 2021</td>
+                            <td>Aug, 2021</td>
+                            <td><span class="status">Ongoing</span></td>
+                            
+                            <td class="details-control">
+                                   <a href="exam-details.php" class="view ml-1"><i class="fa fa-eye"></i></a>
+                                 <a href="" class="edit"><i class="fa fa-edit"></i></a>
+                               
+
+                            </td>
+
+                        </tr>
+                        <tr class="completed">
+                            <td> <a href="exam-details.php" class="link">EXAM001 <i class="fa fa-caret-right"></i></a></td>
+                            <td>Mid-term 2020</td>
+                            <td>25</td>
+                            <td>99</td>
+                             <td>June, 2021</td>
+                            <td>Aug, 2021</td>
+                            <td><span class="status">Completed</span></td>
+                            <td class="details-control">
+                                   <a href="exam-details.php" class="view ml-1"><i class="fa fa-eye"></i></a>
+                                  
+                            </td>
+                        </tr> {% endcomment %}
+                    </tbody>
+                </table>
+             
+            </div>
+            {% comment %} <div class="text-center"><a href="" class="btn btn-primary mt-2">Load More</a> </div> {% endcomment %}
+      </div>
+     </div>
+   </div>
+ 
+   {% include 'admin_template/footer-1.html' %}

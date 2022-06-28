@@ -1,0 +1,85 @@
+{% include 'admin_template/header-1.html' %}
+{% load static %}
+    <div class="app-content content position-relative  ">
+      <div class="content-wrapper  ">
+        <div class="content-body "><!-- Revenue, Hit Rate & Deals -->
+           <div class="top-options pl-2 mb-0">
+            <div class="row">
+               <div class="col-lg-3  ico  pl-0">
+                 <h3 class="main-title ml-1">Assignment List</h3>
+               </div>
+              
+             </div>
+           </div>
+           
+
+            <div class="row">
+               <div class="table-responsive">
+                  <table id="example"  class="display  table data-table">
+                      <thead>
+                        <tr>
+                          <th>Assignment <br> Title</th>
+                          <th>Class-<br>Section</th>
+                          <th>Subject</th>
+                          <th>Total <br>Marks</th>
+                          <th>Passing <br> Marks</th>
+                         
+                          <th>Starts at</th>
+                          <th>Ends at</th>
+                           <th>Status</th>
+                          <th class="text-center">Action</th>
+                        </tr>
+                      </thead>
+                       <tbody>
+                          {% comment %} <tr> 
+                             <td>Assignment A</td>
+                             <td>10th-A</td>
+                             <td>Hindi</td>
+                             <td>25</td>
+                             <td>10</td>
+                             
+                             <td>10/04/2021</td>
+                             <td>15/04/2021</td>
+                            <td class="tags" >
+                                  <span class="not-approved">Not-Approved</span>
+                             </td>
+                             <td class="details-control">
+                               <a href="../assignment-management/assignment-detail.php" class="view  "><i class="fa fa-eye"></i></a>
+                               <a href="javascript:;" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Approve" class="approve"><i class="fa fa-check-circle"></i></a>
+                                <a href="javascript:;" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Reject" class="reject"><i class="fa fa-ban"></i></a>
+                            </td>
+                          </tr>
+                          <tr> 
+                             <td>Assignment B</td>
+                             <td>11th-A</td>
+                             <td>English</td>
+                             <td>25</td>
+                             <td>10</td>
+                            
+                             <td>10/04/2021</td>
+                             <td>15/04/2021</td>
+                            <td class="tags" >
+                                  <span class="not-approved">Not-Approved</span>
+                             </td>
+                             <td class="details-control">
+                               <a href="../assignment-management/assignment-detail.php" class="view  "><i class="fa fa-eye"></i></a>
+                               <a href="javascript:;" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Approve" class="approve"><i class="fa fa-check-circle"></i></a>
+                                <a href="javascript:;" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Reject" class="reject"><i class="fa fa-ban"></i></a>
+                            </td>
+                          </tr> {% endcomment %}
+                           
+                           
+                       </tbody>
+                    
+                  </table>
+                   
+               
+              </div>
+            </div>
+         
+            <!-- <div class="text-center"><a href="" class="btn btn-dark btn-sm mt-2">Load More</a> </div> -->
+      </div>
+     </div>
+   </div>
+
+   {% include 'admin_template/footer-1.html' %}

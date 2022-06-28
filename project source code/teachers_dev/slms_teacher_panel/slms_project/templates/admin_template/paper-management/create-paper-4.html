@@ -1,0 +1,79 @@
+{% comment %} <?php  $txt="Paper" ; $subP="add-paper"; include('../header-1.php');  ?> {% endcomment %}
+{% comment %} <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" /> {% endcomment %}
+    <div class="app-content content position-relative  ">
+         
+      <div class="content-wrapper">
+        <div class="content-body ">
+           <div class="top-options pl-1 mb-0">
+            <div class="row">
+               <div class="col-lg-5  ">
+                <h3 >Create New Paper  </h3>
+               </div>
+               <div class="col-lg-7 ">
+                  <a   class="btn btn-default   float-right btn-sm   " href="paper-list.php" ><i class="fa fa-arrow-left"></i>  Back to list</a>
+               </div>
+             </div>
+           </div>
+           <div class="col-lg-12 col-md-12 col-sm-12 p-0 pt-1 ">
+
+           
+                <div class="card form">
+                  <div class="card-content ">
+                      <div class="card-body set-creation"  >
+                               <div class="row ">
+                                 <div class="col-lg-12 mt-1  ">
+                                   <h4 class="title-1">Paper Set Options</h4>
+                                 </div>
+ 
+                                    <div class="col-lg-4 mt-1  form-group">
+                                        <p>Is automated Set Creation Allowed?</p>
+                                   </div>
+                                    <div class="col-lg-4 mt-1  form-group">
+                                        <label><input type="radio" name="set" value="yes"> Yes</label>
+                                       <label><input checked="" type="radio" name="set" value="no"> No</label>
+                                     </div>
+
+                                    </div>
+
+                                    <div class="set-options" id="set-otp">
+                                       <div class="row">
+                                           <div class="col-lg-3 mt-1  form-group">
+                                               <label>Maximum Possible Sets</label>
+                                               <input type="text" class="form-control" name="">
+                                           </div>
+                                            
+                                          <!--  <div class="col-lg-5 mt-1  form-group">
+                                              <label>Allowed Option</label>
+                                              <div style="margin-top: 10px">
+                                                <label><input type="radio" name="opt"  > User Selection</label>
+                                               <label><input   type="radio" name="opt"  > Display All</label>
+
+                                              </div>
+                                           </div> -->
+                                       </div>
+
+                                    </div>
+                                     
+                                      
+                               </div>
+                             
+                      </div>
+                  </div>
+              </div>
+
+                 <div class="text-right  pt-0">
+                     <a  class="btn btn-default pl-5 pr-5 mr-1  " href="create-paper-2.php"   >PREVIOUS</a>
+                     <a  class="btn btn-primary pl-5 pr-5" href="preview-data.php"   >NEXT</a>
+                 </div>
+            </div>
+      </div>
+     </div>
+   </div>
+
+ 
+{% comment %}  
+<?php include('../footer-1.php')  ?>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+<script type="text/javascript">
+  $('select').selectpicker();
+</script> {% endcomment %}

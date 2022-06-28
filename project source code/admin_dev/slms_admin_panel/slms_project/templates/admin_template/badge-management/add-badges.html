@@ -1,0 +1,97 @@
+{% include 'admin_template/header-1.html' %}
+{% load static %}
+    <div class="app-content content position-relative  ">
+      <div class="content-wrapper">
+        <div class="content-body "> 
+          <div class="top-options">
+            <div class="row">
+                  <div class="col-lg-6  ico pl-2">
+                     <h3 class="main-title">Add Badges </h3>
+                  </div>
+                  <div class="col-md-6 text-right pr-2  ">
+                      <a class="btn btn-default  float-right btn-sm"  href="{% url 'badge_list' %}" ><i class="fa fa-arrow-left"></i> Back to list</a>
+                  </div>
+               </div>
+           </div>
+           <div class=" ">
+                <div class="card  pt-0 pl-0 pr-0 form">
+                  <div class="card-content">
+                      <div class="card-body pt-0   pl-0 pr-0"  >
+                         <div class="tops_add_ques"  >
+                           <div class="row">
+                               <div class="col-lg-6 mx-auto form-group no-ico  ">
+                                   <div class="row">
+                                     <div class="col-lg-12 form-group no-ico  ">
+                                          <label>Badge Title <span class="text-danger"><small><strong> *</strong></small></span></label><span id="badge-title-error" class="text-danger d-none"><small><strong> Badge title is required</strong></small></span>
+                                          <input type="text" class="form-control" placeholder="Enter Assignment Title" name="" id="badge-title" onkeyup="check_title(this)" onkeypress="return /[a-zA-Z0-9. ]/i.test(event.key)">
+                                     </div>
+                                      <div class="col-lg-12 mb-1 form-group no-ico  ">
+                                        <label>Badge Trigger <span class="text-danger"><small><strong> *</strong></small></span></label><span id="badge-trigger-error" class="text-danger d-none"><small><strong> Badge trigger is required</strong></small></span>
+                                           <select class="select2 form-control" id="badge-trigger" onchange="check_trigger(this)">
+                                              <option class="d-none" value="" style="pointer-events:none;">Select Badge Trigger</option>
+                                              {% for i in batch_triggetObj %}
+                                                <option value="{{i.id}}">{{i.badge_trigger_name|title}}</option>
+                                              {% endfor %}
+                                           </select>
+                                      </div>
+                                      <div class="col-lg-8  mb-1 form-group  ">
+                                         <label>Image <span class="text-danger"><small><strong> *</strong></small></span></label><span id="bagde-image-error" class="text-danger d-none"><small><strong> Image is required</strong></small></span>
+                                         <input type="file" id="badge" name="" class="form-control" accept="image/*"> 
+                                      </div>
+                                      <div class="col-lg-4 mb-1 form-group text-right  ">
+                                        <img height="100" id="badge-img" src="{% static 'static/app-assets/images/badges/avatar.png' %}"  > 
+                                      </div>
+                                      <div class="col-lg-12 mb-1 form-group no-ico  ">
+                                        <label>Description <span class="text-danger"><small><strong> *</strong></small></span></label><span id="bagde-description-error" class="text-danger d-none"><small><strong> Badge description is required</strong></small></span>
+                                        <textarea placeholder="Description" class="form-control" id="bagde-description" style="height: 150px"></textarea>
+                                      </div>
+
+                                 </div>
+                          </div>
+                        </div>
+                      </div>
+                           
+                  </div>
+              </div>
+
+                 
+            </div>
+             <div class="text-right col-lg-12  pr-0">
+                    <a  class="btn btn-primary  btn-md  text-white" id="submit_btn" onclick="add_badge()">Add Badge </a>
+             </div>
+           </div>
+      </div>
+     </div>
+   </div>
+
+  {% include 'admin_template/footer-1.html' %}
+  <script src="{% static 'static/app-assets/js/web_app_JS/admin_JS/badge_JS/add-badge.js' %}" type="text/javascript"></script>
+  <script>
+    var i = 0;
+    $("#badge-title").on('keypress', function (e) {
+        if ($(this).val().length < 1) {
+            if (e.which == 32) {
+                return false;
+            }
+        }
+        else {
+            if (e.which == 32) {
+                if (i != 0) {
+                    return false;
+                }
+                i++;
+            }
+            else {
+                i = 0;
+            }
+        }
+        var regex = /^[a-zA-Z0-9. ]*$/;
+        var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        if (regex.test(str)) {
+            return true;
+        }
+  
+        e.preventDefault();
+        return false;
+    });
+  </script>

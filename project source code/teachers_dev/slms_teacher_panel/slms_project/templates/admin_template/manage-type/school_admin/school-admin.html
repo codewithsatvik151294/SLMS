@@ -1,0 +1,87 @@
+{% include 'admin_template/header-1.html' %}
+{% load static %}
+    <div class="app-content content position-relative  ">
+      <div class="content-wrapper  ">
+        
+        <div class="content-body "><!-- Revenue, Hit Rate & Deals -->
+           <div class="top-options mb-0">
+            <div class="row">
+              <div class="col-md-3 "><h3>School Admin List</h3></div>
+                 <div class="col-md-9 text-right ">
+                    <a href="{% url 'add_new_schoolAdmin' %}" class="btn  btn-primary  btn-sm">+ Add School Admin</a>
+                    <a href="{% static 'static/app-assets/school_admin_upload_sample.xlsx' %}" download class="btn  btn-secondary  btn-sm"><i class="fa fa-download"></i> Download Sample School Admin List</a>
+                    <a href="{% url 'upload_schoolAdmin_list' %}" class="btn  btn-secondary  btn-sm"><i class="fa fa-upload"></i> Upload School Admin List</a>
+                 </div>
+           </div>
+           </div>
+            <div class="row">
+                <div class="col-md-6 mx-auto form-group ico pt-1">
+                   <i class="fa fa-search"></i>
+                      <select class="select2 form-control select2-placeholder"   id="default-select">
+                        <option value='' class='d-none'>Select  Branch</option>
+                        {% for i in branchObj %}
+                        <option value="{{i.id}}">{{i.branch_name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+              <div class="col-md-12">
+                 <div class="table-responsive mt-0">
+                    <table id="example"  class="display table data-table">
+                        <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th>Name</th>
+                                <th>Branch</th>
+                                <th>Contact Details</th>
+                                <th>Login Details</th>
+                                <th>Status <br> (Active/Deactivate)</th>
+                                <th class="action">Action </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          {% for i in schoolAdmin_profile_obj %}
+                          <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{i.schoolAdmin_FK.schoolAdmin_name}}</td>
+                            <td>{{i.branch_FK.branch_name}}</td>
+                            <td> Phone:{{i.schoolAdmin_FK.schoolAdmin_contact}} <br> Email:{{i.schoolAdmin_FK.schoolAdmin_email}} </td>
+                            <td>Username: {{i.schoolAdmin_FK.schoolAdmin_email}}<br> Password: 123456</td>
+                            <td  >
+                                <label class="switch">
+                                  {% if i.schoolAdmin_FK.active_status == '1' %}
+                                    <input type="checkbox" schoolAdminId="{{i.id}}" onclick='changeStatus(this)' checked="">
+                                  {% else %}
+                                    <input type="checkbox" schoolAdminId="{{i.id}}" onclick='changeStatus(this)'  >
+                                  {% endif %}
+                                    <span class="slider"></span>
+                                  </label> 
+                            </td>
+                            <td class="details-control">
+                              <a href="{% url 'schoolAdmin_detail' i.id %}" class="view  "><i class="fa fa-eye"></i></a>
+                                <a href="{% url 'edit_schoolAdmin' i.id %}" class="edit "><i class="fa fa-edit"></i></a>
+                              <a href="{% url 'delete_schoolAdmin' i.id %}" class='del' onclick="return confirm('Confirm to delete this schoolAdmin! schoolAdmin Name : {{i.schoolAdmin_FK.schoolAdmin_name}}')"><i class="fa fa-trash"></i></a>
+                            </td>
+                          </tr>
+                      {% endfor %} 
+                        </tbody>
+                    </table>
+                 
+                </div>
+              </div>
+            </div>
+            
+      </div>
+     </div>
+   </div>
+ 
+   <script src="{% static 'static/app-assets/js/web_app_JS/admin_JS/manageSchoolAdminJS/edit-schoolAdmin.js' %}" type="text/javascript"></script>
+
+   {% include 'admin_template/footer-1.html' %}
+<script type="text/javascript">
+    $(function() {
+    $('#toggle-two').bootstrapToggle({
+      on: 'Enabled',
+      off: 'Disabled'
+    });
+  })
+</script>

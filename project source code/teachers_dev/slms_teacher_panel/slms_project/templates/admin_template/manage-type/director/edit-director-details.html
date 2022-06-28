@@ -1,0 +1,284 @@
+{% comment %} <?php  $txt="Manage Type" ; $subP="director"; include('../header-1.php');  ?> {% endcomment %}
+{% include 'admin_template/header-1.html' %}
+{% load static %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+    <div class="app-content content position-relative  ">
+         
+      <div class="content-wrapper">
+        <div class="content-body "> 
+          <div class="top-options  ">
+            <div class="row">
+              <div class="col-md-3   "><h3 >Edit  Director Details  </h3></div>
+                 <div class="col-md-9 text-right ">
+                    
+                    <a href="{% url 'director_list' %}" class="btn  btn-default  btn-sm"><i class="fa fa-arrow-left"></i>   Back to List</a>
+                 </div>
+           </div>
+           </div>
+           
+           <div class="card form">
+            <div class="card-content ">
+                <div class="card-body"  >
+                       <div class="row ">
+                         <div class="col-lg-12 mt-1  ">
+                           <h4 class="title-1">Personal Detail</h4>
+                         </div>
+                         <div class="col-lg-8">
+                            <div class="row ">
+                              <div class="col-lg-6 mt-1  form-group">
+                                  <label>Name <span class="text-danger"><small><strong> *</strong></small></span></label><span id="director-name-error" class="text-danger d-none"><small><strong> Director name is required</strong></small></span>
+                                  <input type="text" class="form-control" placeholder="Enter director's name" value="{{director_profile_obj.director_FK.director_name}}" id='director_name'  onkeypress="return /[a-zA-Z ]/i.test(event.key)" />
+                               </div>
+                               
+                               <div class="col-lg-6  mt-1  form-group">
+                                  <label>Father's Name<span class="text-danger"><small><strong> *</strong></small></span></label><span id="director-father-name-error" class="text-danger d-none"><small><strong> Director father's is required</strong></small></span>
+                                  <input type="text" class="form-control" placeholder="Enter father's name" value="{{director_profile_obj.director_fathers_name}}" id='director_fathers_name' onkeypress="return /[a-zA-Z, ]/i.test(event.key)" />
+                               </div>
+                               
+                               <div class="col-lg-6    form-group">
+                                 <label>Gender <span class="text-danger"><small><strong> *</strong></small></span></label><span id="director-gender-error" class="text-danger d-none"><small><strong> Director gender is required</strong></small></span>
+                                 <select class="form-control" id='director_gender'>
+                                   <option class="d-none" value=''>Select</option>
+                                   <option value='1'>Male</option> 
+                                   <option value='2'>Female</option>
+                                   <option value='3'>Other</option>
+                                  </select>
+                                </div>
+                                <div class="col-lg-6   form-group">
+                                   <label>Date of Birth <span class="text-danger"><small><strong> *</strong></small></span></label><span id="director-dob-error" class="text-danger d-none"><small><strong> Director DOB is required</strong></small></span>
+                                   <input type="text" data-select="datepicker" class=" form-control"  onkeypress="return /[]/i.test(event.key)" onkeydown="no_backspaces(event);" placeholder="dd-MM-yyyy" value="{{director_profile_obj.director_DOB|date:"m-d-Y"}}" id='director_dob' />
+                                </div>
+                             </div>
+                               
+                             </div>
+                             <div class="col-lg-4">
+                                 <div class="  mt-1 form-group text-center">
+                                    <label class="upl_photo ">
+                                      {% if director_profile_obj.director_FK.profile_image == '' or director_profile_obj.director_FK.profile_image == None %}
+                                        <input type="file" name="" id="stu_photo">
+                                        <img src="{% static 'static/app-assets/images/avatar.jpg' %}" id="imgphoto">
+                                      {% else %}
+                                        <input type="file" name="" value="/media/{{director_profile_obj.director_FK.profile_image}}" id="stu_photo">
+                                        <img src="/media/{{director_profile_obj.director_FK.profile_image}}">
+                                      {% endif %}
+                                        
+                                        <span  class="btn btn-info btn-sm">Choose Photo</span>
+                                    </label>
+                                    <label class="d-block mt-1">Upload Photograph<span class="text-danger"><small><strong> *</strong></small></span></label><span id="director-image-error" class="text-danger d-none"><small><strong> Director image is required</strong></small></span>
+
+                                 </div>
+                               </div>
+                             
+                            
+
+                             <div class="col-lg-12    ">
+                               <h4 class="title-1">Contact Detail</h4>
+                             </div>
+                            <div class="col-lg-4 mt-1  form-group">
+                                <label>Email ID <span class="text-danger"><small><strong> *</strong></small></span></label><span id="director-email-error" class="text-danger d-none"><small><strong> Email Already Exist!</strong></small></span>
+                                <input type="text" class="form-control" placeholder="Enter email id" value="{{director_profile_obj.director_FK.director_email}}" id='director_email' onkeyup="checkFields(this)" fieldType='director_email'/>
+                             </div>
+                             <div class="col-lg-4 mt-1   form-group">
+                                <label>Contact Number<span class="text-danger"><small><strong> *</strong></small></span></label><span id="director-contact-error" class="text-danger d-none"><small><strong> Contact Already Exist!</strong></small></span>
+                                <input type="text" class="form-control" placeholder="Enter mobile number" value="{{director_profile_obj.director_FK.director_contact}}"id="director_contact" onkeypress="return /[0-9]/i.test(event.key)" maxlength='10' onkeyup="checkFields(this)" fieldType='director_contact'/>
+                             </div>
+                              
+                             
+                             <div class="col-lg-12 mt-0 mb-1   form-group">
+                                <label>Address</label>
+                                <textarea class="form-control" placeholder="Enter student address" id="director_address" >{{director_profile_obj.director_address}}</textarea>
+                             </div>
+                             <div class="col-lg-4 form-group">
+                               <label>Pin Code<span class="text-danger"><small><strong> *</strong></small></span></label><span id="director-pincode-error" class="text-danger d-none"><small><strong> Invalid Pincode!</strong></small></span>
+                               <input type="text" class="form-control" onkeypress="return /[0-9]/i.test(event.key)" maxlength="6" id="branchPinCode" placeholder="Enter pin code" value="{{director_profile_obj.director_pinCode}}" onkeyup="getPostalAddress(this)" />
+                             </div>
+                               <div class="col-lg-4   form-group">
+                               <label>City<span class="text-danger"><small><strong> *</strong></small></span></label><span id="director-city-error" class="text-danger d-none"><small><strong> City is required.</strong></small></span>
+                               <input type="text" class="form-control" onkeypress="return /[a-zA-Z ]/i.test(event.key)" placeholder="Enter city" id="directorCity" value="{{director_profile_obj.director_city}}" />
+                             </div>
+                             <div class="col-lg-4   form-group">
+                               <label>State</label>
+                               <select class="form-control"  id='director_state'>
+                                <option class="d-none">Select</option>
+                                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                <option value="Assam">Assam</option>
+                                <option value="Bihar">Bihar</option>
+                                <option value="Chandigarh">Chandigarh</option>
+                                <option value="Chhattisgarh">Chhattisgarh</option>
+                                <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                                <option value="Daman and Diu">Daman and Diu</option>
+                                <option value="Delhi">Delhi</option>
+                                <option value="Lakshadweep">Lakshadweep</option>
+                                <option value="Puducherry">Puducherry</option>
+                                <option value="Goa">Goa</option>
+                                <option value="Gujarat">Gujarat</option>
+                                <option value="Haryana">Haryana</option>
+                                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                <option value="Jharkhand">Jharkhand</option>
+                                <option value="Karnataka">Karnataka</option>
+                                <option value="Kerala">Kerala</option>
+                                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                <option value="Maharashtra">Maharashtra</option>
+                                <option value="Manipur">Manipur</option>
+                                <option value="Meghalaya">Meghalaya</option>
+                                <option value="Mizoram">Mizoram</option>
+                                <option value="Nagaland">Nagaland</option>
+                                <option value="Odisha">Odisha</option>
+                                <option value="Punjab">Punjab</option>
+                                <option value="Rajasthan">Rajasthan</option>
+                                <option value="Sikkim">Sikkim</option>
+                                <option value="Tamil Nadu">Tamil Nadu</option>
+                                <option value="Telangana">Telangana</option>
+                                <option value="Tripura">Tripura</option>
+                                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                <option value="Uttarakhand">Uttarakhand</option>
+                                <option value="West Bengal">West Bengal</option>
+                               </select>
+                             </div>
+                           
+
+                               <div class="col-lg-12 mt-1  ">
+                               <h4 class="title-1">Branch Detail</h4>
+                               <span id="director-branchcode-error" class="text-danger d-none"><small><strong> Selected branch already attached to an existing director!</strong></small></span>
+                             </div>
+
+                            <div class="col-md-6   form-group ico pt-1">
+                              <label>Branch<span class="text-danger"><small><strong> *</strong></small></span></label><span id="director-branch-error" class="text-danger d-none"><small><strong> Branch is required</strong></small></span>
+                               <i class="fa fa-search"></i>
+                                  <select class="select2 form-control select2-placeholder" onchange="checkBranch(this)"  id="default-select">
+                                    <option value='' class='d-none'>Select Branch</option>
+                                    {% for i in branchObj %}
+                                      <option value="{{i.id}}">{{i.branch_name}}</option>
+                                    {% endfor %}
+                                       
+                                </select>
+                            </div>
+                             
+                            
+
+                                
+                         </div>
+                       
+                </div>
+            </div>
+          </div>
+
+           <div class="text-right  pt-1">
+               <a  class="btn btn-primary pl-5 pr-5" href="javascript:;" onclick="edit_director()" id='submit_btn'>Submit</a>
+           </div>
+            
+      </div>
+     </div>
+   </div>
+
+   <!-- Modal -->
+  <div class="modal fade small" id=success tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body text-center">
+           <img src="{% static 'static/app-assets/images/success-icon-10.png' %}">
+           <p>Director details  have been updated successfully.</p>
+           <a href="{% url 'director_list' %}" class="btn btn-info" >OK</a>
+        </div>
+         
+      </div>
+    </div>
+  </div>
+ 
+{% comment %} <?php include('../footer-1.php')  ?> {% endcomment %}
+<script src="{% static 'static/app-assets/js/web_app_JS/admin_JS/manageDirectorJS/checkDirectorFields.js' %}" type="text/javascript"></script>
+<script src="{% static 'static/app-assets/js/web_app_JS/admin_JS/manageDirectorJS/edit-director.js' %}" type="text/javascript"></script>
+
+{% include 'admin_template/footer-1.html' %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+{% comment %} <script type="text/javascript">
+  $('select').selectpicker();
+</script> {% endcomment %}
+<script>
+  var gender = "{{director_profile_obj.director_gender}}";
+  $('#director_gender').val(gender);
+  $('#director_gender').selectpicker();
+
+  var state = "{{director_profile_obj.director_state}}";
+  $('#director_state').val(state);
+  $('#director_state').selectpicker();
+
+  var branch = "{{director_profile_obj.branch_FK.id}}";
+  $('#default-select').val(branch); // Select the option with a value of '1'
+  $('#default-select').trigger('change'); // Notify any JS components that the value changed
+</script>
+
+<script type="text/javascript">
+  function no_backspaces(event)
+  {
+      backspace = 8;
+      if (event.keyCode == backspace) event.preventDefault();
+  }
+</script>
+<script>
+  var i = 0;
+  $("#director_name").on('keypress', function (e) {
+      if ($(this).val().length < 1) {
+          if (e.which == 32) {
+              return false;
+          }
+      }
+      else {
+          if (e.which == 32) {
+              if (i != 0) {
+                  return false;
+              }
+              i++;
+          }
+          else {
+              i = 0;
+          }
+      }
+      var regex = /^[a-zA-Z' ]*$/;
+      var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+      if (regex.test(str)) {
+          return true;
+      }
+
+      e.preventDefault();
+      return false;
+  });
+</script>
+<script>
+  var i = 0;
+  $("#director_fathers_name").on('keypress', function (e) {
+      if ($(this).val().length < 1) {
+          if (e.which == 32) {
+              return false;
+          }
+      }
+      else {
+          if (e.which == 32) {
+              if (i != 0) {
+                  return false;
+              }
+              i++;
+          }
+          else {
+              i = 0;
+          }
+      }
+      var regex = /^[a-zA-Z' ]*$/;
+      var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+      if (regex.test(str)) {
+          return true;
+      }
+
+      e.preventDefault();
+      return false;
+  });
+</script>

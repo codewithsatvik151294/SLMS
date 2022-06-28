@@ -1,0 +1,80 @@
+{% include 'admin_template/header-1.html' %}
+{% load static %}
+    <div class="app-content content position-relative  ">
+      <div class="content-wrapper  ">
+        <div class="content-body "><!-- Revenue, Hit Rate & Deals -->
+           <div class="top-options pl-2 mb-0">
+               <div class="row">
+                 <div class="col-lg-3  ico  pl-0">
+                   <h3 class="main-title ml-1">Attendance</h3>
+                 </div>
+                  <div class="col-md-9 text-right pr-2">
+                     <a href="{% url 'add_attendance' %}" class="btn btn-sm btn-primary">Submit Attendance </a>
+                  </div>
+               </div>
+           </div>
+           <div class="col-md-12 mt-1">
+              <div class="row">
+                <div class="col-lg-6 mb-1 form-group no-ico pl-2">
+                  <label><strong>Branch</strong><span class="text-danger"><small><strong> *</strong></small></span></label><span id="branch-error" class="text-danger d-none"><small><strong>&nbsp;&nbsp;&nbsp;Class is required</strong></small></span>
+                    <select class="select2 form-control select2-placeholder" id='branch-id' onchange="get_class(this)">
+                      <option value="" class="d-none">Select Branch</option>
+                      {% for i in branchObj %}
+                      <option value="{{i.id}}">{{i.branch_name|title}}</option>
+                      {% endfor %}
+                     </select>
+                </div>
+
+                <div class="col-lg-2 mb-1 form-group no-ico pl-2 ">
+                  <label><strong>Year</strong><span class="text-danger"><small><strong> *</strong></small></span></label><span id="year-error" class="text-danger d-none"><small><strong>&nbsp;&nbsp;&nbsp;Year is required</strong></small></span>
+                  <select class="form-control select2-placeholder9" id='year-id'>
+                    <option value='' class='d-none'>Select Year</option>
+                    {% for i in yearObj %}
+                      <option value="{{i.id}}">{{i.year_name|title}}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <div class="col-lg-2  mb-1 form-group no-ico pl-2 ">
+                  <label><strong>Class</strong><span class="text-danger"><small><strong> *</strong></small></span></label><span id="class-error" class="text-danger d-none"><small><strong>&nbsp;&nbsp;&nbsp;Class is required</strong></small></span>
+                   <select class="form-control select2-placeholder10" id='class-id' onchange="get_subject_and_sections(this)" >
+                     <option value=''> </option>
+                  </select>
+               </div>
+                <div class="col-lg-2  mb-1 form-group no-ico pl-2 ">
+                    <label><strong>Section</strong><span class="text-danger"><small><strong> *</strong></small></span></label><span id="section-error" class="text-danger d-none"><small><strong>&nbsp;&nbsp;&nbsp;Section is required</strong></small></span>
+                   <select class="  form-control select2-placeholder18"  id='section-id' >
+                     <option value=''> </option>
+                  </select>
+               </div>
+                     <div class="col-md-12 text-right ">
+                        <a href="#" class="btn btn-purple btn-sm tt-btn" onclick="get_student()"><i class="fa fa-search"></i> Filter</a>
+                    </div>
+
+             </div>
+           </div>
+            <div class="row">
+                  <div class="col-md-12">
+                          <div class="table-responsive mt--2 ">
+                            <table id="example2"  class="display table data-table">
+                          <thead>
+                            <tr>
+                              <th>Reg. No.</th>
+                              <th>Student Name</th>
+                              <th>Overall Attendance (%)</th>
+                              <th>Total Present </th>
+                              <th>Total Absent</th>
+                              <th class="text-center">Action</th>
+                            </tr>
+                          </thead>
+                           <tbody>
+                            </tbody>
+                        </table>
+                  </div>
+              </div>
+            </div>
+      </div>
+     </div>
+   </div>
+ 
+   {% include 'admin_template/footer-1.html' %}
+   <script src="{% static 'static/app-assets/js/web_app_JS/admin_JS/attendance_JS/get-attendance.js' %}" type="text/javascript"></script>

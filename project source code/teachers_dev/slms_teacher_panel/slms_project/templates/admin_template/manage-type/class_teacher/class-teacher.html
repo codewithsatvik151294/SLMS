@@ -1,0 +1,133 @@
+{% include 'admin_template/header-1.html' %}
+{% load static %}
+    <div class="app-content content position-relative  ">
+      <div class="content-wrapper  ">
+        <div class="content-body "><!-- Revenue, Hit Rate & Deals -->
+           <div class="top-options mb-0">
+            <div class="row">
+              <div class="col-md-3 "><h3>Class Teacher List</h3></div>
+                 <div class="col-md-9 text-right ">
+                    <a href="{% url 'add_new_classTeacher' %}" class="btn  btn-primary  btn-sm">+ Add Class Teacher</a>
+                    <a href="{% static 'app-assets/Sample.xlsx' %}" download class="btn  btn-secondary  btn-sm"><i class="fa fa-download"></i> Download Sample Class Teacher List</a>
+                    <a href="{% url 'upload_classTeacher_list' %}" class="btn  btn-secondary  btn-sm"><i class="fa fa-upload"></i> Upload   Class Teacher List</a>
+                 </div>
+           </div>
+           </div>
+            <div class="row pt-1">
+                <div class="col-md-3 form-group ico pt-1">
+                   <i class="fa fa-search"></i>
+                      <select class="select2 form-control select2-placeholder"   id="default-select">
+                        <option value='' class='d-none'>Select Branch</option>
+                        {% for i in branchObj %}
+                          <option value="{{i.id}}">{{i.branch_name}}</option>
+                        {% endfor %}
+                    </select>
+
+                </div>
+                <div class="col-md-3   form-group ico pt-1">
+                 <i class="fa fa-search"></i>
+                    <select class="select2 form-control select2-placeholder10">
+                        <option> </option>
+                        <option value="1">Class 1</option>
+                        <option value="2">Class 2</option>
+                        <option value="3">Class 3</option>
+                  </select>
+              </div>
+               <div class="col-md-3 form-group ico pt-1">
+                 <i class="fa fa-search"></i>
+                    <select class="select2 form-control select2-placeholder5">
+                        <option> </option>
+                        <option value="1">Section A</option>
+                        <option value="2">Section B</option>
+                        <option value="3">Section C</option>
+                  </select>
+              </div>
+              <div class="col-md-3 form-group ico pt-1">
+                 <i class="fa fa-search"></i>
+                    <select class="select2 form-control select2-placeholder8">
+                        <option> </option>
+                        <option value="1">Hindi</option>
+                        <option value="2">English</option>
+                        <option value="3">Maths</option>
+                  </select>
+              </div>
+               <div class="col-md-12   text-right">
+                  <button class="btn  btn-primary  btn-sm"><i class="fa fa-filter"></i> Filter </button>
+              </div>
+              <div class="col-md-12">
+                 <div class="table-responsive mt-0">
+                    <table id="example"  class="display table data-table">
+                        <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th>Name</th>
+                                <th>Branch</th>
+                                <th>Class/Section</th>
+                                 <th>Subject</th>
+                                <th>Contact Details</th>
+                               
+                                <th>Status <br> (Active/Deactivate)</th>
+                                <th class="action">Action </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr  >
+                                <td>1</td>
+                                <td>Pankaj Kumar</td>
+                                <td>CMS, Gomti Nagar</td>
+                                <td>Class 10 / Section E</td>
+                                <td>Hindi</td>
+                                <td>Phone:8855775588 <br> Email:cms@gmail.com </td>
+                                 
+                                <td  >
+                                    <label class="switch">
+                                        <input type="checkbox" checked="">
+                                        <span class="slider"></span>
+                                    </label> 
+                                </td>
+                                <td class="details-control">
+                                   <a href="{% url 'classTeacher_detail' %}" class="view  "><i class="fa fa-eye"></i></a>
+                                     <a href="{% url 'edit_classTeacher' %}" class="edit "><i class="fa fa-edit"></i></a>
+                                     <a href="{% url 'delete_classTeacher' %}" class='del' onclick="return confirm('Confirm to delete this class teacher! class teacher Name : {{i.classteacher_FK.classteacher_name}}')"><i class="fa fa-trash"></i></a>
+                                </td>
+                            </tr>
+                             <tr  >
+                                <td>2</td>
+                                <td>Amit Singh</td>
+                                <td>CMS, Mahanagar</td>
+                                <td>Class 12 / Section A</td>
+                                <td>Maths</td>
+                                <td> Phone:8855775588 <br> Email:cms@gmail.com </td>
+                                
+                                 <td  >
+                                     <label class="switch">
+                                        <input type="checkbox" checked="">
+                                        <span class="slider"></span>
+                                    </label> 
+                                </td>
+                                <td class="details-control">
+                                   <a href="{% url 'classTeacher_detail' %}" class="view  "><i class="fa fa-eye"></i></a>
+                                     <a href="{% url 'edit_classTeacher' %}" class="edit "><i class="fa fa-edit"></i></a>
+                                     <a href="{% url 'delete_classTeacher' %}" class='del' onclick="return confirm('Confirm to delete this class teacher! class teacher Name : {{i.classteacher_FK.classteacher_name}}')"><i class="fa fa-trash"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                 
+                </div>
+              </div>
+            </div>
+            
+      </div>
+     </div>
+   </div>
+ 
+   {% include 'admin_template/footer-1.html' %}
+<script type="text/javascript">
+    $(function() {
+    $('#toggle-two').bootstrapToggle({
+      on: 'Enabled',
+      off: 'Disabled'
+    });
+  })
+</script>

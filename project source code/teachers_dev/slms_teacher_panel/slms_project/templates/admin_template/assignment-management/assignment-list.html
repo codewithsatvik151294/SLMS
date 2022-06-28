@@ -1,0 +1,110 @@
+{% include 'admin_template/header-1.html' %}
+{% load static %}
+    <div class="app-content content position-relative  ">
+      <div class="content-wrapper  ">
+        <div class="content-body "><!-- Revenue, Hit Rate & Deals -->
+           <div class="top-options pl-2 mb-0">
+            <div class="row">
+                 <div class="col-lg-3  ico  pl-0">
+                   <h3 class="main-title ml-1">Assignment List</h3>
+                 </div>
+                  <div class="col-md-9 text-right pr-2   ">
+                      
+                      <a href="{% url 'add_assignment' %}" class="btn btn-sm btn-primary">+ Add Assignment  </a>
+                  </div>
+               </div>
+           </div>
+           <div class="col-md-12 mt-1">
+              <div class="row">
+                   
+                    <div class="col-lg-2 mb-1 offset-md-2 pr-0 form-group no-ico  ">
+                        <select class="form-control select2-placeholder10"  >
+                          <option> </option>
+                          <option value="1">Class 9</option>
+                          <option value="2">Class 8 </option>
+                          <option value="3">Class 7</option>
+                       </select>
+                    </div>
+                      <div class="col-lg-2 pr-0 mb-1 form-group no-ico  ">
+                        <select class="  form-control select2-placeholder18" >
+                          <option> </option>
+                          <option value="1">Section A</option>
+                          <option value="2">Section B </option>
+                          <option value="3">Section C</option>
+                       </select>
+                    </div>
+                    <div class="col-lg-3 pr-0 mb-1 form-group no-ico  ">
+                        <select class="  form-control select2-placeholder11" >
+                          <option> </option>
+                          <option value="1">Maths</option>
+                          <option value="2">Science </option>
+                          <option value="3">English</option>
+                       </select>
+                    </div>
+                   
+                     <div class="col-md-1 text-right ">
+                        <a href="#" class="btn btn-purple btn-sm"><i class="fa fa-search"></i></a>
+                    </div>
+
+             </div>
+           </div>
+
+            <div class="row">
+               <div class="table-responsive">
+                  <table id="example"  class="display  table data-table">
+                      <thead>
+                        <tr>
+                          <th>Assignment <br> Title</th>
+                          <th>Class-<br>Section</th>
+                          <th>Subject</th>
+                          <th>Total <br>Marks</th>
+                          <th>Passing <br> Marks</th>
+                          <th>Status</th>
+                          <th>Starts at</th>
+                          <th>Ends at</th>
+                          <th class="text-center">Action</th>
+                        </tr>
+                      </thead>
+                       <tbody>
+                         {% for i in assignmentObj %}
+                          <tr> 
+                            <td>{{i.assignment_name|title}}</td>
+                            <td>{{i.class_fk.class_name|title}}-{{i.section_fk.section_name|title}}</td>
+                            <td>{{i.subject_fk.subject_name|title}}</td>
+                            <td>{{i.total_marks}}</td>
+                            <td>{{i.passing_marks}}</td>
+                            <td class="tags">
+                              {% if i.published_status == True %}
+                                <span class="published">Published</span>
+                              {% else %}
+                                <span class="unpublished">Unpublished</span>
+                              {% endif %}
+                            </td>
+                            <td>{{i.starts_at|date:"d M, Y - H:i A"}}</td>
+                            <td>{{i.ends_at|date:"d M, Y - H:i A"}}</td>
+                            <td class="details-control">
+                              {% if i.published_status == True %}
+                                <a href="{% url 'assignment_status_change' i.id %}" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Unpublish" class="unpublish"><i class="fa fa-download"></i></a>
+                                <a href="#" class="view"><i class="fa fa-eye"></i></a>
+                                <a style="pointer-events:none;" class="edit text-secondary"><i class="fa fa-edit"></i></a>
+                                <a style="pointer-events:none;" class="del text-secondary"><i class="fa fa-trash"></i></a>
+                              {% else %}
+                                <a href="{% url 'assignment_status_change' i.id %}" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="Publish" class="publish"><i class="fa fa-upload"></i></a>
+                                <a href="assignment-detail.php" class="view"><i class="fa fa-eye"></i></a>
+                                <a href="edit-assignment-details.php" class="edit "><i class="fa fa-edit"></i></a>
+                                <a href="{% url 'delete_assignment' i.id %}" class='del' onclick="return confirm('Confirm to delete this assignment! Assignment Name : {{i.assignment_name|title}}')"><i class="fa fa-trash"></i></a>
+                              {% endif %}
+                            </td>
+                          </tr>
+                         {% endfor %}
+                       </tbody>
+                  </table>
+              </div>
+            </div>
+      </div>
+     </div>
+   </div>
+
+
+ 
+    {% include 'admin_template/footer-1.html' %}

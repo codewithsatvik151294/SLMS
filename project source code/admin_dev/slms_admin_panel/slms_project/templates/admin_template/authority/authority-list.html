@@ -1,0 +1,54 @@
+{% include 'admin_template/header-1.html' %}
+{% load static %}
+    <div class="app-content content position-relative  ">
+      <div class="content-wrapper  ">
+        <div class="content-body "><!-- Revenue, Hit Rate & Deals -->
+           <div class="top-options pl-2 mb-0">
+               <div class="row">
+                 <div class="col-lg-3  ico  pl-0">
+                   <h3 class="main-title ml-1">Authority List</h3>
+                 </div>
+                  <div class="col-md-9 text-right pr-2">
+                     <a href="{% url 'add_new_authority' %}" class="btn btn-sm btn-primary">Assign  Authorities </a>
+                  </div>
+               </div>
+           </div>
+ 
+            <div class="row">
+               <div class="table-responsive">
+                  <table id="example"  class="display table data-table">
+                      <thead>
+                        <tr>
+                          <th>Designation ID</th>
+                          <th>Designation</th>
+                          <th>Authorities Assigned</th>
+                          <th class="text-center">Action</th>
+                        </tr>
+                      </thead>
+                       <tbody>
+                          {% for i in assignedAuthObj %}
+                           <tr> 
+                              <td>{{i.assign_authorityID}}</td>
+                              <td style="width: 200px"><strong>{{i.designation_fk.designation_name|title}}</strong></td>
+                              <td class="tags">
+                                 {% for j in i.assign_auth %}
+                                    {% if j.auth_selected == True %}
+                                       <span>{{j.auth_name}}</span>
+                                    {% endif %}
+                                 {% endfor %}
+                              </td>
+                              <td class="details-control">
+                                 <a href="{% url 'authority_detail' i.id %}" class="view"><i class="fa fa-eye"></i></a>
+                                 <a href="{% url 'edit_authority' i.id %}" class="edit "><i class="fa fa-edit"></i></a>
+                                 <a href="{% url 'delete_authority' i.id %}" class='del' onclick="return confirm('Confirm to delete this designation attached authorities! Designation Name : {{i.designation_fk.designation_name|title}}')"><i class="fa fa-trash"></i></a></td>
+                           </tr>
+                           {% endfor %}
+                       </tbody>
+                  </table>
+              </div>
+            </div>
+      </div>
+     </div>
+   </div>
+ 
+   {% include 'admin_template/footer-1.html' %}

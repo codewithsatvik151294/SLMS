@@ -1,0 +1,80 @@
+{% include 'admin_template/header-1.html' %}
+{% load static %}
+    <div class="app-content content position-relative  ">
+      <div class="content-wrapper  ">
+        <div class="content-body "><!-- Revenue, Hit Rate & Deals -->
+           <div class="top-options pl-2 mb-0">
+               <div class="row">
+                 <div class="col-lg-3  ico  pl-0">
+                   <h3 class="main-title ml-1">Badge List</h3>
+                 </div>
+                  <div class="col-md-9 text-right pr-2">
+                     <a href="{% url 'add_badge' %}" class="btn btn-sm btn-primary">Add New Badges </a>
+                  </div>
+               </div>
+           </div>
+ 
+            <div class="row">
+               <div class="table-responsive">
+                  <table id="example"  class="display table data-table">
+                      <thead>
+                        <tr>
+                          <th>S.No.</th>
+                          <th>Title</th>
+                          <th>Trigger On</th>
+                           <th>Artwork</th>
+                           <th style="width: 250px">Desciption</th>
+                          <th class="text-center">Action</th>
+                        </tr>
+                      </thead>
+                       <tbody>
+                        {% for i in badgeObj %}
+                        <tr> 
+                          <td>{{forloop.counter}}</td>
+                          <td >{{i.badge_title|title}}</td>
+                          <td >{{i.badge_trigger_fk.badge_trigger_name|title}}</td>
+                          <td><img height="55" src="/media/{{i.badge_image}}"></td>
+                          <td>{{i.badge_desrciption|title}}</td>
+                          <td class="details-control"> 
+                            <a href="{% url 'edit_badge' i.id %}" class="edit "><i class="fa fa-edit"></i></a>
+                            <a href="{% url 'delete_badge' i.id %}" class='del' onclick="return confirm('Confirm to delete this badge!')"><i class="fa fa-trash"></i></a></td>
+                        </tr>
+                        {% endfor %}
+                          {% comment %} <tr> 
+                             <td>1</td>
+                             <td >Achiever</td>
+                             <td >Topic Completed </td>
+                             <td><img height="55" src="{% static 'static/app-assets/images/badges/achiever.png' %}"></td>
+                             <td>Student will get this badge when he completes a topic.</td>
+                             <td class="details-control"> <a href="edit-badge-detail.php" class="edit "><i class="fa fa-edit"></i></a><a href="javascript:;" class="del "><i class="fa fa-trash"></i></a></td>
+                          </tr>
+                           <tr> 
+                             <td>2</td>
+                             <td >Answerer</td>
+                             <td >Assignment Completed </td>
+                             <td><img height="55" src="{% static 'static/app-assets/images/badges/answerer.png' %}"></td>
+                             <td>Student will get this badge when he completes an assignment.</td>
+                             <td class="details-control"> <a href="edit-badge-detail.php" class="edit "><i class="fa fa-edit"></i></a><a href="javascript:;" class="del "><i class="fa fa-trash"></i></a></td>
+                          </tr>
+                           <tr> 
+                             <td>3</td>
+                             <td >Communicator</td>
+                             <td >Subject Completed </td>
+                             <td><img height="55" src="{% static 'static/app-assets/images/badges/communicator.png' %}"></td>
+                             <td>Student will get this badge when he completes a subject.</td>
+                             <td class="details-control"> <a href="edit-badge-detail.php" class="edit "><i class="fa fa-edit"></i></a><a href="javascript:;" class="del "><i class="fa fa-trash"></i></a></td>
+                          </tr> {% endcomment %}
+                          
+                           
+                       </tbody>
+                    
+                  </table>
+                   
+               
+              </div>
+            </div>
+        </div>
+     </div>
+   </div>
+ 
+   {% include 'admin_template/footer-1.html' %}

@@ -1,0 +1,347 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+  <!-- BEGIN: Head-->
+ 
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <title>Dashboard  - SLMS </title>
+    <link rel="apple-touch-icon" href="{% static 'static/app-assets/images/ico/apple-icon-120.png' %}">
+    <link rel="shortcut icon" type="image/x-icon" href="https://themeselection.com/demo/chameleon-admin-template/app-assets/images/ico/favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700" rel="stylesheet">
+
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'static/app-assets/vendors/css/vendors.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'static/app-assets/vendors/css/forms/toggle/switchery.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'static/app-assets/css/plugins/forms/switch.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'static/app-assets/css/core/colors/palette-switch.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'static/app-assets/vendors/css/charts/chartist.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'static/app-assets/vendors/css/charts/chartist-plugin-tooltip.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'static/app-assets/vendors/css/tables/datatable/datatables.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'static/app-assets/vendors/css/forms/selects/select2.min.css' %}">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!-- END: Vendor CSS-->
+
+    <!-- BEGIN: Theme CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'static/app-assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'static/app-assets/css/bootstrap-extended.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'static/app-assets/css/colors.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'static/app-assets/css/components.min.css' %}">
+    <!-- END: Theme CSS-->
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'static/app-assets/css/core/menu/menu-types/vertical-menu.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'static/app-assets/css/core/colors/palette-gradient.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'static/app-assets/css/core/colors/palette-gradient.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'static/app-assets/css/pages/chat-application.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'static/app-assets/css/pages/dashboard-analytics.min.css' %}">
+    <!-- END: Page CSS-->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'static/app-assets/js/intlTelInput.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'static/app-assets/js/timepicki.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'static/app-assets/js/jquery.datepicker2.css' %}">
+    <!-- BEGIN: Custom CSS-->
+      <link rel="stylesheet" type="text/css" href="{% static 'static/app-assets/css/custom.css' %}">
+    <!-- END: Custom CSS-->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <!-- END: Head-->
+
+  <!-- BEGIN: Body-->
+  <body class="vertical-layout vertical-menu 2-columns   fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-purple-blue" data-col="2-columns">
+    <!-- BEGIN: Header-->
+    <nav class="header-navbar navbar-expand-md navbar navbar-with-menu navbar-without-dd-arrow fixed-top navbar-semi-light "> 
+
+      <div class="navbar-wrapper">
+        <div class="navbar-container content">
+         
+          <div class="collapse navbar-collapse show" id="navbar-mobile">
+            <ul class="nav navbar-nav mr-auto float-left">
+              <li class="nav-item mobile-menu d-md-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ft-menu font-large-1"></i></a></li>
+              <li class="nav-item d-none d-md-block"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ft-menu"></i></a></li>
+            <li class="main-head"></li>
+            </ul>
+            <ul class="nav navbar-nav float-right">         
+              
+              <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="ficon ft-bell bell-shake" id="notification-navbar-link"></i><span class="badge badge-pill badge-sm badge-danger badge-up badge-glow">5</span></a>
+                <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
+                  <div class="arrow_box_right">
+                    <li class="dropdown-menu-header">
+                      <h6 class="dropdown-header m-0"><span class="grey darken-2">Notifications</span></h6>
+                    </li>
+                    <li class="scrollable-container media-list w-100"><a href="javascript:void(0)">
+                        <div class="media">
+                          <div class="media-left align-self-center"><i class="ft-share info font-medium-4 mt-2"></i></div>
+                          <div class="media-body">
+                            <h6 class="media-heading info">New exam added</h6>
+                            <p class="notification-text font-small-3 text-muted text-bold-600">Lorem ipsum dolor sit amet!</p><small>
+                              <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">3:30 PM</time></small>
+                          </div>
+                        </div></a><a href="javascript:void(0)">
+                        <div class="media">
+                          <div class="media-left align-self-center"><i class="ft-user font-medium-4 mt-2 warning"></i></div>
+                          <div class="media-body">
+                            <h6 class="media-heading warning">New User Registered</h6>
+                            <p class="notification-text font-small-3 text-muted text-bold-600">Aliquam tincidunt mauris eu risus.</p><small>
+                              <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">10:05 AM</time></small>
+                          </div>
+                        </div></a><a href="javascript:void(0)">
+                        <div class="media">
+                          <div class="media-left align-self-center"><i class="ft-repeat font-medium-4 mt-2 danger"></i></div>
+                          <div class="media-body">
+                            <h6 class="media-heading danger">Exam Conducted</h6>
+                            <p class="notification-text font-small-3 text-muted text-bold-600">Lorem ipsum dolor sit ametest?</p><small>
+                              <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">Yesterday</time></small>
+                          </div>
+                        </div></a><a href="javascript:void(0)">
+                        <div class="media">
+                          <div class="media-left align-self-center"><i class="ft-list font-medium-4 mt-2 primary"></i></div>
+                          <div class="media-body">
+                            <h6 class="media-heading primary">Exam Paper generated</h6><small>
+                              <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">Last week</time></small>
+                          </div>
+                        </div></a><a href="javascript:void(0)">
+                       </a></li>
+                    <li class="dropdown-menu-footer"><a class="dropdown-item info text-right pr-1" href="javascript:void(0)">Read all</a></li>
+                  </div>
+                </ul>
+              </li>
+               
+              <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown"> <span class="avatar avatar-online">
+                {% if request.session.image == '' or request.session.image == None %}
+                      <img src="{% static 'static/app-assets/images/dashboard/profile.png' %}">
+                    {% else %}
+                      <img src="/media/{{request.session.image}}">
+                    {% endif %}
+              </span></a>
+                <div class="dropdown-menu dropdown-menu-right">
+                  <div class="arrow_box_right"><a class="dropdown-item" href="#"><span class="avatar avatar-online">
+                    {% if request.session.image == '' or request.session.image == None %}
+                      <img src="{% static 'static/app-assets/images/dashboard/profile.png' %}">
+                    {% else %}
+                      <img src="/media/{{request.session.image}}">
+                    {% endif %}
+                    <span class="user-name text-bold-700 ml-1">{{ request.user.username }}</span></span></a>
+                    <div class="dropdown-divider"></div>
+                    {% if request.session.userType == 'super_admin_login' %}
+                      <a class="dropdown-item" href="{% url 'admin_profile' %}"><i class="ft-user"></i> Edit Profile</a> 
+                    {% else %}
+                      <a class="dropdown-item" href="#"><i class="ft-user"></i> Edit Profile</a> 
+                    {% endif %}
+                    <div class="dropdown-divider"></div><a class="dropdown-item" href="{% url 'logout' %}"><i class="ft-power"></i> Logout</a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- END: Header-->
+      
+
+    <!-- BEGIN: Main Menu-->
+    <div class="main-menu menu-fixed menu-dark menu-accordion    menu-shadow " data-scroll-to-active="true" >
+      <div class="navbar-header">
+        <ul class="nav navbar-nav flex-row">
+          <li class="nav-item mr-auto"><a class="navbar-brand" href="{% url 'dashboard' %}"><img class="brand-logo" alt="Chameleon admin logo" src="{% static 'static/app-assets/images/white_logo.png' %}"/>
+              <h3 class="brand-text"> </h3></a></li>
+          <li class="nav-item d-md-none"><a class="nav-link close-navbar"><i class="ft-x"></i></a></li>
+        </ul>
+      </div>
+       <div class="main-menu-content">
+        <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+          {% url  'dashboard' as dashboard  %}
+          <li class="nav-item {% if request.path == dashboard %}active{% endif %}"><a href="{% url 'dashboard' %}"><img width="30" src="{% static 'static/app-assets/images/dashboard/sidebar/dashboard.png' %}"><span class="menu-title" data-i18n="">Dashboard</span> </a>
+          </li>
+           <li class="nav-item <?php if($txt == 'Manage Type'){ ?>active<?php } ?>"><a href=""><img width="30" src="{% static 'static/app-assets/images/dashboard/sidebar/manage.png' %}"><span class="menu-title" >Manage Type</span> </a>
+            <ul class="menu-content">
+              {% url  'branch_list' as branch_list  %}
+              <li class="{% if request.path == branch_list %}active{% endif %}" ><a class="menu-item" href="{% url 'branch_list' %}">Manage Branch</a>
+              </li>
+              {% url  'director_list' as director_list  %}
+              <li class="{% if request.path == director_list %}active{% endif %}"><a class="menu-item" href="{% url 'director_list' %}">School Director</a>
+              </li>
+              {% url  'principal_list' as principal_list  %}
+               <li class="{% if request.path == principal_list %}active{% endif %}"><a class="menu-item" href="{% url 'principal_list' %}">School Principal</a>
+               </li>
+               {% url  'schoolAdmin_list' as schoolAdmin_list  %}
+               <li class="{% if request.path == schoolAdmin_list %}active{% endif %}" ><a class="menu-item" href="{% url 'schoolAdmin_list' %}">School Admin</a>
+               </li>
+               {% url  'Teacher_list' as Teacher_list  %}
+               <li class="{% if request.path == Teacher_list %}active{% endif %}">
+                <a class="menu-item" href="{% url 'Teacher_list' %}">Teacher</a>
+              </li>
+              {% url  'student_list' as student_list  %}
+              <li class="{% if request.path == student_list %}active{% endif %}"><a class="menu-item" href="{% url 'student_list' %}">Student</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item"><a href="#"><img width="30" height="32" src="{% static 'static/app-assets/images/dashboard/sidebar/icons/authority.png' %}"><span class="menu-title">Authority Management</span></a>
+            <ul class="menu-content">
+              {% url  'authority_list' as authority_list  %}
+              <li class="{% if request.path == authority_list %}active{% endif %}">
+                <a class="menu-item" href="{% url 'authority_list' %}">Authority List</a>
+              </li>
+              {% url  'add_new_authority' as add_new_authority  %}
+              <li  class="{% if request.path == add_new_authority %}active{% endif %}">
+                <a class="menu-item" href="{% url 'add_new_authority' %}">Assign Authority</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item"><a href="#"><img width="30" height="32" src="https://slms-dev-bucket.s3.ap-south-1.amazonaws.com/static/app-assets/images/dashboard/sidebar/icons/question_bank.png"><span class="menu-title">Question Bank Management</span></a>
+            <ul class="menu-content">
+              {% url  'question_list' as question_list  %}
+              <li class="{% if request.path == question_list %}active{% endif %}">
+                <a class="menu-item" href="{% url 'question_list' %}">Question List</a>
+              </li>
+              {% url  'add_question' as add_question  %}
+             <li class="{% if request.path == add_question %}active{% endif %}">
+               <a class="menu-item" href="{% url 'add_question' %}">Add Questions</a>
+              </li>
+           </ul>
+         </li>
+         <li class="nav-item"><a href="#"><img width="30" height="32" src="{% static 'static/app-assets/images/dashboard/sidebar/icons/exam_paper.png' %}"><span class="menu-title">Exam Paper  Management</span></a>
+          <ul class="menu-content">
+            {% url  'paper_list' as paper_list  %}
+           <li class="{% if request.path == paper_list %}active{% endif %}">
+             <a class="menu-item" href="{% url 'paper_list' %}">Paper List</a>
+           </li>
+           {% url  'add_paper' as add_paper  %}
+           <li class="{% if request.path == add_paper %}active{% endif %}">
+             <a class="menu-item" href="{% url 'add_paper' %}">Add Paper</a>
+            </li>
+         </ul>
+       </li>
+        <li class="nav-item"><a href="#"><img width="30" height="32" src="{% static 'static/app-assets/images/dashboard/sidebar/icons/exam_paper.png' %}"><span class="menu-title">Exam  Management</span></a>
+            <ul class="menu-content">
+            {% url  'exam_list' as exam_list  %}
+            <li class="{% if request.path == exam_list %}active{% endif %}">
+              <a class="menu-item" href="{% url 'exam_list' %}">Exam List</a>
+            </li>
+            {% url  'add_exam' as add_exam  %}
+            <li class="{% if request.path == add_exam %}active{% endif %}">
+              <a class="menu-item" href="{% url 'add_exam' %}">Create Exam</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item "><a href="#"><img width="30" height="32" src="{% static 'static/app-assets/images/dashboard/sidebar/icons/assignment.png' %}"><span class="menu-title">Assignment Management</span></a>
+          <ul class="menu-content">
+            {% url  'assignment_list' as assignment_list  %}
+           <li class="{% if request.path == assignment_list %}active{% endif %}">
+             <a class="menu-item" href="{% url 'assignment_list' %}">Assignment List</a>
+           </li>
+           {% url  'add_assignment' as add_assignment  %}
+           <li class="{% if request.path == add_assignment %}active{% endif %}">
+             <a class="menu-item" href="{% url 'add_assignment' %}">Add Assignment </a>
+            </li>
+         </ul>
+       </li>
+       {% comment %} <li class="nav-item"><a href="#"><img width="30" height="32" src="{% static 'static/app-assets/images/dashboard/sidebar/question-bank.png' %}"><span class="menu-title">Assessment Management</span></a>
+          <ul class="menu-content">
+           <li class="">
+             <a class="menu-item" href="assessment-management/assignment-assessment.php">Assignment Asessment</a>
+           </li>
+           <li class="">
+             <a class="menu-item" href="assessment-management/exam-assessment.php">Exam Asessment </a>
+            </li>
+          </ul>
+        </li> {% endcomment %}
+        <li class="nav-item"><a href="#"><img width="30" height="32" src="{% static 'static/app-assets/images/dashboard/sidebar/question-bank.png' %}"><span class="menu-title">Study Material  Management</span></a>
+          <ul class="menu-content">
+            {% url  'study_material_list' as study_material_list  %}
+            <li class="{% if request.path == study_material_list %}active{% endif %}">
+              <a class="menu-item" href="{% url 'study_material_list' %}">Study Material List</a>
+            </li>
+            {% url  'add_study_material' as add_study_material  %}
+            <li class="{% if request.path == add_study_material %}active{% endif %}">
+             <a class="menu-item" href="{% url 'add_study_material' %}">Add Study Material </a>
+            </li>
+         </ul>
+       </li>
+       {% url  'view_time_table' as view_time_table  %}
+     <li class="nav-item {% if request.path == view_time_table %}active{% endif %}" >
+      <a href="{% url 'view_time_table' %}"><img width="30" height="32" src="{% static 'static/app-assets/images/dashboard/sidebar/icons/badges.png' %}"><span class="menu-title">Time table Management</span></a> 
+     </li>
+     {% url  'attendance_list' as attendance_list  %}
+     <li class="nav-item {% if request.path == attendance_list %}active{% endif %}" >
+      <a href="{% url 'attendance_list' %}"><img width="30" height="32" src="{% static 'static/app-assets/images/dashboard/sidebar/icons/badges.png' %}"><span class="menu-title">Attendance Management</span></a> 
+     </li>
+       <li  ><a href="#"><img width="30" height="32" src="{% static 'static/app-assets/images/dashboard/sidebar/icons/authority.png' %}"><span class="menu-title">Approval Management</span></a>
+        <ul class="menu-content">
+          {% url  'exam_approval_list' as exam_approval_list  %}
+         <li class="{% if request.path == exam_approval_list %}active{% endif %}">
+           <a class="menu-item" href="{% url 'exam_approval_list' %}">Exam</a>
+         </li>
+         {% url  'paper_approval_list' as paper_approval_list  %}
+         <li class="{% if request.path == paper_approval_list %}active{% endif %}">
+          <a class="menu-item" href="{% url 'paper_approval_list' %}">Paper</a>
+         </li>
+         {% url  'assignment_approval_list' as assignment_approval_list  %}
+         <li class="{% if request.path == assignment_approval_list %}active{% endif %}">
+           <a class="menu-item" href="{% url 'assignment_approval_list' %}">Assignment</a>
+         </li>
+         {% url  'study_material_approval_list' as study_material_approval_list  %}
+         <li class="{% if request.path == study_material_approval_list %}active{% endif %}">
+           <a class="menu-item" href="{% url 'study_material_approval_list' %}">Study Material</a>
+         </li>
+        </ul>
+     </li>
+       {% url  'badge_list' as badge_list  %}
+        <li class="nav-item {% if request.path == badge_list %}active{% endif %}" >
+         <a href="{% url 'badge_list' %}"><img width="30" height="32" src="{% static 'static/app-assets/images/dashboard/sidebar/icons/badges.png' %}"><span class="menu-title">Badges Management</span></a> 
+        </li>
+        <li class=" nav-item"><a href="#"><img width="30" src="{% static 'static/app-assets/images/dashboard/sidebar/master.png' %}"><span class="menu-title" data-i18n="">Masters</span></a>
+          <ul class="menu-content">
+              {% url  'classType_list' as classType_list  %}
+              <li class="{% if request.path == classType_list %}active{% endif %}"><a class="menu-item" href="{% url 'classType_list' %}">Class Type Master</a>
+              </li>
+              {% url  'class_list' as class_list  %}
+              <li class="{% if request.path == class_list %}active{% endif %}"><a class="menu-item" href="{% url 'class_list' %}">Class Master</a>
+              </li>
+              {% url  'section_list' as section_list  %}
+              <li class="{% if request.path == section_list %}active{% endif %}"><a class="menu-item" href="{% url 'section_list' %}">Section Master</a>
+              </li>
+              {% url  'subject_list' as subject_list  %}
+              <li class="{% if request.path == subject_list %}active{% endif %}"><a class="menu-item" href="{% url 'subject_list' %}">Subject Master</a>
+              </li>
+              {% url  'topic_list' as topic_list  %}
+              <li class="{% if request.path == topic_list %}active{% endif %}"><a class="menu-item" href="{% url 'topic_list' %}">Topic Master</a>
+              </li>
+              {% url  'question_type_list' as question_type_list  %}
+              <li class="{% if request.path == question_type_list %}active{% endif %}"><a class="menu-item" href="{% url 'question_type_list' %}">Question Type Master</a>
+              </li>
+              {% url  'authorityList' as authorityList  %}
+              <li class="{% if request.path == authorityList %}active{% endif %}"><a class="menu-item" href="{% url 'authorityList' %}">Authority Master</a>
+              </li>
+              {% url  'sub_authority_list' as sub_authority_list  %}
+              <li class="{% if request.path == sub_authority_list %}active{% endif %}"><a class="menu-item" href="{% url 'sub_authority_list' %}">Sub Authority Master</a>
+              </li>
+              {% url  'designation_list' as designation_list  %}
+              <li  class="{% if request.path == designation_list %}active{% endif %}"><a class="menu-item" href="{% url 'designation_list' %}">Designation Master</a>
+              </li>
+              {% url  'badge_trigger_list' as badge_trigger_list  %}
+              <li class="{% if request.path == badge_trigger_list %}active{% endif %}"><a class="menu-item" href="{% url 'badge_trigger_list' %}">Badge Trigger Master</a>
+              </li>
+              {% url  'file_type_list' as file_type_list  %}
+              <li class="{% if request.path == file_type_list %}active{% endif %}"><a class="menu-item" href="{% url 'file_type_list' %}">File Type Master</a>
+              </li>
+              {% url  'year_list' as year_list  %}
+              <li class="{% if request.path == year_list %}active{% endif %}"><a class="menu-item" href="{% url 'year_list' %}">Year Master</a>
+              </li>
+              {% url  'exam_type_list' as exam_type_list  %}
+              <li class="{% if request.path == exam_type_list %}active{% endif %}"><a class="menu-item" href="{% url 'exam_type_list' %}">Exam Type Master</a>
+              </li>
+            </ul>
+          </li>
+          <li class=" nav-item"><a href="#"><img width="30" height="32" src="{% static 'static/app-assets/images/dashboard/sidebar/notification.png' %}"><span class="menu-title" data-i18n="">Notifications</span></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- END: Main Menu-->

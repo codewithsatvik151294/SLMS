@@ -1,0 +1,79 @@
+{% comment %} <?php $txt="Manage Type" ;  $subP="branch"; include('../header-1.php')  ?> {% endcomment %}
+{% include 'admin_template/header-1.html' %}
+{% load static %}
+    <div class="app-content content position-relative  ">
+      <div class="content-wrapper  ">
+        <div class="content-body "><!-- Revenue, Hit Rate & Deals -->
+           <div class="top-options pl-1 mb-0">
+            <div class="row">
+                 <div class="col-md-3   "><h3 >Branch Details</h3></div>
+                     
+                    <div class="col-md-9 text-right pr-2  ">
+                        <a class="btn btn-secondary btn-min-width btn-sm "  href="{% url 'edit_branch' branchObj.id %}"><i class="fa fa-edit"></i> Edit Detail </a>
+                        <a class="btn btn-default   float-right btn-sm  ml-1" href="{% url 'branch_list' %}" ><i class="fa fa-arrow-left"></i> Back to list</a>
+                    </div>
+               </div>
+           </div>
+
+         
+             
+             <div class="detail_block mt-2">
+                 <div class="card form">
+                  <div class="card-content ">
+                      <div class="card-body"  >
+                         
+
+                          <div class="row  ">
+                             <div class="col-lg-12  pt-1 "><h4 class="title-1">Branch Details</h4></div>
+                           <div class="col-lg-4 pt-1 ">
+                              <label>Branch Code</label>
+                              <p class="value">{{branchObj.branch_code}}</p>
+                             </div>
+                              <div class="col-lg-4  pt-1 ">
+                               <label>Branch Name</label>
+                                 <p class="value">{{branchObj.branch_name}}</p>
+                             </div>
+                               
+
+                            <div class="col-lg-12  pt-3 "><h4 class="title-1">Contact Details</h4></div>
+                           <div class="col-lg-4 pt-1 ">
+                              <label>Email ID</label>
+                              <p class="value">{{branchObj.branch_email}}</p>
+                             </div>
+                              <div class="col-lg-4 pt-1 ">
+                               <label>Contact No.</label>
+                                 <p class="value">{{branchObj.branch_contact}}</p>
+                             </div>
+                               
+                           <div class="col-lg-4 pt-1 ">
+                               <label>Address</label>
+                              <p class="value">{{branchObj.branch_address}} </p>
+                           </div>
+                            <div class="col-lg-4  pt-1 ">
+                             <label>City</label>
+                                 <p class="value">{{branchObj.branch_city}}</p>
+                             </div>
+                              <div class="col-lg-4  pt-1 ">
+                               <label>State </label>
+                              <p class="value">{{branchObj.branch_state}}</p>
+                           </div>
+                           <div class="col-lg-4  pt-1 ">
+                               <label>Pin code  </label>
+                              <p class="value">{{branchObj.branch_pinCode}}</p>
+                           </div>
+
+                         
+                               
+                         </div>
+                       </div>
+                     </div>
+                   </div>
+
+
+             </div>
+      </div>
+     </div>
+   </div>
+ 
+{% comment %} <?php include('../footer-1.php')  ?> {% endcomment %}
+{% include 'admin_template/footer-1.html' %}

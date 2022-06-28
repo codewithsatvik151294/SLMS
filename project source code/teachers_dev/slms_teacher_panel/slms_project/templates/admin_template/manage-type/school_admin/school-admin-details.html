@@ -1,0 +1,114 @@
+{% include 'admin_template/header-1.html' %}
+{% load static %}
+    <div class="app-content content position-relative  ">
+      <div class="content-wrapper  ">
+        <div class="content-body "><!-- Revenue, Hit Rate & Deals -->
+            <div class="top-options pl-1  ">
+            <div class="row">
+                 <div class="col-md-4   "><h3 >School Admin Details</h3></div>
+                    <div class="col-md-8 text-right pr-2  ">
+                        <a class="btn btn-secondary btn-min-width btn-sm "  href="{% url 'edit_schoolAdmin' schoolAdmin_profile_obj.id %}"><i class="fa fa-edit"></i> Edit Detail </a>
+                        <a class="btn btn-default   float-right btn-sm  ml-1" href="{% url 'schoolAdmin_list' %}" ><i class="fa fa-arrow-left"></i> Back to list</a>
+                    </div>
+               </div>
+           </div>
+             
+             <div class="detail_block">
+                 <div class="card form">
+                  <div class="card-content ">
+                      <div class="card-body"  >
+                          <div class="row  ">
+                             <div class="col-lg-12  pt-1 "><h4 class="title-1">Personal Details</h4></div>
+                              <div class="col-lg-2  mt-1  ">
+                                {% if schoolAdmin_profile_obj.schoolAdmin_FK.profile_image == '' or schoolAdmin_profile_obj.schoolAdmin_FK.profile_image == None %}
+                                  <img src="{% static 'static/app-assets/images/avatar.jpg' %}">
+                                {% else %}
+                                  <img src="/media/{{schoolAdmin_profile_obj.schoolAdmin_FK.profile_image}}">
+                                {% endif %}
+                             </div>
+                            <div class="col-md-8  offset-md-1">
+                                <div class="row">
+                                      <div class="col-lg-5  pt-2 ">
+                                       <label>Name</label>
+                                         <p class="value">{{schoolAdmin_profile_obj.schoolAdmin_FK.schoolAdmin_name}}</p>
+                                     </div>
+                                      <div class="col-lg-5  pt-2 ">
+                                       <label>Gender  </label>
+                                       {% if schoolAdmin_profile_obj.schoolAdmin_gender == '1' %}
+                                       <p class="value">Male</p>
+                                       {% elif schoolAdmin_profile_obj.schoolAdmin_gender == '2' %}
+                                       <p class="value">Female</p>
+                                       {% else %}
+                                       <p class="value">Other</p>
+                                       {% endif %}
+                                   </div>
+                                   <div class="col-lg-5  pt-1 ">
+                                       <label>Date of birth  </label>
+                                      <p class="value">{{schoolAdmin_profile_obj.schoolAdmin_DOB}}</p>
+                                   </div>
+                                    <div class="col-lg-3  pt-1 ">
+                                     <label>Parent Name</label>
+                                         <p class="value">{{schoolAdmin_profile_obj.schoolAdmin_fathers_name}}</p>
+                                     </div>
+                                 </div>
+                             </div>
+                           
+                              
+                            
+
+                            <div class="col-lg-12  pt-3 "><h4 class="title-1">Contact Details</h4></div>
+                           <div class="col-lg-3  pt-1 ">
+                              <label>Email ID</label>
+                              <p class="value">{{schoolAdmin_profile_obj.schoolAdmin_FK.schoolAdmin_email}}</p>
+                             </div>
+                              <div class="col-lg-3  pt-1 ">
+                               <label>Mobile No.</label>
+                                 <p class="value">{{schoolAdmin_profile_obj.schoolAdmin_FK.schoolAdmin_contact}}</p>
+                             </div>
+                              
+                           <div class="col-lg-3  pt-1 ">
+                               <label>Address</label>
+                              <p class="value">{{schoolAdmin_profile_obj.schoolAdmin_address}} </p>
+                           </div>
+                            <div class="col-lg-3  pt-1 ">
+                             <label>City</label>
+                                 <p class="value">{{schoolAdmin_profile_obj.schoolAdmin_city}}</p>
+                             </div>
+                              <div class="col-lg-3  pt-1 ">
+                               <label>State </label>
+                              <p class="value">{{schoolAdmin_profile_obj.schoolAdmin_state}}</p>
+                           </div>
+                           <div class="col-lg-3  pt-1 ">
+                               <label>Pin code  </label>
+                              <p class="value">{{schoolAdmin_profile_obj.schoolAdmin_pinCode}}</p>
+                           </div>
+
+                           <div class="col-lg-12  pt-2 "><h4 class="title-1">Branch</h4></div>
+                           <div class="col-lg-3  pt-1 ">
+                              <label>Branch Name</label>
+                              <p class="value">{{schoolAdmin_profile_obj.branch_FK.branch_name}}</p>
+                             </div>
+
+                             <div class="col-lg-12  pt-3 "><h4 class="title-1">Login Credentials </h4></div>
+                            <div class="col-lg-4 pt-1 ">
+                              <label>Username</label>
+                              <p class="value">{{schoolAdmin_profile_obj.schoolAdmin_FK.schoolAdmin_email}}</p>
+                             </div>
+                             <div class="col-lg-4 pt-1 ">
+                               <label>Password</label>
+                                 <p class="value">{{schoolAdmin_profile_obj.schoolAdmin_FK.schoolAdmin_password}}</p>
+                             </div>
+                              
+                               
+                         </div>
+                       </div>
+                     </div>
+                   </div>
+
+
+             </div>
+      </div>
+     </div>
+   </div>
+ 
+   {% include 'admin_template/footer-1.html' %}

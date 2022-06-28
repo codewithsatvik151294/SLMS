@@ -1,0 +1,43 @@
+{% include 'admin_template/header-1.html' %}
+{% load static %}
+    <div class="app-content content position-relative  ">
+      <div class="content-wrapper  ">
+        <div class="content-body "><!-- Revenue, Hit Rate & Deals -->
+           <div class="top-options  ">
+            <div class="row">
+                  <div class="col-lg-6  ico pl-2">
+                     <h3 class="main-title">Authority List</h3>
+                  </div>
+                  <div class="col-md-6 text-right pr-2  ">
+                      <a href="{% url 'add_authority' %}" class="btn btn-primary"  >Add Authority </a>
+                  </div>
+               </div>
+           </div>
+             <div class="table-responsive  ">
+                <table id="example"  class="display table data-table">
+                    <thead>
+                        <tr>
+                            <th>Authority ID</th>
+                            <th>Authority</th>
+                            <th class="text-center">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in authorityObj %}
+                        <tr>
+                            <td>{{i.authorityID}}</td>
+                            <td>{{i.authority_name|title}}</td>
+                            <td class="details-control">
+                                <a href="{% url 'delete_authority' i.id %}" class='del' onclick="return confirm('Confirm to delete this authority! Authority name : {{i.authority_name|title}}')"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+             
+            </div>
+            
+      </div>
+     </div>
+   </div>
+   {% include 'admin_template/footer-1.html' %}

@@ -1,0 +1,171 @@
+{% include 'admin_template/header-1.html' %}
+{% load static %}
+    <div class="app-content content position-relative  ">
+      <div class="content-wrapper  ">
+        <div class="content-body "><!-- Revenue, Hit Rate & Deals -->
+           <div class="top-options pl-1 mb-0">
+           <div class="row">
+              <div class="col-md-4 "><h3 >Student Details  </h3></div>
+                 <div class="col-md-8 text-right ">
+                  <a class="btn btn-secondary btn-min-width btn-sm "  href="{% url 'edit_student' student_profile_obj.id %}"><i class="fa fa-edit"></i> Edit Detail </a>
+                    <a href="{% url 'student_list' %}" class="btn  btn-default  btn-sm"><i class="fa fa-arrow-left"></i>   Back to List</a>
+                 </div>
+              </div>
+           </div>
+             <div class="detail_block mt-2">
+                 <div class="card form">
+                  <div class="card-content ">
+                      <div class="card-body"  >
+                         <div class="row ">
+                           <div class="col-lg-4 mx-auto mt-1  ">
+                              <div class="head">
+                                <div class="row ">
+                                  <div class="col-lg-6 mx-auto   ">
+                                    {% if student_profile_obj.student_FK.profile_image == '' or student_profile_obj.student_FK.profile_image == None %}
+                                       <img src="{% static 'static/app-assets/images/avatar.jpg' %}">
+                                    {% else %}
+                                       <img src="/media/{{student_profile_obj.student_FK.profile_image}}">
+                                    {% endif %}
+                                  </div>
+                                </div>                                
+                              </div>
+                           </div>
+                         </div>
+
+                          <div class="row mt-2">
+                             <div class="col-lg-12  pt-1 "><h4 class="title-1">Personal Details</h4></div>
+                           <div class="col-lg-3  pt-1 ">
+                              <label>Registration No.</label>
+                              <p class="value">{{student_profile_obj.student_FK.student_registration_number}}</p>
+                             </div>
+                              <div class="col-lg-3  pt-1 ">
+                               <label>Name</label>
+                                 <p class="value">{{student_profile_obj.student_FK.student_first_name|title}} {{student_profile_obj.student_FK.student_last_name|title}}</p>
+                             </div>
+                              <div class="col-lg-3  pt-1 ">
+                               <label>Gender  </label>
+                               {% if student_profile_obj.student_gender == '1' %}
+                               <p class="value">Male</p>
+                               {% elif student_profile_obj.student_gender == '2' %}
+                               <p class="value">Female</p>
+                               {% elif student_profile_obj.student_gender == '' or student_profile_obj.student_gender == None %}
+                               <p class="value">-</p>
+                               {% else %}
+                               <p class="value">Other</p>
+                               {% endif %}
+                           </div>
+                           <div class="col-lg-3  pt-1 ">
+                               <label>Date of birth  </label>
+                               {% if student_profile_obj.student_DOB == '' or student_profile_obj.student_DOB == None or student_profile_obj.student_DOB == null %}
+                               <p class="value">-</p>
+                               {% else %}
+                               <p class="value">{{student_profile_obj.student_DOB}}</p>
+                               {% endif %}
+                           </div>
+                            <div class="col-lg-3  pt-1 ">
+                             <label>Parent Name</label>
+                             {% if student_profile_obj.student_fathers_name == '' or student_profile_obj.student_fathers_name == None or student_profile_obj.student_fathers_name == null %}
+                             <p class="value">-</p>
+                            {% else %}
+                             <p class="value">{{student_profile_obj.student_fathers_name}}</p>
+                            {% endif %}
+                             </div>
+                              <div class="col-lg-3  pt-1 ">
+                               <label>Relation with parent  </label>
+                               {% if student_profile_obj.student_parent_relation == '' or student_profile_obj.student_parent_relation == None or student_profile_obj.student_parent_relation == null %}
+                               <p class="value">-</p>
+                              {% else %}
+                               <p class="value">{{student_profile_obj.student_parent_relation}}</p>
+                              {% endif %}
+                           </div>
+                           <div class="col-lg-3  pt-1 ">
+                               <label>Hobbies </label>
+                               {% if student_profile_obj.student_hobbies == "['']" or student_profile_obj.student_hobbies == '' or student_profile_obj.student_hobbies == None or student_profile_obj.student_hobbies == null %}
+                               <p class="value">-</p>
+                              {% else %}
+                                 {% for i in hobbyList %}
+                                    <p class="value">{{i}} &nbsp;&nbsp;&nbsp;&nbsp;</p>
+                                 {% endfor %}
+                              {% endif %}
+                           </div>
+
+                            <div class="col-lg-12  pt-3 "><h4 class="title-1">Contact Details</h4></div>
+                           <div class="col-lg-3  pt-1 ">
+                              <label>Email ID</label>
+                              <p class="value">{{student_profile_obj.student_FK.student_email}}</p>
+                             </div>
+                              <div class="col-lg-3  pt-1 ">
+                               <label>Mobile No.</label>
+                                 <p class="value">{{student_profile_obj.student_FK.student_contact}}</p>
+                             </div>
+                              <div class="col-lg-6  pt-1 ">
+                               <label>Parent's Mobile no.  </label>
+                              <p class="value">{{student_profile_obj.student_parent_contact}}</p>
+                           </div>
+                           <div class="col-lg-3  pt-1 ">
+                               <label>Address</label>
+                              <p class="value">{% if student_profile_obj.student_address == '' or student_profile_obj.student_address == None or student_profile_obj.student_address == null %}
+                                 <p class="value">-</p>
+                               {% else %}
+                                 <p class="value">{{student_profile_obj.student_address}}</p>
+                               {% endif %}</p>
+                           </div>
+                            <div class="col-lg-3  pt-1 ">
+                             <label>City</label>
+                             {% if student_profile_obj.student_city == '' or student_profile_obj.student_city == None or student_profile_obj.student_city == null %}
+                             <p class="value">-</p>
+                           {% else %}
+                             <p class="value">{{student_profile_obj.student_city}}</p>
+                           {% endif %}
+                             </div>
+                              <div class="col-lg-3  pt-1 ">
+                               <label>State </label>
+                               {% if student_profile_obj.student_state == '' or student_profile_obj.student_state == None or student_profile_obj.student_state == null %}
+                               <p class="value">-</p>
+                             {% else %}
+                               <p class="value">{{student_profile_obj.student_state}}</p>
+                             {% endif %}
+                           </div>
+                           <div class="col-lg-3  pt-1 ">
+                               <label>Pin code  </label>
+                               {% if student_profile_obj.student_pinCode == '' or student_profile_obj.student_pinCode == None or student_profile_obj.student_pinCode == null %}
+                               <p class="value">-</p>
+                             {% else %}
+                               <p class="value">{{student_profile_obj.student_pinCode}}</p>
+                             {% endif %}
+                           </div>
+
+                           <div class="col-lg-12  pt-3 "><h4 class="title-1">Branch/Course Details</h4></div>
+                           <div class="col-lg-4  pt-1 ">
+                              <label>Branch Name</label>
+                              <p class="value">{{student_profile_obj.branch_FK.branch_name|title}}</p>
+                             </div>
+                           <div class="col-lg-2  pt-1 ">
+                              <label>Class Name</label>
+                              <p class="value">{{student_profile_obj.class_fk.class_name|title}}</p>
+                             </div>
+                              <div class="col-lg-2  pt-1 ">
+                               <label>Section </label>
+                                 <p class="value">{{student_profile_obj.section_fk.section_name|title}}</p>
+                             </div>
+                             <div class="col-lg-4  pt-1 ">
+                               <label>Subjects </label>
+                                 <p class="value">
+                                    {% for i in subjectList %}
+                                       {{i|title}},
+                                    {% endfor %}
+                                 </p>
+                             </div>
+                               
+                         </div>
+                       </div>
+                     </div>
+                   </div>
+
+
+             </div>
+      </div>
+     </div>
+   </div>
+ 
+   {% include 'admin_template/footer-1.html' %}

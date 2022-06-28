@@ -1,0 +1,189 @@
+{% include 'admin_template/header-1.html' %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@5.9.0/main.min.css">
+    <div class="app-content content position-relative  ">
+      <div class="content-wrapper  ">
+        <div class="content-body "><!-- Revenue, Hit Rate & Deals -->
+           <div class="top-options pl-2 mb-0">
+               <div class="row">
+                 <div class="col-lg-3  ico  pl-0">
+                   <h3 class="main-title ml-1">Attendance Details</h3>
+                 </div>
+                  <div class="col-md-9 text-right pr-2">
+                      <a href="{% url 'attendance_list' %}" class="btn btn-sm btn-default"><i class="fa fa-arrow-left"></i> Back to List </a>
+                  </div>
+               </div>
+           </div>
+           <div class="col-md-12  mt-1  stu-details">
+              <div class="row">
+                  <div class="col-lg-3 mb-1   pl-0    ">
+                       <label class="mb-0">Student Name</label>
+                       <p class="value  ">{{studentObj.student_FK.student_first_name|title}} {{studentObj.student_FK.student_last_name|title}}</p>
+                  </div>
+                  <div class="col-lg-3 mb-1    ">
+                       <label class="mb-0">Class-Section</label>
+                       <p class="value  ">{{studentObj.class_fk.class_name|title}}</p>
+                  </div>
+                  <div class="col-lg-3 mb-1     ">
+                       <label class="mb-0">Registration Year</label>
+                       <p class="value  ">{{studentObj.created_at|date:"Y"}}</p>
+                  </div>
+                   <div class="col-lg-3 mb-1  text-right  ">
+                      <a href="{% url 'edit_attendance' studentObj.id %}" class="btn btn-sm btn-info"><i class="fa fa-edit"></i> Edit</a>    
+                  </div>
+ 
+             </div>
+           </div>
+            <div class="row">
+                  <div class="col-md-8">
+                    <div class=" pt-2">
+                     <div id="calendar"></div>                      
+                       <div class="table-responsive atten-table" style="display: none;">
+                         <table id="example"  class="display  table data-table" >
+                   
+                          <thead>
+                            <tr>
+                              <th>Reg. No.</th>
+                              <th>Student Name</th>
+                              <th>Overall Attendance (%)</th>
+                              <th>Total Present </th>
+                              <th>Total Absent</th>
+                              <th class="text-center">Action</th>
+                            </tr>
+                          </thead>
+                           <tbody>
+                              <tr> 
+                                 <td>ST1024555</td>
+                                 <td>Deepak Kumar</td>
+                                 <td>75</td>
+                                 <td>200</td>
+                                 <td>25</td>
+                                 <td class="details-control"><a href="attendance-detail.php" class="view"><i class="fa fa-eye"></i></a><a href="edit-question.php" class="edit "><i class="fa fa-edit"></i></a> </td>
+                              </tr>
+                               <tr> 
+                                 <td>ST7588555</td>
+                                 <td>Anuj Singh</td>
+                                 <td>80</td>
+                                 <td>210</td>
+                                 <td>15</td>
+                                 <td class="details-control"><a href="attendance-detail.php" class="view"><i class="fa fa-eye"></i></a><a href="edit-question.php" class="edit "><i class="fa fa-edit"></i></a> </td>
+                              </tr>
+                            </tbody>
+                        </table>
+                  </div>
+              </div>
+            </div>
+              <div class="col-md-4 pt-2">
+              <div class="card p-2">
+                  <div class="card-content ">
+                      <div class="card-body"  >
+                           <div class="row  ">
+                             <div class="col-md-12">
+                                <h4 class="box-title fw-700">Status</h4>
+                                <div class="bg-primary ovr-all p-1">
+                                   Over All <span class=" float-right  ">{{context.overall_percent}}%</span>   
+                                </div>
+                                <div class="row mt-1">
+                                    <div class="col-md-4  ">
+                                      <div class="all-days dd">
+                                        {{context.total_attendance}}
+                                        <span>Total Days</span>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-4 ">
+                                      <div class="pre-days dd">
+                                        {{context.total_present}}
+                                        <span>Total Present</span>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-4 ">
+                                      <div class="abs-days dd">
+                                        {{context.total_absent}}
+                                        <span>Total Absent</span>
+                                      </div>
+                                    </div>
+                                  </div>
+                              
+
+                              <div class="mt-2 ">
+                                <h4>In this Month</h4>
+                              </div>
+                               <div class="row mt-1">
+                                    <div class="col-md-4 ">
+                                      <div class="all-days dd">
+                                        {{context.total_month_attendance}}
+                                        <span>Total Days</span>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-4 ">
+                                      <div class="pre-days dd">
+                                        {{context.total_month_present}}
+                                        <span>Total Present</span>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-4 ">
+                                      <div class="abs-days dd">
+                                        {{context.total_month_absent}}
+                                        <span>Total Absent</span>
+                                      </div>
+                                    </div>
+                                  </div>
+                              </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+            </div>
+      </div>
+     </div>
+   </div>
+  </div>
+ 
+   {% include 'admin_template/footer-1.html' %}
+   <script src="{% static 'static/app-assets/js/web_app_JS/admin_JS/attendance_JS/view-attendance.js' %}" type="text/javascript"></script>
+   <script>
+
+    var calanderData = eval("{{calanderList|safe}}");
+     // full calendar
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+      
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          headerToolbar: {
+            start: 'title',
+            center: '',
+            end: 'prev,today,next'
+          },
+          initialView: 'dayGridMonth',
+          
+          views: {
+            dayGridWeek: {
+              titleFormat: '{DD.{MM.}}YYYY'
+            },
+            listWeek: {
+              titleFormat: '{DD.{MM.}}YYYY'
+            }
+          },
+          events: calanderData,
+          
+      
+          windowResize: function(view) {
+            var current_view = view.type;
+            var expected_view = $(window).width() > 800 ? 'dayGridMonth' : 'listWeek';
+            if (current_view !== expected_view) {
+              calendar.changeView(expected_view);
+            }
+          },
+        });
+      
+        calendar.render();
+        if ($(window).width() < 800) {
+          calendar.changeView('listWeek');
+        }
+      
+        $('input[class=event_filter]').change(function() {
+          calendar.render();
+        });
+          
+      });
+   </script>

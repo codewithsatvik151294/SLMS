@@ -1,0 +1,245 @@
+{% include 'admin_template/header-1.html' %}
+{% load static %}
+    <div class="app-content content position-relative  ">
+      <div class="content-wrapper  ">
+        <div class="content-body "><!-- Revenue, Hit Rate & Deals -->
+           <div class="top-options pl-2 mb-0">
+            <div class="row">
+                 <div class="col-lg-3  ico  pl-0">
+                   <h3 class="main-title ml-1">Question List</h3>
+                 </div>
+                   <div class="col-md-9 text-right pr-2   ">
+                      <a href="../app-assets/question_upload.xlsx" download class="btn  btn-secondary  btn-sm"><i class="fa fa-download"></i> Download Sample Question List</a>
+                      <a href="upload-question-list.php" class="btn  btn-secondary  btn-sm"><i class="fa fa-upload"></i> Upload Question List</a>
+                      <a href="{% url 'add_question' %}" class="btn btn-sm btn-primary">Add Questions  </a>
+
+                  </div>
+               </div>
+           </div>
+           <div class="col-md-12 mt-1">
+              <div class="row">
+                   <div class="col-lg-1 mb-1 form-group no-ico pl-0 pr-0  ">
+                        <select class="form-control select2-placeholder9"  id='year-filter'>
+                          <option value='' class='d-none'>Select Year</option>
+                          {% for i in yearObj %}
+                            <option value="{{i.id}}">{{i.year_name|title}}</option>
+                          {% endfor %}
+                       </select>
+                    </div>
+                    <div class="col-lg-2 mb-1 pr-0 form-group no-ico  ">
+                        <select class="form-control select2-placeholder10"  >
+                          <option value='' class='d-none'>Select Class</option>
+                          {% for i in classObj %}
+                            <option value="{{i.id}}">{{i.class_name|title}}</option>
+                          {% endfor %}
+                       </select>
+                    </div>
+
+                    <div class="col-lg-2 pr-0 mb-1 form-group no-ico  ">
+                          <select class="  form-control select2-placeholder11" >
+                            <option> </option>
+                            <option value="1">Maths</option>
+                            <option value="2">Science </option>
+                            <option value="3">English</option>
+                         </select>
+                    </div>
+
+                     <div class="col-lg-5 mb-1 pr-0 form-group no-ico  ">
+                          <select class="form-control select2-placeholder12" >
+                            <option> </option>
+                            <option value="1">Algebra</option>
+                            <option value="2">Trigonometry </option>
+                            <option value="3">Probability</option>
+                         </select>
+                    </div>
+                   
+                    {% comment %} <div class="col-lg-2 mb-1 pr-0 form-group no-ico  ">
+                      <select class="form-control select2-placeholder14">
+                        <option value='' class='d-none'>Select Question Type</option>
+                        {% for i in questionTypeObj %}
+                          <option value="{{i.id}}">{{i.questionType_name|title}}</option>
+                        {% endfor %}
+                     </select>
+                  </div> {% endcomment %}
+
+                    <div class="col-lg-2 mb-1 pr-0 form-group no-ico  ">
+                        <select class="form-control select2-placeholder16">
+                          <option value='' class='d-none'>Select Difficulty</option>
+                          <option value="1">Easy</option>
+                          <option value="2">Moderate </option>
+                          <option value="3">Hard</option>
+                      </select>
+                    </div>
+
+
+                     <div class="col-md-12 text-right ">
+                        <a href="#" class="btn btn-purple btn-sm" onclick='filter_question()'><i class="fa fa-search"></i> Filter</a>
+                    </div>
+                    
+                  </div>
+                  <hr>
+           </div>
+
+           <!--  <div class="card ques_sidebar pb-2">
+              <div class="card-content  ">
+                      <div class="card-body pt-1 pl-1 pr-1"  >
+                       <div class="row  ">
+                         <div class="col-md-1"> <div class="head">Filter</div> </div>
+                         <div class="col-md-3"><h5>By Difficulty</h5>
+                           <div class="options">
+                              <label class="mr-1"><input type="checkbox" name=""> Easy</label>
+                              <label class="mr-1"><input type="checkbox" name=""> Moderate</label>
+                              <label><input type="checkbox" name=""> Tough</label>
+                           </div>
+                         </div>
+                         <div class="col-md-3"><h5>By Question Type</h5>
+                           <div class="options">
+                             <label class="mr-1"><input type="checkbox" name=""> Objective</label>
+                             <label><input type="checkbox" name=""> Subjective</label>
+                           </div>
+                         </div>
+                     </div>
+                   </div>
+                 </div>
+           </div> -->
+
+            <div class="row">
+               <div class="table-responsive">
+                  <table id="example"  class="display  table data-table">
+                      <thead>
+                        <tr>
+                          <th>Question</th>
+                          <th>Qtype</th>
+                          <th>Difficulty</th>
+                          <th>Marks</th>
+                          <th>Subject</th>
+                          <th>Topic</th>
+                          <th>Year</th>
+                          <th class="text-center">Action</th>
+                        </tr>
+                      </thead>
+                       <tbody>
+                        {% for i in questionObj %}
+                          <tr> 
+                            <td width='700px;'>{{i.question_text|safe}}</td>
+                            <td>{{i.question_type_fk.questionType_name|title}}</td>
+                            <td>
+                              {% if i.difficulty_type == '1' %}
+                                Easy
+                              {% elif i.difficulty_type == '2' %}
+                                Moderate
+                              {% else %}
+                                Hard
+                              {% endif %}
+                            </td>
+                            <td>{{i.correct_mark}}</td>
+                            <td>{{i.subject_fk.subject_name|title}}</td>
+                            <td>{{i.topic_name}}</td>
+                            <td>{{i.year_fk.year_name}}</td>
+                            <td class="details-control">
+                              <a onclick='get_question_detail(this)' questionId="{{i.id}}" class="view" data-toggle="modal" data-target="#myModal"><i class="fa fa-eye"></i></a>
+                              <a href="{% url 'edit_question' i.id %}" class="edit "><i class="fa fa-edit"></i></a>
+                              <a href="{% url 'delete_question' i.id %}" class='del' onclick="return confirm('Confirm to delete this question!')"><i class="fa fa-trash"></i></a>
+                            </td>
+                          </tr>
+                        {% endfor %}
+                       </tbody>
+                    
+                  </table>
+                   
+               
+              </div>
+            </div>
+         
+            <!-- <div class="text-center"><a href="" class="btn btn-dark btn-sm mt-2">Load More</a> </div> -->
+      </div>
+     </div>
+   </div>
+ 
+
+
+
+   <!-- ====================================================================== -->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog modal-dialog-centered  modal-xl" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <!-- <h4 class="modal-title">Customer History</h4> -->
+              
+              <!-- <button type="button" class="close " data-dismiss="modal" aria-label="Close">
+                  <i aria-hidden="true" class="ki ki-close"></i>
+                </button> -->
+          </div>
+          <div class="modal-body pt-0  mb-2">
+              <form class="form">
+                  <div class="card-body pt-0 pb-0 pl-1 pr-1">
+                      <div class="row ml-3 mr-3">
+                          <div class="col-lg-12">
+                              <h3 class="mb-1 text-indigo" style="display: inline;font-weight: 600;">Question Details</h3>
+                              <!-- <span><a href="#" class="btn btn-sm btn-primary float-right">Edit Questions </a></span> -->
+                              <hr>
+                              <div class="form-group row mt-2">
+                                  <div class="col-lg-3 mt-1 mb-1">
+                                      <label style='font-size:15px;font-weight: 700;'>Class</label>
+                                      <p id='ClassModal'>-</p>
+                                  </div>
+                                  <div class="col-lg-3 mt-1 mb-1">
+                                      <label style='font-size:15px;font-weight: 700;'>Subject</label>
+                                      <p id='SubjectModal'>-</p>
+                                  </div>
+                                  <div class="col-lg-3 mt-1 mb-1">
+                                      <label style='font-size:15px;font-weight: 700;'>Topic<span></span></label>
+                                      <p id='TopicModal'>-</p>
+                                  </div>
+                                  <div class="col-lg-3 mt-1 mb-1">
+                                    <label style='font-size:15px;font-weight: 700;'>Year<span></span></label>
+                                    <p id='YearModal'>-</p>
+                                </div><hr>
+                                  <div class="col-lg-3 mt-1 mb-1">
+                                      <label style='font-size:15px;font-weight: 700;'>Question Type<span></span></label>
+                                      <p id='QuestionTypeMod'>-</p>
+                                  </div><div class="col-lg-3 mt-1 mb-1">
+                                      <label style='font-size:15px;font-weight: 700;'>Question Sub-Type<span></span></label>
+                                      <p id='QuestionSubTypeModal'>-</p>
+                                  </div>
+                                  <div class="col-lg-3 mt-1 mb-1">
+                                      <label style='font-size:15px;font-weight: 700;'>Difficulty Level<span></span></label>
+                                      <p id='DifficultyModal'>-</p>
+                                  </div>
+                                  <div class="col-lg-3 mt-1 mb-1">
+                                      <label style='font-size:15px;font-weight: 700;'>Correct Marks<span></span></label>
+                                      <p id='CorrectMarkModal'>-</p>
+                                  </div>
+                                  <div class="col-lg-3 mt-1 mb-1">
+                                    <label style='font-size:15px;font-weight: 700;'>Negative Marks<span></span></label>
+                                    <p id='NegativeMarkModal'>-</p>
+                                </div>
+                                  <div class="col-lg-12 mt-3 mb-1" style="border-bottom: 0.5px solid #1eb6e9;padding-bottom:25px;">
+                                      <label style='font-size:15px;font-weight: 700;margin-top:10px;'>Question<span></span></label>
+                                      <p id='QuestionModal'>-</p>
+                                  </div>
+                                  <div class="col-lg-12 mt-1" id='OptionModal' style='display:none;'>
+                                      <label class="mb-1" style='font-size:15px;font-weight: 700;' id="optionModalAppend" >Options</label>
+                                      <p class="ml-1"><i style="color: red;font-size: large;font-weight: 600;" class="far fa-circle"></i>&nbsp;&nbsp;Lorem, ipsum.</p>
+                                      <p class="ml-1"><i style="color: green;font-size: large;font-weight: 600;" class="far fa-check-circle"></i>&nbsp;&nbsp;Lorem, ipsum.</p>
+                                      <p class="ml-1"><i style="color: red;font-size: large;font-weight: 600;" class="far fa-circle"></i>&nbsp;&nbsp;Lorem, ipsum.</p>
+                                      <p class="ml-1"><i style="color: red;font-size: large;font-weight: 600;" class="far fa-circle"></i>&nbsp;&nbsp;Lorem, ipsum.</p>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-lg-12 mt-5 text-right">
+                              <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal" aria-label="Close">Cancel</button>
+                              <a href="#" class="btn btn-primary btn-sm" id='edit-btn'><i class="fa fa-edit"></i> Edit</a>
+                          </div>
+                      </div>
+
+                  </div>
+
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
+{% include 'admin_template/footer-1.html' %}
+<script src="{% static 'static/app-assets/js/web_app_JS/admin_JS/question_bankJS/view-question.js' %}"></script>
+<script src="{% static 'static/app-assets/js/web_app_JS/admin_JS/question_bankJS/filter-question.js' %}"></script>

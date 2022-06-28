@@ -1,0 +1,108 @@
+{% include 'admin_template/header-1.html' %}
+{% load static %}
+    <div class="app-content content position-relative  ">
+      <div class="content-wrapper  ">
+        <div class="content-body "><!-- Revenue, Hit Rate & Deals -->
+           <div class="top-options pl-1 mb-0">
+              <div class="row">
+                 <div class="col-lg-5  ">
+                  <h3 >Study Material Details    </h3>
+                 </div>
+                 <div class="col-lg-7 ">
+                     <a   class="btn btn-default   float-right btn-sm  " href="{% url 'study_material_list' %}" ><i class="fa fa-arrow-left"></i> Back</a>
+                 </div>
+               </div>
+             </div>
+             <div class="col-lg-12 col-md-12 col-sm-12 p-0 pt-2 ">
+              
+                <div class="card form paper_det">
+                    <div class="card-content ">
+                      <div class="card-body"  >
+                         <div class="row ">
+                           <div class="col-lg-12 mt-1  ">
+                             <h4 class="title-1">Study Material Details 
+                              {% if study_materialObj.published_status == False %}
+                                <a href="{% url 'edit_study_material' study_materialObj.id %}"><i class="fa fa-edit   float-right"></i></a>
+                              {% endif %}
+                            </h4>
+                           </div>
+ 
+                                   <div class="col-lg-3 mt-1   form-group">
+                                      <label>Class</label>
+                                       <p class="value">{{study_materialObj.class_fk.class_name|title}}</p>
+                                   </div>
+                                     
+                                   <div class="col-lg-3 mt-1   form-group">
+                                      <label>Subject</label>
+                                       <p class="value">{{study_materialObj.subject_fk.subject_name|title}}</p>
+                                   </div>
+                                    <div class="col-lg-6 mt-1  form-group">
+                                      <label>Topic  </label>
+                                       <p class="value">{{study_materialObj.topic|title}}</p>
+                                   </div>
+                                   <div class="col-lg-3 mt-1   form-group">
+                                      <label>File Type</label>
+                                       <p class="value">{{study_materialObj.file_type_fk.file_type_name|title}}</p>
+                                   </div>
+                                   <div class="col-lg-3 mt-1   form-group">
+                                      <label>Added Date</label>
+                                      <p class="value">{{study_materialObj.created_at|date:"d-M-Y, H i A"}}</p>
+                                   </div>
+                                   {% comment %} <div class="col-lg-3 mt-1   form-group">
+                                      <label>Last Updated at</label>
+                                      <p class="value">9/04/2022 10:00 AM</p>
+                                   </div>
+                                    <div class="col-lg-3 mt-1   form-group">
+                                      <label>Published At</label>
+                                      <p class="value">10/04/2022 12:00 PM</p>
+                                   </div> {% endcomment %}
+                                    <div class="col-lg-3 mt-1   form-group">
+                                      <label>Status </label>
+                                      <p class="value tags">
+                                        {% if study_materialObj.published_status == True %}
+                                          <span class="published">Published</span></td>
+                                        {% else %}
+                                          <span class="unpublished">Unpublished</span></td>
+                                        {% endif %}
+                                      </p>
+                                   </div>
+                                   <div class="col-lg-3 mt-1   form-group">
+                                      <label>File </label>
+                                      <p class="value tags"> <a href="javascript:;" data-toggle="modal" data-target="#answer" class="text-primary mt-2">View/Download File</a></p>
+                                   </div>
+     
+     
+
+                            </div>
+
+                         </div>
+                       </div>
+                     </div>
+             </div>
+                 
+            </div>
+            
+          
+      </div>
+     </div>
+   </div>
+ 
+  <!-- modal for pdf -->
+   <div class="modal fade question_modal ans_modal" id="answer"   role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header d-block">
+           <a href="#" style="margin-top: -10px" data-dismiss="modal" class="btn btn-secondary btn-sm float-right">
+                   x
+               </a>
+            <h4 class="title-1 text-dark d-block"><strong>Topic:</strong> {{study_materialObj.topic|title}}   </h4>
+        </div>
+        <div class="modal-body ">
+              <embed src="/media/{{study_materialObj.content}}" class="pdff"  >
+        </div>
+        
+      </div>
+    </div>
+  </div>
+   
+  {% include 'admin_template/footer-1.html' %}

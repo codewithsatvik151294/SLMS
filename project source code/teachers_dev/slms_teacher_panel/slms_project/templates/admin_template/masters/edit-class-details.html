@@ -1,0 +1,149 @@
+{% include 'admin_template/header-1.html' %}
+{% load static %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+    <div class="app-content content position-relative  ">
+      <div class="content-wrapper">
+        <div class="content-body "> 
+          <div class="top-options">
+            <div class="row">
+                  <div class="col-lg-6  ico pl-2">
+                     <h3 class="main-title">Edit Class Details</h3>
+                  </div>
+                  <div class="col-md-6 text-right pr-2  ">
+                      <a class="btn btn-default   float-right btn-sm  " href="{% url 'class_list' %}" ><i class="fa fa-arrow-left"></i> Back to list</a>
+                  </div>
+               </div>
+           </div>
+           <div class="">
+                <div class="card  form">
+                  <div class="card-content ">
+                      <div class="card-body"  >
+                             <div class="row ">
+                                  <div class="col-lg-4 mt-1  form-group">
+                                      <label>Class ID </label>
+                                      <input type="text" class="form-control" placeholder="Enter class id" value="C001" readonly="" />
+                                   </div>
+                                   <div class="col-lg-4  form-group ico pt-1">
+                                    <label>Branch </label>
+                                    <i class="fa fa-search"></i>
+                                       <select class="select2 form-control select2-placeholder"   id="default-select">
+                                        <option value="" class="d-none">Select Branch</option>
+                                        {% for i in branchObj %}
+                                        <option value="{{i.id}}">{{i.branch_name|title}}</option>
+                                        {% endfor %}
+                                     </select>
+                                 </div>
+                                    <div class="col-lg-4 mt-1  form-group">
+                                      <label>Class Name </label>
+                                      <input type="text" class="form-control" placeholder="Enter Class name" value="10th" />
+                                   </div>
+                                    {% comment %} <div class="col-lg-3 mt-1 no-ico   form-group">
+                                      <label>Predessor Class </label>
+                                      <select class="select2 form-control select2-placeholder10"  >
+                                       <option> </option>
+                                        <option value="1" selected="">9th</option>
+                                        <option value="2">10th </option>
+                                         
+                                    </select> 
+                                   </div>
+                                   <div class="col-lg-3 mt-1 ico no-ico  form-group">
+                                      <label>Successor Class </label>
+                                       <select class="select2 form-control select2-placeholder10">
+                                          <option> </option>
+                                          <option value="1" selected="">11th </option>
+                                          <option value="2">12th </option>
+                                      </select> 
+                                   </div> {% endcomment %}
+                                   <div class="col-lg-12   form-group     ">
+                                      <label>Select Subjects </label>
+                                           <select   title="Select Subjects" class="selectpicker d-block"  multiple data-live-search="false"> 
+                                               <option selected="">Hindi</option>
+                                               <option selected="">English</option>
+                                               <option>Maths</option>
+                                               <option selected="">Computers</option>
+                                            </select>
+                                   </div>
+                                   <div class="col-lg-12    form-group">
+                                      <label>Class Description</label>
+                                      <textarea class="form-control" placeholder="Enter description">Lorem ipsum</textarea>
+                                   </div>
+                                 </div>
+
+                                   <div class="row">
+                                        <div class="col-lg-3 no-ico  form-group">
+                                            <label>Section   </label>
+                                            <select class=" form-control "  >
+                                               <option class="d-none">Select </option>
+                                                <option value="1" selected="">Section A</option>
+                                                <option value="2">Section B</option>
+                                            </select> 
+                                         </div>
+                                          
+                                         <div class="col-lg-4 no-ico   form-group">
+                                            <label>Class Type</label>
+                                            <select class=" form-control "  >
+                                                <option class="d-none">Select </option>
+                                                <option value="1" selected="">Batch-Morning</option>
+                                                <option value="2">Batch-Evening</option>
+                                            </select>
+                                         </div> 
+
+                                           <div class=" col-lg-2  pt-2">
+                                              <a  style="margin-top: 5px; " class="btn btn-purple add-sections btn-sm  " href="javascript:;"  ><i class="fa fa-plus"></i></a>
+
+                                           </div>
+                                         </div>
+
+                                         <div class="row">
+                                        <div class="col-lg-3 no-ico  form-group">
+                                            <label>Section   </label>
+                                            <select class=" form-control "  >
+                                               <option class="d-none">Select </option>
+                                                <option value="1" >Section A</option>
+                                                <option value="2" selected="">Section B</option>
+                                            </select> 
+                                         </div>
+                                          
+                                         <div class="col-lg-4 no-ico   form-group">
+                                            <label>Class Type</label>
+                                            <select class=" form-control "  >
+                                                <option class="d-none">Select </option>
+                                                <option value="1" >Batch-Morning</option>
+                                                <option value="2" selected="">Batch-Evening</option>
+                                            </select>
+                                         </div> 
+
+                                           <div class=" col-lg-2  pt-2">
+                                            <a style="margin-top:5px" class="btn btn-danger remove-section  btn-sm " href="javascript:;"   ><i class="fa fa-minus"></i></a> 
+                                              <a  style="margin-top: 5px; " class="btn btn-purple add-sections btn-sm  " href="javascript:;"  ><i class="fa fa-plus"></i></a>
+
+                                           </div>
+                                         </div>
+
+                                         <div id="more-sections"></div>
+
+                                    <div class="text-right col-lg-12   pt-1">
+                                        <a  class="btn btn-primary   " href="javascript:;" data-toggle="modal" data-target="#success" >Update</a>
+                                     </div>
+
+                                      
+                                    
+          
+                                      
+                               </div>
+                             
+                      </div>
+                  </div>
+              </div>
+
+               
+            </div>
+      </div>
+     </div>
+   </div>
+
+  {% include 'admin_template/footer-1.html' %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+  <script type="text/javascript">
+    $('select').selectpicker();
+  </script>

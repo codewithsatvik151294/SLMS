@@ -1,0 +1,141 @@
+<?php $txt="Assessment Management" ; $subP="assessment"; include('../header-1.php')  ?>
+    <div class="app-content content position-relative  ">
+      <div class="content-wrapper  ">
+        <div class="content-body "><!-- Revenue, Hit Rate & Deals -->
+           <div class="top-options pl-2 mb-0">
+              <div class="row">
+                 <div class="col-lg-5  ico  pl-0">
+                     <h3 class="main-title ml-1">Exam Assessment</h3>
+                 </div>
+               </div>
+           </div>
+           <div class="col-md-12 mt-1">
+              <div class="row">
+                <div class="col-lg-2 mb-1 offset-md-2 pr-0 form-group no-ico  ">
+                    <select class="form-control select2-placeholder10"  >
+                      <option> </option>
+                      <option value="1">Class 9</option>
+                      <option value="2">Class 8 </option>
+                      <option value="3">Class 7</option>
+                   </select>
+                </div>
+                <div class="col-lg-2 pr-0 mb-1 form-group no-ico  ">
+                    <select class="  form-control select2-placeholder18" >
+                      <option> </option>
+                      <option value="1">Section A</option>
+                      <option value="2">Section B </option>
+                      <option value="3">Section C</option>
+                   </select>
+                </div>
+                <div class="col-lg-3 pr-0 mb-1 form-group no-ico  ">
+                    <select class="  form-control select2-placeholder11" >
+                      <option> </option>
+                      <option value="1">Maths</option>
+                      <option value="2">Science </option>
+                      <option value="3">English</option>
+                   </select>
+                </div>
+                 <div class="col-md-1 text-right ">
+                    <a href="#" class="btn btn-purple btn-sm"><i class="fa fa-search"></i></a>
+                </div>
+             </div>
+           </div>
+
+            <div class="row">
+               <div class="table-responsive">
+                  <table id="example"  class="display  table data-table">
+                      <thead>
+                        <tr>
+                          <th>Exam  Name</th>
+                          <th>Class-Section</th>
+                          <th>Subject</th>
+                          <th>Total Marks</th>
+                          <th>Passing Marks</th>
+                          <th>Date</th>
+                          <th class="text-center">Action</th>
+                        </tr>
+                      </thead>
+                       <tbody>
+                          <tr> 
+                             <td>Class-10th-hindi-half-yearly</td>
+                             <td>10th-A</td>
+                             <td>Hindi</td>
+                             <td>100</td>
+                             <td>40</td>
+                              
+                             <td>10/04/2021</td>   
+                             <td class="details-control">
+                             
+                              <a href="exam-assessment-detail.php" class="view"><i class="fa fa-eye"></i></a></td>
+                          </tr>
+                          <tr> 
+                              <td>Class-11th-English-half-yearly</td>
+                             <td>11th-A</td>
+                             <td>English</td>
+                             <td>100</td>
+                             <td>40</td>
+                             <td>11/04/2021</td>
+                            
+                             <td class="details-control">
+                               <a href="exam-assessment-detail.php" class="view"><i class="fa fa-eye"></i></a></td>
+                          </tr>
+                           
+                           
+                       </tbody>
+                    
+                  </table>
+                   
+               
+              </div>
+            </div>
+         
+            <!-- <div class="text-center"><a href="" class="btn btn-dark btn-sm mt-2">Load More</a> </div> -->
+      </div>
+     </div>
+   </div>
+
+
+       <!-- Modal -->
+      <div class="modal fade small" id="publish" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body text-center">
+                <p>Are you sure want  to publish this assignment.  </p>
+                <a href="" class="btn btn-dark btn-sm mr-1" data-dismiss="modal">No</a>
+                <a href="" class="btn btn-primary btn-sm" data-dismiss="modal" data-toggle="modal" data-target="#publish1">Yes</a>
+            </div>
+             
+          </div>
+        </div>
+      </div>
+
+   
+
+     <div class="modal fade small with-img" id="publish1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body text-center">
+             <img src="../app-assets/images/success-icon-10.png">
+             <p> Assignment has been successsfully published.  </p>
+             
+              
+             <a href="" class="btn btn-primary btn-sm" data-dismiss="modal"  >OK</a>
+             
+          </div>
+           
+        </div>
+      </div>
+    </div>
+
+ 
+<?php include('../footer-1.php')  ?>

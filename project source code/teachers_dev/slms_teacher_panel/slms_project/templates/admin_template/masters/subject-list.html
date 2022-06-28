@@ -1,0 +1,46 @@
+{% include 'admin_template/header-1.html' %}
+{% load static %}
+    <div class="app-content content position-relative  ">
+      <div class="content-wrapper  ">
+        <div class="content-body "><!-- Revenue, Hit Rate & Deals -->
+           <div class="top-options mb-0">
+            <div class="row">
+              <div class="col-md-3  "><h3 >Subject List</h3></div>
+                 <div class="col-md-9 text-right ">
+                    <a href="{% url 'add_subject' %}" class="btn  btn-primary  btn-sm">+ Add Subject</a>
+                    {% comment %} <a href="{% static 'app-assets/Sample.xlsx' %}" download class="btn  btn-secondary  btn-sm"><i class="fa fa-download"></i> Download Sample Subject List</a>
+                    <a href="#" class="btn  btn-secondary  btn-sm"><i class="fa fa-upload"></i> Upload  Subject List</a> {% endcomment %}
+                 </div>
+           </div>
+           </div>
+           <div class="row">
+             <div class="table-responsive mt-0 ">
+                <table id="example"  class="display table data-table">
+                    <thead>
+                        <tr>
+                            <th>Subject ID</th>
+                             <th>Subject Name</th>
+                             <th> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in subjectObj %}
+                        <tr>
+                            <td> {{i.subjectID}}</td>
+                            <td class="subjects"><span>{{i.subject_name|title}}</span> </td>
+                            <td class="details-control">
+                                <a href="{% url 'delete_subject' i.id %}" class='del' onclick="return confirm('Confirm to delete this subject! subject name : {{i.subject_name|title}}')"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+             
+            </div>
+          </div>
+      </div>
+     </div>
+   </div>
+ 
+
+   {% include 'admin_template/footer-1.html' %}
